@@ -88,7 +88,7 @@ Vui lòng xác nhận đặt chỗ. Cảm ơn!`;
 
     const sendToEmail = async () => {
       try {
-        const response = await fetch('/api/send-email', {
+        const response = await fetch('https://xeghepmientrungapi.vercel.app/api/send-email', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

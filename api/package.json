@@ -1,14 +1,13 @@
 {
-  "name": "xeghep-mientrung",
-  "version": "1.0.0",
-  "description": "Xe ghép Đà Nẵng ↔ Quảng Trị",
+  "name": "xe-ghep-serverless",
+  "private": true,
+  "type": "commonjs",
+  "engines": { "node": ">=20" },
   "dependencies": {
-    "nodemailer": "^6.9.7"
+    "nodemailer": "^6.9.13"
   },
-  "devDependencies": {},
   "scripts": {
     "dev": "vercel dev",
-    "build": "echo 'No build step required'",
-    "start": "vercel dev"
+    "deploy": "vercel && vercel --prod"
   }
 }
