@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // min date = hôm nay
   if (dateInput) dateInput.min = new Date().toISOString().slice(0,10);
 
-  window.dataLayer = window.dataLayer || [];
-  const pushEvent = (name, detail={}) => { 
+  // Use the global pushEvent function from gtag-config.js
+  const pushEvent = window.pushEvent || function(name, detail={}) { 
     try { 
       window.dataLayer.push({ event: name, ...detail }); 
       // Google Analytics 4 event tracking
