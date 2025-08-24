@@ -88,20 +88,26 @@ Vui lòng xác nhận đặt chỗ. Cảm ơn!`;
 
     const sendToEmail = async () => {
       try {
-        // Sử dụng service như EmailJS hoặc backend endpoint
-        const response = await fetch('YOUR_EMAIL_ENDPOINT', {
+        const response = await fetch('/api/send-email', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            to: 'xeghepmientrung@gmail.com',
-            subject: 'Đặt chỗ xe ghép Đà Nẵng ↔ Quảng Trị',
-            text: orderInfo
+            name: data.name,
+            phone: phoneDigits,
+            pickup: data.pickup,
+            dropoff: data.dropoff,
+            date: data.date,
+            time: data.time,
+            seats: data.seats,
+            note: data.note,
+            order_info: orderInfo
           })
         });
         
-        return response.ok;
+        const result = await response.json();
+        return result.success;
       } catch (error) {
         console.error('Email send failed:', error);
         return false;
