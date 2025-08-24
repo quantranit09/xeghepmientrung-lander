@@ -40,13 +40,14 @@
     Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
 
-# Redirect www to non-www
+# Redirect www to non-www (only if domain is configured)
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.xeghepmientrung\.com [NC]
 RewriteRule ^(.*)$ https://xeghepmientrung.com/$1 [L,R=301]
 
-# Force HTTPS
+# Force HTTPS (only if SSL is available)
 RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} xeghepmientrung\.com [NC]
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 # Remove trailing slashes

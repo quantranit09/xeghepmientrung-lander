@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 - Trang không tìm thấy | Xe Ghép Miền Trung</title>
+  <meta name="description" content="Trang bạn đang tìm kiếm không tồn tại. Quay về trang chủ Xe Ghép Miền Trung.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="assets/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .error-container {
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .error-code {
+      font-size: 120px;
+      font-weight: bold;
+      color: var(--primary);
+      margin: 0;
+      line-height: 1;
+    }
+    .error-message {
+      font-size: 24px;
+      color: var(--text);
+      margin: 20px 0;
+    }
+    .error-description {
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    .error-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Xe Ghép Miền Trung">
+        <img src="assets/images/logo.png" alt="Xe Ghép Miền Trung" class="logo" aria-hidden="true">
+        <span>Xe Ghép Miền Trung</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message">Trang không tìm thấy</h2>
+        <p class="error-description">
+          Trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển. 
+          Vui lòng kiểm tra lại đường dẫn hoặc quay về trang chủ.
+        </p>
+        <div class="error-actions">
+          <a class="btn primary" href="/">🏠 Về trang chủ</a>
+          <a class="btn outline" href="tel:+84826430430">📞 Gọi 0826 430 430</a>
+          <a class="btn outline" href="https://zalo.me/0826430430" target="_blank" rel="nofollow noopener">💬 Chat Zalo</a>
+        </div>
+        
+        <!-- Popular pages suggestions -->
+        <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--line);">
+          <h3 style="color: var(--primary); margin-bottom: 20px;">📋 Có thể bạn đang tìm:</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; text-align: left;">
+            <a href="/#lich-gia" style="display: block; padding: 16px; background: var(--surface); border-radius: 8px; text-decoration: none; color: var(--text); border: 1px solid var(--line); transition: all 0.2s;">
+              <strong>💰 Lịch & Giá</strong><br>
+              <span style="color: var(--muted); font-size: 14px;">Xem lịch chạy và bảng giá</span>
+            </a>
+            <a href="/#du-lich" style="display: block; padding: 16px; background: var(--surface); border-radius: 8px; text-decoration: none; color: var(--text); border: 1px solid var(--line); transition: all 0.2s;">
+              <strong>🏝️ Tour Du lịch</strong><br>
+              <span style="color: var(--muted); font-size: 14px;">Đà Nẵng, Hội An, Bà Nà Hills</span>
+            </a>
+            <a href="/#dat-cho" style="display: block; padding: 16px; background: var(--surface); border-radius: 8px; text-decoration: none; color: var(--text); border: 1px solid var(--line); transition: all 0.2s;">
+              <strong>🚌 Đặt chỗ</strong><br>
+              <span style="color: var(--muted); font-size: 14px;">Đặt xe ghép ngay</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand">
+          <img src="assets/images/logo.png" alt="Xe Ghép Miền Trung" class="logo" aria-hidden="true">
+          <span>Xe Ghép Miền Trung</span>
+        </div>
+        <p class="muted">Dịch vụ xe ghép tuyến Đà Nẵng ↔ Quảng Trị. Xe Ghép Miền Trung cam kết an toàn, đúng giờ, minh bạch chi phí.</p>
+      </div>
+      <div>
+        <h4 style="color:var(--primary)">Liên hệ</h4>
+        <p class="muted">
+          📞 <a href="tel:+84826430430">0826 430 430</a><br>
+          💬 <a href="https://zalo.me/0826430430" target="_blank" rel="nofollow noopener">Zalo</a><br>
+          📧 <a href="mailto:xeghepmientrung@gmail.com">Email</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Add some interactive functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add hover effects to suggestion cards
+      const suggestionCards = document.querySelectorAll('a[href^="/#"]');
+      suggestionCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-2px)';
+          this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+        });
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+          this.style.boxShadow = 'none';
+        });
+      });
+
+      // Add click tracking for analytics (if needed)
+      const trackClick = function(event) {
+        const link = event.target.closest('a');
+        if (link) {
+          console.log('404 page - User clicked:', link.href);
+          // You can add Google Analytics tracking here
+          // gtag('event', 'click', { 'event_category': '404_page', 'event_label': link.href });
+        }
+      };
+      document.addEventListener('click', trackClick);
+
+      // Auto-redirect after 30 seconds (optional)
+      let countdown = 30;
+      const countdownElement = document.createElement('div');
+      countdownElement.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; padding: 10px 15px; border-radius: 8px; font-size: 14px; z-index: 1000;';
+      countdownElement.innerHTML = `Tự động về trang chủ sau ${countdown} giây`;
+      document.body.appendChild(countdownElement);
+
+      const timer = setInterval(() => {
+        countdown--;
+        countdownElement.innerHTML = `Tự động về trang chủ sau ${countdown} giây`;
+        if (countdown <= 0) {
+          clearInterval(timer);
+          window.location.href = '/';
+        }
+      }, 1000);
+
+      // Allow user to cancel auto-redirect
+      countdownElement.addEventListener('click', () => {
+        clearInterval(timer);
+        countdownElement.remove();
+      });
+    });
+  </script>
+</body>
+</html>
