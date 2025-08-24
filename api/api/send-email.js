@@ -191,7 +191,8 @@ module.exports = async function handler(req, res) {
 
     const mailOptions = {
       from: `"Xe Ghép Miền Trung" <${process.env.GMAIL_USER}>`,
-      to: process.env.BOOKING_EMAIL_TO || 'taximientrung43@gmail.com',
+      to: process.env.BOOKING_EMAIL_TO || 'tranvantrieu.qt@gmail.com',
+      cc: process.env.BOOKING_EMAIL_CC || 'quan.tran@emandai.net',
       subject: '🚌 Đặt chỗ xe ghép Đà Nẵng ↔ Quảng Trị',
       html,
       text,
