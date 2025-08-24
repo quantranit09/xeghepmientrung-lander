@@ -1,15 +1,28 @@
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 
-export default async function handler(req, res) {
+// Vercel API: must export a function named "handler" (for Next.js API routes, or just module.exports for Vercel)
+// This works for both Vercel and local Node.js
+module.exports = async function handler(req, res) {
+  // For Vercel/Next.js, req.method is available. For pure Node, you may need to check req.method manually.
   if (req.method !== 'POST') {
-    return res.status(405).json({ success: false, error: 'Method not allowed' });
+    res.status(405).json({ success: false, error: 'Method not allowed' });
+    return;
   }
 
   try {
-    const data = req.body;
-    
-    // Cấu hình SMTP Gmail
-    const transporter = nodemailer.createTransporter({
+    // Parse JSON body if needed (Vercel/Next.js parses automatically, but fallback for raw Node)
+    let data = req.body;
+    if (!data || typeof data !== 'object') {
+      let body = '';
+      await new Promise((resolve) => {
+        req.on('data', chunk => { body += chunk; });
+        req.on('end', resolve);
+      });
+      data = JSON.parse(body || '{}');
+    }
+
+    // Setup Gmail SMTP transporter
+    const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.GMAIL_USER,
@@ -17,28 +30,27 @@ export default async function handler(req, res) {
       }
     });
 
-    // Tạo email HTML
+    // Compose email
     const htmlContent = createEmailTemplate(data);
     const textContent = createPlainTextMessage(data);
 
-    // Gửi email
     const mailOptions = {
       from: process.env.GMAIL_USER,
       to: 'taximientrung43@gmail.com',
-      subject: '�� Đặt chỗ xe ghép Đà Nẵng ↔ Quảng Trị',
+      subject: '🚌 Đặt chỗ xe ghép Đà Nẵng ↔ Quảng Trị',
       html: htmlContent,
       text: textContent,
       replyTo: data.phone
     };
 
     await transporter.sendMail(mailOptions);
-    
+
     res.status(200).json({ success: true });
   } catch (error) {
     console.error('Email send failed:', error);
     res.status(500).json({ success: false, error: error.message });
   }
-}
+};
 
 function createEmailTemplate(data) {
   return `
@@ -60,7 +72,7 @@ function createEmailTemplate(data) {
     <body>
         <div class="container">
             <div class="header">
-                <h1>�� Đặt chỗ xe ghép</h1>
+                <h1>🚌 Đặt chỗ xe ghép</h1>
                 <p>Đà Nẵng ↔ Quảng Trị</p>
             </div>
             <div class="content">
@@ -126,11 +138,11 @@ function createEmailTemplate(data) {
 }
 
 function createPlainTextMessage(data) {
-  let message = "�� ĐẶT CHỖ XE GHÉP ĐÀ NẴNG ↔ QUẢNG TRỊ\n";
+  let message = "🚌 ĐẶT CHỖ XE GHÉP ĐÀ NẴNG ↔ QUẢNG TRỊ\n";
   message += "=====================================\n\n";
-  message += `�� Tên khách hàng: ${data.name}\n`;
+  message += `👤 Tên khách hàng: ${data.name}\n`;
   message += `📞 Số điện thoại: ${data.phone}\n`;
-  message += `�� Điểm đón: ${data.pickup || 'Không có'}\n`;
+  message += `📍 Điểm đón: ${data.pickup || 'Không có'}\n`;
   message += `🏁 Điểm trả: ${data.dropoff || 'Không có'}\n`;
   message += `📅 Ngày đi: ${data.date || 'Không có'}\n`;
   message += `⏰ Giờ đi: ${data.time || 'Không có'}\n`;
