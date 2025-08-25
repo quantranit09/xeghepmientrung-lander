@@ -12,6 +12,9 @@
   --primary-3: #66bb6a; /* light green */
   --primary-light: #e8f5e9; /* very light green */
 
+  --secondary: #ff6b35; /* orange */
+  --secondary-2: #f7931e; /* orange */
+
   --accent: #1e293b;
   --success: #059669;
   --warning: #d97706;
@@ -1355,7 +1358,7 @@ textarea:focus-visible {
 }
 
 .price-tag.highlight {
-  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  background: linear-gradient(135deg, var(--secondary), var(--secondary-2));
   box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
 }
 
