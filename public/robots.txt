@@ -1,9 +1,17 @@
 User-agent: *
 Allow: /
 
-# Block access to sensitive files
-Disallow: /assets/images/
-Disallow: /assets/
+# Disallow sensitive/private areas
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+
+# Explicitly allow static assets (images, css, js, favicon)
+Allow: /assets/images/
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /favicon.ico
 
 # Sitemaps
 Sitemap: https://xeghepmientrung.com/sitemap.xml
