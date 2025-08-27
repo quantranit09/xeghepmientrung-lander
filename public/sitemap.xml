@@ -7,16 +7,28 @@
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://xeghepmientrung.com/kinh-nghiem-xe-ghep-da-nang-quang-tri.html</loc>
-    <lastmod>2025-08-24</lastmod>
+    <loc>https://xeghepmientrung.com/bai-viet/da-nang-quang-tri</loc>
+    <lastmod>2025-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xeghepmientrung.com/so-sanh-xe-khach-va-xe-ghep.html</loc>
-    <lastmod>2025-08-24</lastmod>
+    <loc>https://xeghepmientrung.com/bai-viet/da-nang-quang-binh</loc>
+    <lastmod>2025-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://xeghepmientrung.com/bai-viet/kinh-nghiem-xe-ghep-da-nang-quang-tri</loc>
+    <lastmod>2025-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xeghepmientrung.com/bai-viet/so-sanh-xe-khach-va-xe-ghep</loc>
+    <lastmod>2025-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://xeghepmientrung.com/privacy.html</loc>
