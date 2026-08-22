@@ -8,7 +8,12 @@
     "start": "node scripts/serve-out.mjs",
     "preview": "npm run build && npm start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "vercel:link": "npx vercel link",
+    "vercel:dev": "npx vercel dev",
+    "deploy:frontend": "npx vercel --prod",
+    "deploy:api": "npm --prefix api run deploy:prod",
+    "deploy:all": "npm run deploy:api && npm run deploy:frontend"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",

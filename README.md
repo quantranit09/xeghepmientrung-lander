@@ -37,8 +37,55 @@ GMAIL_USER=booking-sender@gmail.com
 GMAIL_APP_PASSWORD=google_app_password
 BOOKING_EMAIL_TO=baotrangtransport@gmail.com
 BOOKING_EMAIL_CC=
-ALLOW_ORIGINS=https://xedanangquangtri.com,https://www.xedanangquangtri.com
+ALLOW_ORIGINS=https://baotrangtransport.com,https://www.baotrangtransport.com,https://xedanangquangtri.com,https://www.xedanangquangtri.com
 ```
+
+## Vercel Deployment
+
+This repository is deployed as two Vercel projects from the same Git repository.
+
+### 1. Frontend project
+
+- Root Directory: `.`
+- Framework Preset: `Next.js`
+- Install Command: `npm ci`
+- Build Command: `npm run build`
+- Environment Variables:
+
+```bash
+NEXT_PUBLIC_BOOKING_API_URL=https://xeghepmientrungapi.vercel.app/api/send-email
+NEXT_PUBLIC_GOOGLE_ADS_ID=AW-16682976859
+```
+
+Add the production domains `baotrangtransport.com` and `xedanangquangtri.com` to this project as needed.
+
+### 2. Email API project
+
+- Root Directory: `api`
+- Framework Preset: `Other`
+- Install Command: `npm ci`
+- Function: `api/send-email.js`, served as `/api/send-email`
+- Environment Variables:
+
+```bash
+GMAIL_USER=booking-sender@gmail.com
+GMAIL_APP_PASSWORD=google_app_password
+BOOKING_EMAIL_TO=baotrangtransport@gmail.com
+BOOKING_EMAIL_CC=
+ALLOW_ORIGINS=https://baotrangtransport.com,https://www.baotrangtransport.com,https://xedanangquangtri.com,https://www.xedanangquangtri.com,https://xeghepmientrung.com,https://www.xeghepmientrung.com
+```
+
+If the API project URL changes, update `NEXT_PUBLIC_BOOKING_API_URL` in the frontend project and redeploy the frontend.
+
+### CLI shortcuts
+
+```bash
+npm run deploy:api
+npm run deploy:frontend
+npm run deploy:all
+```
+
+Run `npm run vercel:link` from the repository root to link the frontend project. Run `npm --prefix api run link` to link the API project.
 
 ## Useful Commands
 

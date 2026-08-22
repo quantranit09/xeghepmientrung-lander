@@ -1,0 +1,7 @@
+.planning/
+api/
+assets/source/
+out/
+.next/
+node_modules/
+238-ndcp.signed.pdf

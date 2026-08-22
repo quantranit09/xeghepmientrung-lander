@@ -1,5 +1,5 @@
 {
-  "name": "xe-ghep-serverless",
+  "name": "bao-trang-email-api",
   "private": true,
   "type": "commonjs",
   "engines": { "node": ">=20" },
@@ -7,7 +7,9 @@
     "nodemailer": "^6.9.13"
   },
   "scripts": {
-    "dev": "vercel dev",
-    "deploy": "vercel && vercel --prod"
+    "dev": "npx vercel dev",
+    "link": "npx vercel link",
+    "deploy": "npx vercel",
+    "deploy:prod": "npx vercel --prod"
   }
 }

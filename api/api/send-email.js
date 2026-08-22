@@ -4,6 +4,8 @@
 const nodemailer = require('nodemailer');
 
 const DEFAULT_ALLOW_ORIGINS = [
+  'https://baotrangtransport.com',
+  'https://www.baotrangtransport.com',
   'https://xedanangquangtri.com',
   'https://www.xedanangquangtri.com',
   'https://xeghepmientrung.com',
