@@ -773,21 +773,46 @@ img {
   text-align: left;
 }
 
-.combobox-value,
-.combobox-placeholder {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.combobox-placeholder {
-  color: #667085;
-}
-
 .select-chevron {
   display: inline-flex;
   margin-left: auto;
+}
+
+.location-field {
+  min-width: 0;
+}
+
+.location-input-shell input::placeholder {
+  color: #8793a7;
+}
+
+.location-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 8px;
+}
+
+.location-suggestions button {
+  min-height: 30px;
+  border: 1px solid var(--bt-line-soft);
+  border-radius: 999px;
+  background: #f8fbff;
+  color: var(--bt-body);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1;
+  padding: 0 10px;
+  transition: background-color 140ms var(--bt-ease-standard), border-color 140ms var(--bt-ease-standard), color 140ms var(--bt-ease-standard);
+}
+
+.location-suggestions button:hover,
+.location-suggestions button:focus-visible {
+  border-color: #b6ccf2;
+  background: var(--bt-blue-soft);
+  color: var(--bt-blue);
+  outline: none;
 }
 
 .select-content {
@@ -839,90 +864,6 @@ img {
   position: absolute;
   right: 10px;
   color: var(--bt-blue);
-}
-
-.combobox-content {
-  z-index: 90;
-  width: var(--radix-popover-trigger-width);
-  max-height: min(360px, var(--radix-popover-content-available-height));
-  overflow: hidden;
-  border: 1px solid var(--bt-line);
-  border-radius: 9px;
-  background: white;
-  box-shadow: var(--bt-shadow);
-  transform-origin: var(--radix-popover-content-transform-origin, top center);
-}
-
-.combobox-content[data-state="open"] {
-  animation: bt-pop-in 180ms var(--bt-ease-out) both;
-}
-
-.combobox-search {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--bt-line-soft);
-  color: #667085;
-}
-
-.combobox-search input {
-  width: 100%;
-  min-width: 0;
-  border: 0;
-  outline: 0;
-  color: var(--bt-body);
-  font-size: 14px;
-  font-weight: 760;
-}
-
-.combobox-search input::placeholder {
-  color: #98a2b3;
-}
-
-.combobox-options {
-  max-height: 292px;
-  overflow-y: auto;
-  padding: 6px;
-}
-
-.combobox-option {
-  width: 100%;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  border: 0;
-  border-radius: 7px;
-  padding: 0 10px;
-  color: var(--bt-body);
-  background: transparent;
-  font-size: 14px;
-  font-weight: 800;
-  text-align: left;
-  transition: background-color 140ms var(--bt-ease-standard), color 140ms var(--bt-ease-standard);
-}
-
-.combobox-option:hover,
-.combobox-option:focus,
-.combobox-option[aria-selected="true"] {
-  background: var(--bt-blue-soft);
-  outline: none;
-}
-
-.combobox-option svg {
-  flex: 0 0 auto;
-  color: var(--bt-blue);
-}
-
-.combobox-empty {
-  margin: 0;
-  padding: 14px 10px;
-  color: var(--bt-muted);
-  font-size: 13px;
-  font-weight: 760;
-  text-align: center;
 }
 
 .field-error {
@@ -1940,7 +1881,7 @@ img {
 
 @media (max-width: 760px) {
   body {
-    padding-bottom: 96px;
+    padding-bottom: 0;
   }
 
   .site-container {
@@ -2165,8 +2106,7 @@ img {
 
   .input-shell input,
   .field > input,
-  .field textarea,
-  .combobox-search input {
+  .field textarea {
     font-size: 16px;
     line-height: 1.25;
   }
@@ -2179,15 +2119,34 @@ img {
     box-shadow: none;
   }
 
-  .combobox-content,
   .select-content {
     max-width: calc(100vw - 24px);
   }
 
-  .select-item,
-  .combobox-option {
+  .select-item {
     min-height: 42px;
     font-size: 15px;
+  }
+
+  .location-suggestions {
+    flex-wrap: nowrap;
+    gap: 6px;
+    margin: 7px -2px 0;
+    overflow-x: auto;
+    padding: 1px 2px 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .location-suggestions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .location-suggestions button {
+    flex: 0 0 auto;
+    min-height: 28px;
+    font-size: 11px;
+    padding: 0 9px;
   }
 
   .swap-button {
@@ -2448,11 +2407,15 @@ img {
 
   .site-footer {
     display: block;
-    padding: 26px 0 calc(112px + env(safe-area-inset-bottom));
+    padding: 22px 0 calc(82px + env(safe-area-inset-bottom));
+  }
+
+  .site-footer::after {
+    display: none;
   }
 
   .site-footer .brand-logo__image {
-    width: 188px;
+    width: 162px;
   }
 
   .footer-grid,
@@ -2461,22 +2424,24 @@ img {
   }
 
   .footer-grid {
-    gap: 18px;
+    gap: 16px;
   }
 
-  .footer-grid > div:first-child {
-    padding-bottom: 2px;
+  .footer-brand {
+    display: grid;
+    justify-items: center;
+    text-align: center;
   }
 
   .footer-grid p {
-    max-width: none;
-    margin-top: 10px;
+    max-width: 330px;
+    margin: 9px auto 0;
     font-size: 12px;
-    line-height: 1.55;
+    line-height: 1.5;
   }
 
   .footer-grid h3 {
-    margin-bottom: 7px;
+    margin-bottom: 8px;
     font-size: 12px;
   }
 
@@ -2486,11 +2451,76 @@ img {
     font-size: 12px;
   }
 
+  .footer-contact {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .footer-contact h3,
+  .footer-contact span {
+    grid-column: 1 / -1;
+  }
+
+  .footer-contact h3 {
+    margin: 0;
+  }
+
+  .footer-contact span {
+    margin: 0;
+    color: #667085;
+    text-align: center;
+  }
+
+  .footer-contact-link {
+    min-height: 40px;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    border: 1px solid var(--bt-line-soft);
+    border-radius: 999px;
+    background: white;
+    color: var(--bt-ink);
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .footer-contact-link:first-of-type {
+    color: white;
+    background: var(--bt-green);
+    border-color: var(--bt-green);
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px 8px;
+  }
+
+  .footer-links h3 {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  .footer-links a {
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.64);
+    color: #4e607b;
+    padding: 0 10px;
+    text-decoration: none;
+  }
+
   .footer-bottom {
-    margin-top: 18px;
+    margin-top: 16px;
     padding-top: 12px;
     font-size: 11px;
     line-height: 1.45;
+    text-align: center;
   }
 
   .floating-contact {

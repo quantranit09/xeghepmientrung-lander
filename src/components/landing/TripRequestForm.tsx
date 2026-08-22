@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as Dialog from "@radix-ui/react-dialog";
-import * as Popover from "@radix-ui/react-popover";
 import * as Select from "@radix-ui/react-select";
 import {
   CalendarDays,
@@ -13,15 +12,15 @@ import {
   MapPin,
   Phone,
   RefreshCw,
-  Search,
   UserRound,
   X,
 } from "lucide-react";
-import { useEffect, useId, useMemo, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import type { ReactNode } from "react";
 import { Controller, useForm, useWatch } from "react-hook-form";
+import type { UseFormRegisterReturn } from "react-hook-form";
 import { z } from "zod";
-import { formSupportItems, pickupTimes } from "@/data/landing";
+import { formSupportItems } from "@/data/landing";
 import { site } from "@/lib/site";
 
 function normalizeContactPhone(value: string) {
@@ -33,10 +32,10 @@ function isValidVietnamPhone(value: string) {
 }
 
 const tripRequestSchema = z.object({
-  pickup: z.string().trim().min(3, "Vui lòng chọn điểm đón"),
-  destination: z.string().trim().min(3, "Vui lòng chọn điểm trả"),
+  pickup: z.string().trim().min(3, "Vui lòng nhập điểm đón"),
+  destination: z.string().trim().min(3, "Vui lòng nhập điểm trả"),
   travelDate: z.string().min(1, "Vui lòng chọn ngày đi"),
-  travelTime: z.string().min(1, "Vui lòng chọn giờ đón"),
+  travelTime: z.string().trim(),
   passengerCount: z.number().min(1, "Vui lòng chọn số khách"),
   vehiclePreference: z.string().optional(),
   customerName: z.string().trim().optional(),
@@ -151,14 +150,6 @@ function groupOptions(options: SelectOption[]) {
   }, {});
 }
 
-function normalizeSearch(value: string) {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[đĐ]/g, "d")
-    .toLowerCase();
-}
-
 function getVehicleCapacity(vehiclePreference?: string) {
   const optionCapacity = vehicleOptions.find((option) => option.value === vehiclePreference)?.capacity;
   if (optionCapacity) return optionCapacity;
@@ -175,7 +166,7 @@ SĐT/Zalo: ${payload.contactPhone}
 Điểm đón tận nơi: ${payload.pickup}
 Điểm trả tận nơi: ${payload.destination}
 Ngày sử dụng xe: ${payload.travelDate}
-Giờ đón dự kiến: ${payload.travelTime}
+Giờ đón dự kiến: ${payload.travelTime || "Chưa xác định"}
 Số khách: ${payload.passengerCount}
 Dòng xe mong muốn: ${payload.vehiclePreference || "Bảo Trang tư vấn xe phù hợp"}`;
 }
@@ -198,97 +189,42 @@ function pushTripFormEvent(eventName: string, eventData: Record<string, unknown>
   });
 }
 
-function LocationCombobox({
+function LocationTextField({
   label,
-  value,
   placeholder,
-  options,
-  onValueChange,
   icon,
+  inputProps,
+  suggestions,
+  onSuggestionSelect,
 }: {
   label: string;
-  value?: string;
   placeholder: string;
-  options: SelectOption[];
-  onValueChange: (value: string) => void;
   icon: ReactNode;
+  inputProps: UseFormRegisterReturn;
+  suggestions: SelectOption[];
+  onSuggestionSelect: (value: string) => void;
 }) {
   const labelId = useId();
-  const listId = useId();
-  const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState("");
-
-  const filteredOptions = useMemo(() => {
-    const normalizedQuery = normalizeSearch(query.trim());
-    if (!normalizedQuery) return options;
-
-    return options.filter((option) => {
-      return normalizeSearch(`${option.label} ${option.value}`).includes(normalizedQuery);
-    });
-  }, [options, query]);
 
   return (
-    <div className="field">
+    <div className="field location-field">
       <span id={labelId}>{label}</span>
-      <Popover.Root
-        open={open}
-        onOpenChange={(nextOpen) => {
-          setOpen(nextOpen);
-          if (!nextOpen) setQuery("");
-        }}
-      >
-        <Popover.Trigger asChild>
-          <button
-            type="button"
-            className="select-trigger combobox-trigger"
-            aria-expanded={open}
-            aria-controls={listId}
-            aria-labelledby={labelId}
-          >
-            <span className="field-icon">{icon}</span>
-            <span className={value ? "combobox-value" : "combobox-placeholder"}>{value || placeholder}</span>
-            <span className="select-chevron">
-              <ChevronDown size={16} aria-hidden="true" />
-            </span>
+      <span className="input-shell location-input-shell">
+        <span className="field-icon">{icon}</span>
+        <input
+          {...inputProps}
+          aria-labelledby={labelId}
+          autoComplete="street-address"
+          placeholder={placeholder}
+        />
+      </span>
+      <div className="location-suggestions" aria-label={`Gợi ý ${label.toLowerCase()}`}>
+        {suggestions.map((option) => (
+          <button type="button" key={option.value} onClick={() => onSuggestionSelect(option.value)}>
+            {option.label.replace(" (đón trả tận nơi)", "")}
           </button>
-        </Popover.Trigger>
-        <Popover.Portal>
-          <Popover.Content className="combobox-content" align="start" sideOffset={8}>
-            <div className="combobox-search">
-              <Search size={16} aria-hidden="true" />
-              <input
-                autoFocus
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Tìm điểm đón/trả"
-              />
-            </div>
-            <div className="combobox-options" id={listId} role="listbox" aria-labelledby={labelId}>
-              {filteredOptions.length ? (
-                filteredOptions.map((option) => (
-                  <button
-                    className="combobox-option"
-                    type="button"
-                    role="option"
-                    aria-selected={value === option.value}
-                    key={option.value}
-                    onClick={() => {
-                      onValueChange(option.value);
-                      setOpen(false);
-                      setQuery("");
-                    }}
-                  >
-                    <span>{option.label}</span>
-                    {value === option.value ? <Check size={14} aria-hidden="true" /> : null}
-                  </button>
-                ))
-              ) : (
-                <p className="combobox-empty">Không tìm thấy điểm phù hợp</p>
-              )}
-            </div>
-          </Popover.Content>
-        </Popover.Portal>
-      </Popover.Root>
+        ))}
+      </div>
     </div>
   );
 }
@@ -549,45 +485,33 @@ export function TripRequestForm() {
         ) : null}
 
         <div className="trip-grid trip-grid--locations">
-          <Controller
-            name="pickup"
-            control={control}
-            render={({ field }) => (
-              <div>
-                <LocationCombobox
-                  label="Điểm đón tận nơi"
-                  value={field.value}
-                  placeholder="Chọn điểm đón tận nơi"
-                  onValueChange={field.onChange}
-                  icon={<MapPin size={17} aria-hidden="true" className="input-icon--green" />}
-                  options={locationOptions}
-                />
-                <FieldError message={errors.pickup?.message} />
-              </div>
-            )}
-          />
+          <div>
+            <LocationTextField
+              label="Điểm đón tận nơi"
+              placeholder="VD: Sân bay Đà Nẵng, khách sạn..."
+              inputProps={register("pickup")}
+              icon={<MapPin size={17} aria-hidden="true" className="input-icon--green" />}
+              suggestions={locationOptions}
+              onSuggestionSelect={(value) => setValue("pickup", value, { shouldDirty: true, shouldValidate: true })}
+            />
+            <FieldError message={errors.pickup?.message} />
+          </div>
 
           <button className="swap-button" type="button" aria-label="Đổi chiều điểm đón và điểm đến" onClick={swapLocations}>
             <RefreshCw size={18} aria-hidden="true" />
           </button>
 
-          <Controller
-            name="destination"
-            control={control}
-            render={({ field }) => (
-              <div>
-                <LocationCombobox
-                  label="Điểm trả tận nơi"
-                  value={field.value}
-                  placeholder="Chọn điểm trả tận nơi"
-                  onValueChange={field.onChange}
-                  icon={<MapPin size={17} aria-hidden="true" className="input-icon--red" />}
-                  options={locationOptions}
-                />
-                <FieldError message={errors.destination?.message} />
-              </div>
-            )}
-          />
+          <div>
+            <LocationTextField
+              label="Điểm trả tận nơi"
+              placeholder="VD: Đông Hà, Đồng Hới, địa chỉ nhà..."
+              inputProps={register("destination")}
+              icon={<MapPin size={17} aria-hidden="true" className="input-icon--red" />}
+              suggestions={locationOptions}
+              onSuggestionSelect={(value) => setValue("destination", value, { shouldDirty: true, shouldValidate: true })}
+            />
+            <FieldError message={errors.destination?.message} />
+          </div>
         </div>
 
         <div className="trip-grid trip-grid--details">
@@ -600,23 +524,13 @@ export function TripRequestForm() {
             <FieldError message={errors.travelDate?.message} />
           </label>
 
-          <Controller
-            name="travelTime"
-            control={control}
-            render={({ field }) => (
-              <div>
-                <FormSelect
-                  label="Giờ đón dự kiến"
-                  value={field.value}
-                  placeholder="Chọn giờ đón"
-                  onValueChange={field.onChange}
-                  icon={<Clock3 size={17} aria-hidden="true" />}
-                  options={pickupTimes.map((time) => ({ value: time, label: time }))}
-                />
-                <FieldError message={errors.travelTime?.message} />
-              </div>
-            )}
-          />
+          <label className="field">
+            <span>Giờ đón dự kiến</span>
+            <span className="input-shell">
+              <Clock3 size={17} aria-hidden="true" className="input-icon" />
+              <input type="time" step={300} {...register("travelTime")} />
+            </span>
+          </label>
 
           <Controller
             name="passengerCount"
