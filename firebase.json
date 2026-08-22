@@ -1,10 +1,71 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "out",
     "ignore": ["**/.*", "**/node_modules/**"],
     "cleanUrls": true,
     "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/privacy.html",
+        "destination": "/privacy",
+        "type": 301
+      },
+      {
+        "source": "/kinh-nghiem-xe-ghep-da-nang-quang-tri.html",
+        "destination": "/bai-viet/kinh-nghiem-thue-xe-rieng-mien-trung",
+        "type": 301
+      },
+      {
+        "source": "/so-sanh-xe-khach-va-xe-ghep.html",
+        "destination": "/bai-viet/so-sanh-xe-khach-va-xe-rieng",
+        "type": 301
+      },
+      {
+        "source": "/bai-viet/da-nang-quang-tri",
+        "destination": "/bai-viet/dat-xe-rieng-da-nang-quang-tri",
+        "type": 301
+      },
+      {
+        "source": "/bai-viet/da-nang-quang-binh",
+        "destination": "/bai-viet/dat-xe-rieng-da-nang-quang-binh",
+        "type": 301
+      },
+      {
+        "source": "/bai-viet/lich-trinh-xe-ghep-da-nang-hue",
+        "destination": "/bai-viet/transfer-da-nang-hue",
+        "type": 301
+      },
+      {
+        "source": "/bai-viet/kinh-nghiem-xe-ghep-da-nang-quang-tri",
+        "destination": "/bai-viet/kinh-nghiem-thue-xe-rieng-mien-trung",
+        "type": 301
+      },
+      {
+        "source": "/bai-viet/meo-dat-xe-ghep-tiet-kiem",
+        "destination": "/bai-viet/meo-dat-xe-hop-dong-tiet-kiem",
+        "type": 301
+      },
+      {
+        "source": "/bai-viet/so-sanh-xe-khach-va-xe-ghep",
+        "destination": "/bai-viet/so-sanh-xe-khach-va-xe-rieng",
+        "type": 301
+      },
+      {
+        "source": "/bai-viet/xe-ghep-an-toan-cho-tre-em",
+        "destination": "/bai-viet/thue-xe-rieng-an-toan-cho-gia-dinh",
+        "type": 301
+      }
+    ],
     "headers": [
+      {
+        "source": "/_next/static/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
       {
         "source": "/assets/**",
         "headers": [

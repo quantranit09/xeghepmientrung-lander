@@ -1,23 +1,34 @@
-// api/send-mail.js
-// Serverless email endpoint for Vercel (Node runtime)
-// - Handles CORS and OPTIONS preflight
-// - Validates payload
-// - Sends via Gmail SMTP (App Password required)
+// Serverless email endpoint for Vercel (Node runtime).
+// Handles CORS, validates lead payloads, and sends booking emails via Gmail SMTP.
 
 const nodemailer = require('nodemailer');
 
-// Simple CORS allowlist (edit to your domain)
-const ALLOW_ORIGINS = [
+const DEFAULT_ALLOW_ORIGINS = [
+  'https://xedanangquangtri.com',
+  'https://www.xedanangquangtri.com',
   'https://xeghepmientrung.com',
   'https://www.xeghepmientrung.com',
-  'http://localhost:3000'
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:3001',
 ];
+
+const ALLOW_ORIGINS = Array.from(
+  new Set([
+    ...DEFAULT_ALLOW_ORIGINS,
+    ...(process.env.ALLOW_ORIGINS || '')
+      .split(',')
+      .map((origin) => origin.trim())
+      .filter(Boolean),
+  ]),
+);
 
 function setCors(req, res) {
   const origin = req.headers.origin;
   if (origin && ALLOW_ORIGINS.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
-    res.setHeader('Vary', 'Origin'); // important for caching
+    res.setHeader('Vary', 'Origin');
   }
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -38,7 +49,6 @@ function getClientIp(req) {
   );
 }
 
-// Parse JSON body robustly (Vercel may or may not parse depending on runtime)
 async function readJsonBody(req) {
   if (req.body && typeof req.body === 'object') return req.body;
 
@@ -46,6 +56,7 @@ async function readJsonBody(req) {
   for await (const chunk of req) chunks.push(chunk);
   const raw = Buffer.concat(chunks).toString('utf8').trim();
   if (!raw) return {};
+
   try {
     return JSON.parse(raw);
   } catch {
@@ -53,113 +64,169 @@ async function readJsonBody(req) {
   }
 }
 
-// Basic payload validation
-function validate(data) {
-  const errors = {};
-  const isNonEmpty = (v) => typeof v === 'string' && v.trim().length > 0;
-
-  if (!isNonEmpty(data.name)) errors.name = 'Required';
-  if (!isNonEmpty(data.phone)) errors.phone = 'Required';
-
-  // Optional fields
-  const safe = {
-    name: String(data.name || '').trim(),
-    phone: String(data.phone || '').trim(),
-    pickup: String(data.pickup || '').trim(),
-    dropoff: String(data.dropoff || '').trim(),
-    date: String(data.date || '').trim(),
-    time: String(data.time || '').trim(),
-    seats: String(data.seats || '').trim(),
-    note: String(data.note || '').trim(),
-    order_info: String(data.order_info || '').trim(),
-    // Honeypot anti-bot field (should be empty)
-    _hp: String(data._hp || '').trim(),
-  };
-
-  return { ok: Object.keys(errors).length === 0, errors, data: safe };
+function stringValue(value) {
+  return String(value || '').trim();
 }
 
-// Gmail transporter (App Password recommended)
+function firstValue(...values) {
+  return values.map(stringValue).find(Boolean) || '';
+}
+
+function validate(raw) {
+  const data = {
+    name: firstValue(raw.customerName, raw.name) || 'Khách chưa cung cấp tên',
+    phone: firstValue(raw.contactPhone, raw.phone),
+    pickup: firstValue(raw.pickup),
+    dropoff: firstValue(raw.destination, raw.dropoff),
+    date: firstValue(raw.travelDate, raw.date),
+    time: firstValue(raw.travelTime, raw.time),
+    passengers: firstValue(raw.passengerCount, raw.passengers, raw.seats),
+    vehicle: firstValue(raw.vehiclePreference, raw.vehicle_type, raw.vehicleType),
+    serviceType: firstValue(raw.service_type, raw.serviceType) || 'Xe riêng / xe hợp đồng / transfer',
+    note: firstValue(raw.note),
+    orderInfo: firstValue(raw.order_info, raw.message),
+    source: firstValue(raw.source),
+    formName: firstValue(raw.form_name, raw.formName) || 'trip_request',
+    hp: firstValue(raw._hp, raw._gotcha),
+  };
+
+  const errors = {};
+  if (!data.phone) errors.phone = 'Required';
+  if (!data.pickup) errors.pickup = 'Required';
+  if (!data.dropoff) errors.dropoff = 'Required';
+
+  return { ok: Object.keys(errors).length === 0, errors, data };
+}
+
 function makeTransporter() {
   if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
     throw new Error('Missing GMAIL_USER or GMAIL_APP_PASSWORD env vars');
   }
+
   return nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: {
       user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASSWORD
-    }
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
   });
 }
 
+function escapeHtml(value) {
+  return stringValue(value).replace(/[&<>"]/g, (char) => {
+    return {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+    }[char];
+  });
+}
+
+function infoRow(label, value, strong = false) {
+  return `
+    <tr>
+      <td class="label">${escapeHtml(label)}</td>
+      <td class="${strong ? 'value value-strong' : 'value'}">${escapeHtml(value || 'Chưa cung cấp')}</td>
+    </tr>
+  `;
+}
+
 function createEmailTemplate(data, meta) {
-  const esc = (s) =>
-    s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const routeText = `${data.pickup} ⇄ ${data.dropoff}`;
 
   return `
-<!DOCTYPE html><html><head><meta charset="UTF-8">
-<style>
-  body{font-family:Arial,Helvetica,sans-serif;line-height:1.6;color:#1f2937;background:#f3f4f6}
-  .container{max-width:640px;margin:24px auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb}
-  .header{background:#2e7d32;color:#fff;padding:20px 24px}
-  .title{margin:0;font-size:20px}
-  .sub{margin:4px 0 0 0;opacity:.9}
-  .content{padding:20px 24px}
-  .row{display:flex;gap:8px;margin:8px 0;padding:10px;background:#f9fafb;border-radius:8px}
-  .label{min-width:140px;font-weight:700;color:#2e7d32}
-  .note{background:#fff3cd;border-left:4px solid #ffc107;padding:12px;border-radius:8px;margin-top:16px}
-  .muted{color:#6b7280;font-size:12px;margin-top:16px}
-</style>
-</head><body>
-  <div class="container">
-    <div class="header">
-      <h1 class="title">🚌 Đặt chỗ xe ghép</h1>
-      <p class="sub">Tuyến Đà Nẵng ↔ Quảng Trị</p>
-    </div>
-    <div class="content">
-      <div class="row"><div class="label">👤 Tên khách hàng</div><div>${esc(data.name)}</div></div>
-      <div class="row"><div class="label">📞 Số điện thoại</div><div>${esc(data.phone)}</div></div>
-      <div class="row"><div class="label">📍 Điểm đón</div><div>${esc(data.pickup || 'Không có')}</div></div>
-      <div class="row"><div class="label">🏁 Điểm trả</div><div>${esc(data.dropoff || 'Không có')}</div></div>
-      <div class="row"><div class="label">📅 Ngày đi</div><div>${esc(data.date || 'Không có')}</div></div>
-      <div class="row"><div class="label">⏰ Giờ đi</div><div>${esc(data.time || 'Không có')}</div></div>
-      <div class="row"><div class="label">👥 Số ghế</div><div>${esc(data.seats || 'Không có')}</div></div>
-      ${data.note ? `<div class="row"><div class="label">💬 Ghi chú</div><div>${esc(data.note)}</div></div>` : ''}
-      ${data.order_info ? `<div class="row" style="flex-direction:column">
-        <div class="label">📋 Thông tin đặt chỗ</div>
-        <div>${esc(data.order_info).replace(/\n/g, '<br>')}</div>
-      </div>` : ''}
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{margin:0;background:#f3f7fb;color:#10203f;font-family:Arial,Helvetica,sans-serif;line-height:1.5}
+    .wrap{max-width:680px;margin:0 auto;padding:24px 14px}
+    .card{overflow:hidden;border:1px solid #dbe7f5;border-radius:14px;background:#fff;box-shadow:0 14px 32px rgba(16,32,63,.08)}
+    .header{background:#0057d9;color:#fff;padding:22px 24px}
+    .brand{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+    h1{margin:6px 0 0;font-size:22px;line-height:1.25}
+    .sub{margin:8px 0 0;color:#dceaff;font-size:14px}
+    .content{padding:22px 24px 24px}
+    .summary{margin:0 0 18px;padding:14px 16px;border:1px solid #b7ddca;border-radius:12px;background:#f0fdf5;color:#07653c;font-size:15px;font-weight:700}
+    table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5edf7;border-radius:12px;overflow:hidden}
+    td{padding:12px 14px;border-bottom:1px solid #e5edf7;vertical-align:top;font-size:14px}
+    tr:last-child td{border-bottom:0}
+    .label{width:34%;background:#f8fbff;color:#4a5f7c;font-weight:700}
+    .value{color:#10203f}
+    .value-strong{font-weight:700;color:#0057d9}
+    .note{margin-top:18px;padding:14px 16px;border-left:4px solid #079455;border-radius:10px;background:#f7fbff;color:#344863;font-size:14px}
+    .raw{margin-top:16px;padding:14px 16px;border-radius:10px;background:#f8fafc;color:#344863;font-size:13px;white-space:pre-line}
+    .meta{margin:18px 0 0;color:#70839f;font-size:12px}
+    a{color:#0057d9}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="header">
+        <div class="brand">Bảo Trang Transport</div>
+        <h1>Yêu cầu báo giá xe riêng</h1>
+        <p class="sub">Xe riêng / xe hợp đồng / transfer 4, 5, 7 chỗ</p>
+      </div>
+      <div class="content">
+        <p class="summary">${escapeHtml(routeText)}</p>
+        <table role="presentation">
+          ${infoRow('Tên khách', data.name)}
+          ${infoRow('SĐT/Zalo', data.phone, true)}
+          ${infoRow('Điểm đón tận nơi', data.pickup)}
+          ${infoRow('Điểm trả tận nơi', data.dropoff)}
+          ${infoRow('Ngày sử dụng xe', data.date)}
+          ${infoRow('Giờ đón dự kiến', data.time)}
+          ${infoRow('Số khách', data.passengers)}
+          ${infoRow('Dòng xe mong muốn', data.vehicle)}
+          ${infoRow('Dịch vụ', data.serviceType)}
+          ${data.note ? infoRow('Ghi chú', data.note) : ''}
+        </table>
 
-      <div class="note"><strong>⚠️ Lưu ý:</strong> Vui lòng liên hệ khách để xác nhận đặt chỗ sớm nhất.</div>
-      <p class="muted">Email này được gửi từ form đặt chỗ • IP: ${esc(meta.ip)} • UA: ${esc(meta.ua)}</p>
+        <div class="note">
+          Khách đã để lại thông tin trên website. Vui lòng liên hệ lại qua SĐT/Zalo để xác nhận lịch trình và báo giá.
+        </div>
+
+        ${data.orderInfo ? `<div class="raw">${escapeHtml(data.orderInfo)}</div>` : ''}
+
+        <p class="meta">
+          Nguồn: ${escapeHtml(data.source || 'Website')}<br>
+          IP: ${escapeHtml(meta.ip)}<br>
+          UA: ${escapeHtml(meta.ua)}
+        </p>
+      </div>
     </div>
   </div>
-</body></html>
+</body>
+</html>
 `.trim();
 }
 
 function createPlainTextMessage(data, meta) {
-  const line = '=====================================';
   return [
-    '🚌 ĐẶT CHỖ XE GHÉP ĐÀ NẴNG ↔ QUẢNG TRỊ',
-    line,
+    'BAO TRANG TRANSPORT - YEU CAU BAO GIA XE RIENG',
+    '======================================',
+    `Ten khach: ${data.name}`,
+    `SDT/Zalo: ${data.phone}`,
+    `Diem don tan noi: ${data.pickup}`,
+    `Diem tra tan noi: ${data.dropoff}`,
+    `Ngay su dung xe: ${data.date || 'Chua cung cap'}`,
+    `Gio don du kien: ${data.time || 'Chua cung cap'}`,
+    `So khach: ${data.passengers || 'Chua cung cap'}`,
+    `Dong xe mong muon: ${data.vehicle || 'Chua cung cap'}`,
+    `Dich vu: ${data.serviceType}`,
+    data.note ? `Ghi chu: ${data.note}` : '',
     '',
-    `👤 Tên khách hàng: ${data.name}`,
-    `📞 Số điện thoại: ${data.phone}`,
-    `📍 Điểm đón: ${data.pickup || 'Không có'}`,
-    `🏁 Điểm trả: ${data.dropoff || 'Không có'}`,
-    `📅 Ngày đi: ${data.date || 'Không có'}`,
-    `⏰ Giờ đi: ${data.time || 'Không có'}`,
-    `👥 Số ghế: ${data.seats || 'Không có'}`,
-    data.note ? `💬 Ghi chú: ${data.note}` : '',
+    data.orderInfo || '',
     '',
-    data.order_info || '',
-    '',
+    `Nguon: ${data.source || 'Website'}`,
     `IP: ${meta.ip}`,
-    `UA: ${meta.ua}`
+    `UA: ${meta.ua}`,
   ].filter(Boolean).join('\n');
 }
 
@@ -169,6 +236,7 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, error: 'Method not allowed' });
   }
@@ -177,39 +245,38 @@ module.exports = async function handler(req, res) {
     const body = await readJsonBody(req);
     const { ok, errors, data } = validate(body);
 
-    // Honeypot check (bots often fill hidden field)
-    if (data._hp) return badRequest(res, 'Bot detected');
-
+    if (data.hp) return badRequest(res, 'Bot detected');
     if (!ok) return badRequest(res, 'Invalid payload', errors);
 
     const ip = getClientIp(req);
-    const ua = String(req.headers['user-agent'] || '');
+    const ua = stringValue(req.headers['user-agent']);
     const html = createEmailTemplate(data, { ip, ua });
     const text = createPlainTextMessage(data, { ip, ua });
-
     const transporter = makeTransporter();
+    const routeText = `${data.pickup} ⇄ ${data.dropoff}`;
 
     const mailOptions = {
-      from: `"Xe Ghép Miền Trung" <${process.env.GMAIL_USER}>`,
-      to: process.env.BOOKING_EMAIL_TO || 'tranvantrieu.qt@gmail.com',
-      cc: process.env.BOOKING_EMAIL_CC || 'quan.tran@emandai.net',
-      subject: '🚌 Đặt chỗ xe ghép Đà Nẵng ↔ Quảng Trị',
+      from: `"Bảo Trang Transport" <${process.env.GMAIL_USER}>`,
+      to: process.env.BOOKING_EMAIL_TO || process.env.GMAIL_USER,
+      subject: `[Bảo Trang] Yêu cầu báo giá xe riêng ${routeText}`,
       html,
       text,
-      // Set reply-to to the phone wrapped in a fallback email (optional).
-      // If you also collect customer email, prefer that:
-      // replyTo: data.email || process.env.GMAIL_USER,
       headers: {
         'X-Form-Phone': data.phone,
-        'X-Client-IP': ip
-      }
+        'X-Client-IP': ip,
+        'X-Service-Type': data.serviceType,
+      },
     };
+
+    if (process.env.BOOKING_EMAIL_CC) {
+      mailOptions.cc = process.env.BOOKING_EMAIL_CC;
+    }
 
     await transporter.sendMail(mailOptions);
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error('Email send failed:', err);
-    const msg = err?.response?.toString?.() || err.message || 'Unknown error';
-    return res.status(500).json({ success: false, error: msg });
+    const message = err?.response?.toString?.() || err.message || 'Unknown error';
+    return res.status(500).json({ success: false, error: message });
   }
 };
