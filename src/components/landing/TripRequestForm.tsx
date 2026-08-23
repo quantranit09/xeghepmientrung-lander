@@ -127,7 +127,7 @@ const locationOptions: SelectOption[] = [
 const defaultTripRequestValues: TripRequestFormValues = {
   pickup: "",
   destination: "",
-  travelDate: "20/05/2025",
+  travelDate: "",
   travelTime: "",
   passengerCount: 1,
   vehiclePreference: "Bảo Trang tư vấn xe phù hợp",
@@ -135,6 +135,25 @@ const defaultTripRequestValues: TripRequestFormValues = {
   contactPhone: "",
   _gotcha: "",
 };
+
+function getTodayTravelDate() {
+  const parts = new Intl.DateTimeFormat("vi-VN", {
+    day: "2-digit",
+    month: "2-digit",
+    timeZone: "Asia/Ho_Chi_Minh",
+    year: "numeric",
+  }).formatToParts(new Date());
+  const partMap = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+
+  return `${partMap.day}/${partMap.month}/${partMap.year}`;
+}
+
+function getDefaultTripRequestValues(): TripRequestFormValues {
+  return {
+    ...defaultTripRequestValues,
+    travelDate: getTodayTravelDate(),
+  };
+}
 
 function FieldError({ message }: { message?: string }) {
   if (!message) return null;
@@ -307,6 +326,12 @@ export function TripRequestForm() {
   const availablePassengerOptions = passengerOptions.filter((option) => Number(option.value) <= selectedVehicleCapacity);
 
   useEffect(() => {
+    if (!getValues("travelDate")) {
+      setValue("travelDate", getTodayTravelDate());
+    }
+  }, [getValues, setValue]);
+
+  useEffect(() => {
     const onVehicleSelect = (event: Event) => {
       const selected = (event as CustomEvent<string>).detail;
       if (selected) {
@@ -344,7 +369,7 @@ export function TripRequestForm() {
 
   const onSubmit = async (values: TripRequestFormValues) => {
     if (values._gotcha?.trim()) {
-      reset(defaultTripRequestValues);
+      reset(getDefaultTripRequestValues());
       return;
     }
 
@@ -421,7 +446,7 @@ export function TripRequestForm() {
       });
       window.trackConversion?.("booking");
       setDialogOpen(true);
-      reset(defaultTripRequestValues);
+      reset(getDefaultTripRequestValues());
     } catch (error) {
       console.error("Trip request submit failed:", error);
       const message =
@@ -515,7 +540,7 @@ export function TripRequestForm() {
             <span>Ngày sử dụng xe</span>
             <span className="input-shell">
               <CalendarDays size={17} aria-hidden="true" className="input-icon" />
-              <input placeholder="20/05/2025" inputMode="numeric" autoComplete="off" {...register("travelDate")} />
+              <input placeholder="dd/mm/yyyy" inputMode="numeric" autoComplete="off" {...register("travelDate")} />
             </span>
             <FieldError message={errors.travelDate?.message} />
           </label>
