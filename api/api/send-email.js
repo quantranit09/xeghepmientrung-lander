@@ -3,6 +3,8 @@
 
 const nodemailer = require('nodemailer');
 
+const DEFAULT_BOOKING_EMAIL_TO = 'tranvantrieu.qt@gmail.com';
+
 const DEFAULT_ALLOW_ORIGINS = [
   'https://baotrangtransport.com',
   'https://www.baotrangtransport.com',
@@ -259,7 +261,7 @@ module.exports = async function handler(req, res) {
 
     const mailOptions = {
       from: `"Bảo Trang Transport" <${process.env.GMAIL_USER}>`,
-      to: process.env.BOOKING_EMAIL_TO || process.env.GMAIL_USER,
+      to: process.env.BOOKING_EMAIL_TO || DEFAULT_BOOKING_EMAIL_TO || process.env.GMAIL_USER,
       subject: `[Bảo Trang] Yêu cầu báo giá xe riêng ${routeText}`,
       html,
       text,

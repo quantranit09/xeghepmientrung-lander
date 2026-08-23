@@ -35,7 +35,7 @@ The API package sends email through Gmail SMTP. Configure these environment vari
 ```bash
 GMAIL_USER=booking-sender@gmail.com
 GMAIL_APP_PASSWORD=google_app_password
-BOOKING_EMAIL_TO=baotrangtransport@gmail.com
+BOOKING_EMAIL_TO=tranvantrieu.qt@gmail.com
 BOOKING_EMAIL_CC=
 ALLOW_ORIGINS=https://baotrangtransport.com,https://www.baotrangtransport.com,https://xedanangquangtri.com,https://www.xedanangquangtri.com
 ```
@@ -70,7 +70,7 @@ Add the production domains `baotrangtransport.com` and `xedanangquangtri.com` to
 ```bash
 GMAIL_USER=booking-sender@gmail.com
 GMAIL_APP_PASSWORD=google_app_password
-BOOKING_EMAIL_TO=baotrangtransport@gmail.com
+BOOKING_EMAIL_TO=tranvantrieu.qt@gmail.com
 BOOKING_EMAIL_CC=
 ALLOW_ORIGINS=https://baotrangtransport.com,https://www.baotrangtransport.com,https://xedanangquangtri.com,https://www.xedanangquangtri.com,https://xeghepmientrung.com,https://www.xeghepmientrung.com
 ```

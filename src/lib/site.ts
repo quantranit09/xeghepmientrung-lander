@@ -12,7 +12,7 @@ export const site = {
   phoneHref: "tel:+84826430430",
   phoneE164: "+84826430430",
   zaloUrl: "https://zalo.me/84826430430",
-  email: "baotrangtransport@gmail.com",
+  email: "tranvantrieu.qt@gmail.com",
   facebookUrl: "https://www.facebook.com/profile.php?id=61552012090157",
   googleAdsId: process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "AW-16682976859",
   bookingApiUrl,
