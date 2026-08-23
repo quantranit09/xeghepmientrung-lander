@@ -195,16 +195,15 @@ function LocationTextField({
   icon,
   inputProps,
   suggestions,
-  onSuggestionSelect,
 }: {
   label: string;
   placeholder: string;
   icon: ReactNode;
   inputProps: UseFormRegisterReturn;
   suggestions: SelectOption[];
-  onSuggestionSelect: (value: string) => void;
 }) {
   const labelId = useId();
+  const listId = useId();
 
   return (
     <div className="field location-field">
@@ -215,16 +214,15 @@ function LocationTextField({
           {...inputProps}
           aria-labelledby={labelId}
           autoComplete="street-address"
+          list={listId}
           placeholder={placeholder}
         />
       </span>
-      <div className="location-suggestions" aria-label={`Gợi ý ${label.toLowerCase()}`}>
+      <datalist id={listId}>
         {suggestions.map((option) => (
-          <button type="button" key={option.value} onClick={() => onSuggestionSelect(option.value)}>
-            {option.label.replace(" (đón trả tận nơi)", "")}
-          </button>
+          <option key={option.value} value={option.value} />
         ))}
-      </div>
+      </datalist>
     </div>
   );
 }
@@ -488,11 +486,10 @@ export function TripRequestForm() {
           <div>
             <LocationTextField
               label="Điểm đón tận nơi"
-              placeholder="VD: Sân bay Đà Nẵng, khách sạn..."
+              placeholder="Sân bay, khách sạn, địa chỉ..."
               inputProps={register("pickup")}
               icon={<MapPin size={17} aria-hidden="true" className="input-icon--green" />}
               suggestions={locationOptions}
-              onSuggestionSelect={(value) => setValue("pickup", value, { shouldDirty: true, shouldValidate: true })}
             />
             <FieldError message={errors.pickup?.message} />
           </div>
@@ -504,11 +501,10 @@ export function TripRequestForm() {
           <div>
             <LocationTextField
               label="Điểm trả tận nơi"
-              placeholder="VD: Đông Hà, Đồng Hới, địa chỉ nhà..."
+              placeholder="Đông Hà, Đồng Hới, địa chỉ..."
               inputProps={register("destination")}
               icon={<MapPin size={17} aria-hidden="true" className="input-icon--red" />}
               suggestions={locationOptions}
-              onSuggestionSelect={(value) => setValue("destination", value, { shouldDirty: true, shouldValidate: true })}
             />
             <FieldError message={errors.destination?.message} />
           </div>

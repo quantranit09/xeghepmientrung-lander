@@ -786,35 +786,6 @@ img {
   color: #8793a7;
 }
 
-.location-suggestions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 8px;
-}
-
-.location-suggestions button {
-  min-height: 30px;
-  border: 1px solid var(--bt-line-soft);
-  border-radius: 999px;
-  background: #f8fbff;
-  color: var(--bt-body);
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 850;
-  line-height: 1;
-  padding: 0 10px;
-  transition: background-color 140ms var(--bt-ease-standard), border-color 140ms var(--bt-ease-standard), color 140ms var(--bt-ease-standard);
-}
-
-.location-suggestions button:hover,
-.location-suggestions button:focus-visible {
-  border-color: #b6ccf2;
-  background: var(--bt-blue-soft);
-  color: var(--bt-blue);
-  outline: none;
-}
-
 .select-content {
   z-index: 80;
   min-width: var(--radix-select-trigger-width);
@@ -1880,6 +1851,12 @@ img {
 }
 
 @media (max-width: 760px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   body {
     padding-bottom: 0;
   }
@@ -2040,6 +2017,8 @@ img {
   }
 
   .trip-form {
+    max-width: 100%;
+    overflow: hidden;
     padding: 18px 14px 20px;
     border-radius: 12px;
     box-shadow: 0 12px 32px rgba(16, 24, 40, 0.08);
@@ -2078,6 +2057,7 @@ img {
   }
 
   .trip-grid--locations {
+    gap: 10px;
     grid-template-columns: 1fr;
   }
 
@@ -2128,31 +2108,10 @@ img {
     font-size: 15px;
   }
 
-  .location-suggestions {
-    flex-wrap: nowrap;
-    gap: 6px;
-    margin: 7px -2px 0;
-    overflow-x: auto;
-    padding: 1px 2px 4px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .location-suggestions::-webkit-scrollbar {
-    display: none;
-  }
-
-  .location-suggestions button {
-    flex: 0 0 auto;
-    min-height: 28px;
-    font-size: 11px;
-    padding: 0 9px;
-  }
-
   .swap-button {
     width: 34px;
     height: 34px;
-    margin: -5px auto -2px;
+    margin: -2px auto;
     transform: rotate(90deg);
   }
 
