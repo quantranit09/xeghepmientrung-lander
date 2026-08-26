@@ -351,9 +351,9 @@ const articles = {
     priority: 0.6,
   },
   "meo-dat-xe-hop-dong-tiet-kiem": {
-    title: "Mẹo đặt xe hợp đồng tiết kiệm",
+    title: "Mẹo đặt xe hợp đồng tiết kiệm khi đi liên tỉnh",
     description:
-      "Cách chuẩn bị lịch trình, chọn loại xe và giờ đi để nhận báo giá xe hợp đồng hợp lý hơn.",
+      "Cách chuẩn bị lịch trình, chọn loại xe, chốt giờ đi, điểm dừng và hành lý để nhận báo giá xe hợp đồng rõ ràng hơn.",
     route: "/bai-viet/meo-dat-xe-hop-dong-tiet-kiem",
     priority: 0.6,
   },
@@ -367,7 +367,7 @@ const articles = {
   "thue-xe-rieng-an-toan-cho-gia-dinh": {
     title: "Thuê xe riêng an toàn cho gia đình",
     description:
-      "Lưu ý khi thuê xe riêng cho gia đình có trẻ em, người lớn tuổi, nhiều hành lý hoặc lịch trình cần dừng nghỉ.",
+      "Lưu ý khi thuê xe riêng cho gia đình có trẻ em, người lớn tuổi hoặc nhiều hành lý: chọn xe, chốt điểm nghỉ và chuẩn bị trước chuyến.",
     route: "/bai-viet/thue-xe-rieng-an-toan-cho-gia-dinh",
     priority: 0.6,
   },

@@ -33,7 +33,7 @@ export const articleLinks = [
   },
   {
     href: "/bai-viet/meo-dat-xe-hop-dong-tiet-kiem",
-    title: "Mẹo đặt xe hợp đồng tiết kiệm",
+    title: "Mẹo đặt xe hợp đồng tiết kiệm khi đi liên tỉnh",
     description:
       "Cách gom lịch trình, chọn giờ đi và chuẩn bị thông tin để nhận báo giá tốt hơn.",
   },

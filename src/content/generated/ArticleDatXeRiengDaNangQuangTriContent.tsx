@@ -6,6 +6,12 @@ export function ArticleDatXeRiengDaNangQuangTriContent() {
       title="Đặt xe riêng Đà Nẵng ⇄ Quảng Trị"
       summary="Chặng Đà Nẵng ⇄ Quảng Trị phù hợp với xe riêng 4 chỗ, 5 chỗ hoặc 7 chỗ khi bạn cần chủ động giờ đi, điểm đón trả và hành lý."
     >
+      <div className="article-callout">
+        <p>
+          Nếu cần đi Đà Nẵng ⇄ Quảng Trị đúng giờ, đón trả tận nơi và không ghép khách, xe riêng là lựa chọn nên ưu
+          tiên. Hãy gửi điểm đón, điểm trả, ngày giờ đi, số khách và hành lý để được tư vấn đúng loại xe ngay từ đầu.
+        </p>
+      </div>
       <h2>Khi nào nên chọn xe riêng?</h2>
       <p>
         Xe riêng phù hợp với khách công tác, gia đình, nhóm nhỏ hoặc khách cần đón trả tận nơi tại sân bay, khách sạn,
@@ -49,6 +55,32 @@ export function ArticleDatXeRiengDaNangQuangTriContent() {
         trình với tài xế. Với gia đình có trẻ nhỏ, nên báo trước số lượng vali, xe đẩy, ghế em bé hoặc nhu cầu dừng nghỉ
         để chọn xe phù hợp hơn.
       </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Nhu cầu</th>
+            <th>Loại xe nên cân nhắc</th>
+            <th>Thông tin cần báo trước</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Đi công tác, ít hành lý</td>
+            <td>Xe 4 chỗ hoặc xe điện 5 chỗ</td>
+            <td>Giờ cần có mặt, điểm trả cụ thể, số điện thoại người đi</td>
+          </tr>
+          <tr>
+            <td>Gia đình 4-6 người</td>
+            <td>Xe 7 chỗ để ngồi thoải mái hơn</td>
+            <td>Số vali, trẻ em đi cùng, nhu cầu dừng nghỉ giữa đường</td>
+          </tr>
+          <tr>
+            <td>Nhóm đông hoặc sự kiện</td>
+            <td>Xe 16 chỗ khi cần điều phối thêm</td>
+            <td>Danh sách điểm đón, giờ tập trung, có quay về trong ngày không</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h2>Giá xe riêng được tính theo yếu tố nào?</h2>
       <p>
@@ -61,6 +93,21 @@ export function ArticleDatXeRiengDaNangQuangTriContent() {
         Để nhận báo giá nhanh, bạn chỉ cần gửi bốn nhóm thông tin: điểm đón, điểm trả, ngày giờ đi, số khách và hành lý.
         Nếu có chuyến bay, hãy gửi thêm mã chuyến bay hoặc giờ hạ cánh dự kiến. Nếu cần hóa đơn, đi khứ hồi hoặc chờ
         nhiều giờ, hãy báo ngay từ đầu để tránh hiểu nhầm chi phí sau đó.
+      </p>
+
+      <h2>Kết hợp Huế, Quảng Bình hoặc lịch trình nhiều điểm</h2>
+      <p>
+        Nhiều khách không chỉ đi thẳng Đà Nẵng ⇄ Quảng Trị mà còn cần ghé Huế, La Vang, Cửa Việt, Lao Bảo hoặc đi tiếp
+        Quảng Bình. Khi có nhiều điểm dừng, hãy gửi toàn bộ hành trình thay vì hỏi từng chặng riêng lẻ. Điều này giúp
+        tư vấn viên nhìn đúng thời gian chờ, thứ tự điểm ghé và loại xe phù hợp cho cả ngày.
+      </p>
+      <p>
+        Nếu lịch trình có đoạn Đà Nẵng ⇄ Huế, bạn có thể xem thêm{" "}
+        <a href="/bai-viet/transfer-da-nang-hue">hướng dẫn transfer Đà Nẵng - Huế</a>. Nếu cần đi xa hơn tới Đồng Hới,
+        Lệ Thủy hoặc Phong Nha, bài{" "}
+        <a href="/bai-viet/dat-xe-rieng-da-nang-quang-binh">đặt xe riêng Đà Nẵng - Quảng Bình</a> sẽ phù hợp hơn. Còn
+        nếu đang cân nhắc giữa xe tuyến cố định và xe riêng, hãy đọc{" "}
+        <a href="/bai-viet/so-sanh-xe-khach-va-xe-rieng">so sánh xe khách và xe riêng</a> trước khi chốt phương án.
       </p>
 
       <h2>Gợi ý theo từng nhu cầu chuyến đi</h2>
@@ -109,6 +156,15 @@ export function ArticleDatXeRiengDaNangQuangTriContent() {
         Khi cần tư vấn nhanh, cách hiệu quả nhất là gửi một tin nhắn ngắn theo mẫu: “Đón tại Đà Nẵng, trả Đông Hà, đi
         ngày 26/08, khoảng 3 khách, 2 vali, muốn xe 7 chỗ”. Với đủ thông tin như vậy, đội ngũ tư vấn có thể phản hồi
         đúng loại xe và khung giá nhanh hơn.
+      </p>
+
+      <h2>Đọc thêm trước khi đặt xe</h2>
+      <p>
+        Nếu đi cùng trẻ em hoặc người lớn tuổi, bài{" "}
+        <a href="/bai-viet/thue-xe-rieng-an-toan-cho-gia-dinh">thuê xe riêng an toàn cho gia đình</a> sẽ giúp bạn chuẩn
+        bị kỹ hơn. Nếu muốn tối ưu chi phí, xem thêm{" "}
+        <a href="/bai-viet/meo-dat-xe-hop-dong-tiet-kiem">mẹo đặt xe hợp đồng tiết kiệm</a> để biết cách gửi thông tin
+        báo giá rõ ràng và hạn chế phát sinh.
       </p>
     </ArticleShell>
   );
