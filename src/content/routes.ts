@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { contentDates } from "@/content/dates";
 import { canonicalPath, site } from "@/lib/site";
 
 export const articleSlugs = [
@@ -45,7 +46,7 @@ function buildMetadata({
   title,
   description,
   canonical,
-  ogImage = `${site.url}/assets/bao-trang/hero-dragon-bridge-transfer.jpg`,
+  ogImage = `${site.url}/assets/bao-trang/hero-dragon-bridge-transfer.webp`,
   noIndex = false,
 }: MetadataInput): Metadata {
   return {
@@ -88,14 +89,49 @@ function serviceJsonLd() {
     name: site.name,
     alternateName: site.operatorName,
     url: site.url,
+    image: `${site.url}/assets/bao-trang/hero-dragon-bridge-transfer.webp`,
+    logo: `${site.url}/assets/bao-trang/logo-mark-192.png`,
     telephone: site.phoneE164,
+    email: site.email,
     priceRange: "Báo giá theo chuyến",
     description:
       "Xe riêng Đà Nẵng - Quảng Trị, xe hợp đồng và transfer 4 chỗ, 5 chỗ, 7 chỗ, đón trả tận nơi theo chuyến. Có xe 16 chỗ cho nhóm đông.",
-    areaServed: ["Đà Nẵng", "Quảng Trị", "Quảng Bình"],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Đà Nẵng",
+      addressCountry: "VN",
+    },
+    areaServed: [
+      {
+        "@type": "AdministrativeArea",
+        name: "Đà Nẵng",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Quảng Trị",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Quảng Bình",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Huế",
+      },
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: site.phoneE164,
+      contactType: "customer service",
+      areaServed: "VN",
+      availableLanguage: ["vi"],
+    },
+    sameAs: [site.facebookUrl, site.zaloUrl],
     provider: {
       "@type": "Organization",
       name: site.operatorName,
+      url: site.url,
+      logo: `${site.url}/assets/bao-trang/logo-mark-192.png`,
     },
     serviceType: "Private transfer and contracted car service",
     hasOfferCatalog: {
@@ -161,6 +197,34 @@ function websiteJsonLd() {
     "@type": "WebSite",
     name: site.name,
     url: site.url,
+    inLanguage: "vi-VN",
+    publisher: {
+      "@type": "Organization",
+      name: site.operatorName,
+      url: site.url,
+      logo: `${site.url}/assets/bao-trang/logo-mark-192.png`,
+    },
+  };
+}
+
+function organizationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.operatorName,
+    url: site.url,
+    logo: `${site.url}/assets/bao-trang/logo-mark-192.png`,
+    image: `${site.url}/assets/bao-trang/hero-dragon-bridge-transfer.webp`,
+    telephone: site.phoneE164,
+    email: site.email,
+    sameAs: [site.facebookUrl, site.zaloUrl],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: site.phoneE164,
+      contactType: "customer service",
+      areaServed: "VN",
+      availableLanguage: ["vi"],
+    },
   };
 }
 
@@ -168,6 +232,7 @@ function faqJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    inLanguage: "vi-VN",
     mainEntity: [
       {
         "@type": "Question",
@@ -197,20 +262,61 @@ function faqJsonLd() {
   };
 }
 
+function breadcrumbJsonLd(title: string, route: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Trang chủ",
+        item: site.url,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Hướng dẫn",
+        item: canonicalPath("/bai-viet"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: title,
+        item: canonicalPath(route),
+      },
+    ],
+  };
+}
+
 function articleJsonLd(title: string, route: string, description: string) {
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonicalPath(route),
+    },
     headline: title,
     description,
     url: canonicalPath(route),
+    image: [`${site.url}/assets/bao-trang/hero-dragon-bridge-transfer.webp`],
+    inLanguage: "vi-VN",
+    datePublished: contentDates.publishedAt,
+    dateModified: contentDates.modifiedAt,
     author: {
       "@type": "Organization",
       name: site.operatorName,
+      url: site.url,
     },
     publisher: {
       "@type": "Organization",
       name: site.operatorName,
+      url: site.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${site.url}/assets/bao-trang/logo-mark-192.png`,
+      },
     },
   };
 }
@@ -287,7 +393,10 @@ const articleContentRoutes = Object.fromEntries(
           description: article.description,
           canonical: canonicalPath(article.route),
         }),
-        jsonLd: [articleJsonLd(article.title, article.route, article.description)],
+        jsonLd: [
+          breadcrumbJsonLd(article.title, article.route),
+          articleJsonLd(article.title, article.route, article.description),
+        ],
       },
     ];
   }),
@@ -307,7 +416,7 @@ export const contentRoutes = {
         "Đặt xe riêng Đà Nẵng - Quảng Trị, Đông Hà, Hải Lăng, Gio Linh, Vĩnh Linh, Lao Bảo. Xe 4 chỗ, 5 chỗ, 7 chỗ, giá theo chuyến. Có xe 16 chỗ khi cần.",
       canonical: canonicalPath("/"),
     }),
-    jsonLd: [websiteJsonLd(), serviceJsonLd(), faqJsonLd()],
+    jsonLd: [websiteJsonLd(), organizationJsonLd(), serviceJsonLd(), faqJsonLd()],
   },
   privacy: {
     id: "privacy",
@@ -343,6 +452,12 @@ export const contentRoutes = {
         "@type": "Blog",
         name: "Cẩm nang xe riêng & transfer",
         url: canonicalPath("/bai-viet"),
+        inLanguage: "vi-VN",
+        publisher: {
+          "@type": "Organization",
+          name: site.operatorName,
+          url: site.url,
+        },
       },
     ],
   },

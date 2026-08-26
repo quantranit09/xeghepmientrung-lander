@@ -8,7 +8,7 @@ export function FloatingContact() {
         <Phone size={22} aria-hidden="true" />
       </a>
       <a className="floating-contact__zalo" href={site.zaloUrl} target="_blank" rel="nofollow noopener" aria-label="Nhắn Zalo">
-        <img className="zalo-icon" src="/assets/bao-trang/zalo-icon.svg" alt="" aria-hidden="true" />
+        <span className="zalo-icon" aria-hidden="true" />
       </a>
     </div>
   );

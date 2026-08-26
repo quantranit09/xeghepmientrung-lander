@@ -7,6 +7,8 @@ const eslintConfig = [
       "api/**",
       ".next/**",
       "out/**",
+      ".playwright-mcp/**",
+      "claude-seo/**",
     ],
   },
   ...nextVitals,

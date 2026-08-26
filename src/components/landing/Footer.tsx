@@ -14,6 +14,8 @@ export function Footer() {
           <h3>Liên hệ</h3>
           <a className="footer-contact-link" href={site.phoneHref}>{site.phoneDisplay}</a>
           <a className="footer-contact-link" href={site.zaloUrl} target="_blank" rel="nofollow noopener">Zalo: {site.phoneDisplay}</a>
+          <a className="footer-contact-link" href={`mailto:${site.email}`}>{site.email}</a>
+          <a className="footer-contact-link" href={site.facebookUrl} target="_blank" rel="nofollow noopener">Facebook</a>
           <span>Đà Nẵng, Việt Nam</span>
         </div>
         <div className="footer-links">

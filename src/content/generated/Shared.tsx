@@ -2,7 +2,9 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import { PageShell } from "@/components/landing/PageShell";
 import { TripRequestForm } from "@/components/landing/TripRequestForm";
+import { contentDates } from "@/content/dates";
 import { journeys } from "@/data/landing";
+import { site } from "@/lib/site";
 
 export const articleLinks = [
   {
@@ -71,6 +73,11 @@ export function ArticleShell({
               <a href="/bai-viet">Hướng dẫn</a>
             </nav>
             <h1>{title}</h1>
+            <div className="article-meta" aria-label="Thông tin bài viết">
+              <span>Bởi {site.operatorName}</span>
+              <span>Xuất bản {contentDates.publishedLabel}</span>
+              <span>Cập nhật {contentDates.modifiedLabel}</span>
+            </div>
             <p>{summary}</p>
           </div>
         </section>

@@ -7,7 +7,7 @@ export const site = {
   shortName: "Bảo Trang",
   operatorName: "Bảo Trang Transport",
   tagline: "Đưa đón tận nơi, an toàn & đúng giờ",
-  url: "https://xedanangquangtri.com",
+  url: "https://baotrangtransport.com",
   phoneDisplay: "0826 430 430",
   phoneHref: "tel:+84826430430",
   phoneE164: "+84826430430",

@@ -8,10 +8,6 @@ const DEFAULT_BOOKING_EMAIL_TO = 'tranvantrieu.qt@gmail.com';
 const DEFAULT_ALLOW_ORIGINS = [
   'https://baotrangtransport.com',
   'https://www.baotrangtransport.com',
-  'https://xedanangquangtri.com',
-  'https://www.xedanangquangtri.com',
-  'https://xeghepmientrung.com',
-  'https://www.xeghepmientrung.com',
   'http://localhost:3000',
   'http://localhost:3001',
   'http://127.0.0.1:3000',

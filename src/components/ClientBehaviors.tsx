@@ -98,6 +98,28 @@ export function ClientBehaviors() {
   }, [pathname]);
 
   useEffect(() => {
+    const form = document.querySelector(".trip-form");
+    if (!form || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry) return;
+        document.body.classList.toggle("trip-form-in-view", entry.isIntersecting);
+      },
+      {
+        threshold: 0.08,
+      },
+    );
+
+    observer.observe(form);
+
+    return () => {
+      observer.disconnect();
+      document.body.classList.remove("trip-form-in-view");
+    };
+  }, [pathname]);
+
+  useEffect(() => {
     const onClick = (event: MouseEvent) => {
       const target = event.target as Element | null;
       const link = target?.closest("a");

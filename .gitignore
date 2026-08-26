@@ -13,3 +13,6 @@ tsconfig.tsbuildinfo
 .vercel
 api/.env
 .env*
+.seo-cache/
+.playwright-mcp/
+claude-seo/

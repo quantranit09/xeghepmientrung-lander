@@ -37,7 +37,7 @@ GMAIL_USER=booking-sender@gmail.com
 GMAIL_APP_PASSWORD=google_app_password
 BOOKING_EMAIL_TO=tranvantrieu.qt@gmail.com
 BOOKING_EMAIL_CC=
-ALLOW_ORIGINS=https://baotrangtransport.com,https://www.baotrangtransport.com,https://xedanangquangtri.com,https://www.xedanangquangtri.com
+ALLOW_ORIGINS=https://baotrangtransport.com,https://www.baotrangtransport.com
 ```
 
 ## Vercel Deployment
@@ -57,7 +57,7 @@ NEXT_PUBLIC_BOOKING_API_URL=https://xeghepmientrungapi.vercel.app/api/send-email
 NEXT_PUBLIC_GOOGLE_ADS_ID=AW-16682976859
 ```
 
-Add the production domains `baotrangtransport.com` and `xedanangquangtri.com` to this project as needed.
+Add the production domain `baotrangtransport.com` to this project.
 
 ### 2. Email API project
 
@@ -72,7 +72,7 @@ GMAIL_USER=booking-sender@gmail.com
 GMAIL_APP_PASSWORD=google_app_password
 BOOKING_EMAIL_TO=tranvantrieu.qt@gmail.com
 BOOKING_EMAIL_CC=
-ALLOW_ORIGINS=https://baotrangtransport.com,https://www.baotrangtransport.com,https://xedanangquangtri.com,https://www.xedanangquangtri.com,https://xeghepmientrung.com,https://www.xeghepmientrung.com
+ALLOW_ORIGINS=https://baotrangtransport.com,https://www.baotrangtransport.com
 ```
 
 If the API project URL changes, update `NEXT_PUBLIC_BOOKING_API_URL` in the frontend project and redeploy the frontend.

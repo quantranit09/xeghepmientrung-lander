@@ -27,7 +27,7 @@ export function HomeContent() {
         <section className="hero-section">
           <Image
             className="hero-background"
-            src="/assets/bao-trang/hero-dragon-bridge-transfer.jpg"
+            src="/assets/bao-trang/hero-dragon-bridge-transfer.webp"
             alt="Xe riêng Đà Nẵng - Quảng Trị"
             fill
             priority
@@ -37,8 +37,7 @@ export function HomeContent() {
           <div className="site-container hero-layout">
             <div className="hero-copy">
               <h1>
-                <span className="hero-route-desktop">Xe Đà Nẵng ⇄ Quảng Trị</span>
-                <span className="hero-route-mobile">Đà Nẵng ⇄ Quảng Trị</span>
+                <span>Xe Đà Nẵng ⇄ Quảng Trị</span>
                 <strong>Đi riêng theo chuyến</strong>
               </h1>
               <p className="hero-copy__desktop">Đón trả tận nơi · Xe 4, 5, 7 chỗ · Có xe 16 chỗ khi cần</p>

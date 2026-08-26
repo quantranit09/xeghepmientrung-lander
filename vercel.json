@@ -6,6 +6,19 @@
   "devCommand": "npm run dev",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.baotrangtransport.com"
+        }
+      ],
+      "destination": "https://baotrangtransport.com/$1",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
