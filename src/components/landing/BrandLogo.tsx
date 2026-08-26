@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export function BrandLogo() {
   return (
-    <span className="brand-logo" aria-label={site.name}>
+    <span className="brand-logo" role="img" aria-label={site.name}>
       <Image
         className="brand-logo__image"
         src="/assets/bao-trang/logo-full.webp"

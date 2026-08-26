@@ -45,6 +45,7 @@ export function HomeContent() {
             </div>
           </div>
 
+          <h2 className="sr-only">Lợi ích chính khi đặt xe</h2>
           <div className="site-container benefit-strip">
             {heroBenefits.map((benefit) => {
               const Icon = benefit.icon;

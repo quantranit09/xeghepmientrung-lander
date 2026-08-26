@@ -286,12 +286,12 @@ img {
 }
 
 .desktop-nav a:hover {
-  color: var(--bt-green);
+  color: var(--bt-green-dark);
   transform: translateY(-1px);
 }
 
 .desktop-nav a:first-child {
-  color: var(--bt-green);
+  color: var(--bt-green-dark);
 }
 
 .desktop-nav a:first-child::after {
