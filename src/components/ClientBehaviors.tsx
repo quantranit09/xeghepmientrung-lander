@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 declare global {
@@ -49,6 +49,7 @@ function trackConversion(conversionType: string, transactionId = "") {
 
 export function ClientBehaviors() {
   const pathname = usePathname();
+  const trackedInitialPageView = useRef(false);
 
   useEffect(() => {
     window.dataLayer = window.dataLayer || [];
@@ -90,11 +91,15 @@ export function ClientBehaviors() {
     const dateInput = document.getElementById("date") as HTMLInputElement | null;
     if (dateInput) dateInput.min = new Date().toISOString().slice(0, 10);
 
-    pushEvent("page_view", {
-      page_title: document.title,
-      page_location: window.location.href,
-      page_referrer: document.referrer,
-    });
+    if (trackedInitialPageView.current) {
+      pushEvent("page_view", {
+        page_title: document.title,
+        page_location: window.location.href,
+        page_referrer: document.referrer,
+      });
+    } else {
+      trackedInitialPageView.current = true;
+    }
   }, [pathname]);
 
   useEffect(() => {

@@ -30,7 +30,8 @@ export function HomeContent() {
             src="/assets/bao-trang/hero-dragon-bridge-transfer.webp"
             alt="Xe riêng Đà Nẵng - Quảng Trị"
             fill
-            priority
+            preload
+            fetchPriority="high"
             sizes="100vw"
           />
           <div className="hero-wash" aria-hidden="true" />

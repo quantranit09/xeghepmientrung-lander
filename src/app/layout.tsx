@@ -29,7 +29,7 @@ export default function RootLayout({
       <body>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAdsId}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script id="gtag-init" strategy="afterInteractive">
           {`

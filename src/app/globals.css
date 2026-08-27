@@ -417,8 +417,6 @@ img {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transform-origin: center;
-  animation: bt-hero-image 1100ms var(--bt-ease-out) both;
 }
 
 .hero-wash {
@@ -467,25 +465,6 @@ img {
 }
 
 .hero-copy h1 span,
-.hero-copy h1 strong,
-.hero-copy p {
-  opacity: 0;
-  animation: bt-fade-up 620ms var(--bt-ease-out) both;
-}
-
-.hero-copy h1 span {
-  animation-delay: 80ms;
-}
-
-.hero-copy h1 strong {
-  animation-delay: 160ms;
-}
-
-.hero-copy p {
-  animation-delay: 250ms;
-}
-
-.hero-copy h1 span,
 .hero-copy h1 strong {
   display: block;
 }
@@ -523,8 +502,6 @@ img {
   border-radius: 12px;
   background: white;
   box-shadow: var(--bt-shadow);
-  opacity: 0;
-  animation: bt-fade-up 640ms var(--bt-ease-out) 320ms both;
 }
 
 .benefit-card {

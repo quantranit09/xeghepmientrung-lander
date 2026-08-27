@@ -11,7 +11,6 @@ export function BrandLogo() {
         width={768}
         height={305}
         sizes="(max-width: 760px) 138px, 244px"
-        preload
       />
     </span>
   );

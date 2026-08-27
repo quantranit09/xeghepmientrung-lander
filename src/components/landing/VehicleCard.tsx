@@ -22,7 +22,7 @@ export function VehicleCard({ vehicle, className = "" }: { vehicle: Vehicle; cla
           src={vehicle.image}
           alt={vehicle.name}
           fill
-          sizes="(max-width: 768px) 80vw, 25vw"
+          sizes="(max-width: 768px) 80px, 25vw"
         />
       </div>
       <div className="vehicle-card__body">

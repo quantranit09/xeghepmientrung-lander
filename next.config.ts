@@ -1,11 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
   outputFileTracingRoot: process.cwd(),
   trailingSlash: false,
   images: {
-    unoptimized: true,
+    deviceSizes: [360, 414, 640, 750, 828, 1080, 1200, 1672],
+    imageSizes: [32, 48, 64, 96, 128, 160, 256],
+    minimumCacheTTL: 2678400,
   },
 };
 

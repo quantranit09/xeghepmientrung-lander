@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "node scripts/serve-out.mjs",
+    "start": "next start",
     "preview": "npm run build && npm start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
