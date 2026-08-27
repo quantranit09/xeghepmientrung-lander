@@ -14,6 +14,42 @@ export const articleLinks = [
       "Kinh nghiệm chọn xe 4 chỗ, 5 chỗ, 7 chỗ theo chuyến, điểm đón trả và thời gian di chuyển.",
   },
   {
+    href: "/bai-viet/tim-xe-ghep-da-nang-quang-tri",
+    title: "Đang tìm xe ghép Đà Nẵng ⇄ Quảng Trị?",
+    description:
+      "Gợi ý phương án xe riêng hoặc bao xe theo chuyến cho khách muốn tiết kiệm nhưng vẫn cần chủ động điểm đón trả.",
+  },
+  {
+    href: "/bai-viet/thue-xe-da-nang-di-hai-lang",
+    title: "Thuê xe Đà Nẵng đi Hải Lăng",
+    description:
+      "Tư vấn chặng Hải Lăng, Diên Sanh, Mỹ Chánh: loại xe, thời gian đi và thông tin cần gửi để nhận báo giá.",
+  },
+  {
+    href: "/bai-viet/xe-da-nang-di-dong-ha",
+    title: "Xe Đà Nẵng đi Đông Hà",
+    description:
+      "Gợi ý đặt xe riêng đi Đông Hà cho công tác, gia đình, đón sân bay và lịch trình cần đúng giờ.",
+  },
+  {
+    href: "/bai-viet/xe-san-bay-da-nang-di-quang-tri",
+    title: "Xe sân bay Đà Nẵng đi Quảng Trị",
+    description:
+      "Cách chốt xe theo giờ bay, điểm đón sảnh, hành lý và điểm trả tại Hải Lăng, Đông Hà, La Vang, Lao Bảo.",
+  },
+  {
+    href: "/bai-viet/xe-da-nang-di-la-vang",
+    title: "Xe Đà Nẵng đi La Vang",
+    description:
+      "Chuẩn bị chuyến đi lễ La Vang bằng xe riêng, có thể ghé Huế, Hải Lăng hoặc Thành cổ Quảng Trị.",
+  },
+  {
+    href: "/bai-viet/xe-da-nang-di-lao-bao",
+    title: "Xe Đà Nẵng đi Lao Bảo",
+    description:
+      "Lưu ý cho chặng xa đi Lao Bảo, Hướng Hóa: giờ đi, điểm dừng, hành lý và loại xe phù hợp.",
+  },
+  {
     href: "/bai-viet/dat-xe-rieng-da-nang-quang-binh",
     title: "Đặt xe riêng Đà Nẵng ⇄ Quảng Bình",
     description:

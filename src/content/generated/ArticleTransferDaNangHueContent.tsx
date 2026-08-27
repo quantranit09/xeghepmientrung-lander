@@ -28,10 +28,10 @@ export function ArticleTransferDaNangHueContent() {
         hay không, và dự kiến quay lại Đà Nẵng lúc mấy giờ. Xe hai chiều trong ngày khác với xe một chiều, nên thông tin
         chờ là phần cần xác nhận trước.
       </p>
-      <h2>Khi nào nên chọn xe riêng thay vì ghép chuyến?</h2>
+      <h2>Khi nào nên chọn xe riêng thay vì đi chung chuyến?</h2>
       <p>
         Xe riêng đáng chọn khi bạn cần kiểm soát giờ đi, điểm đón và điểm trả. Nếu hạ cánh muộn, đi cùng gia đình, có
-        nhiều vali hoặc cần đến thẳng khách sạn tại Huế, việc ghép chuyến có thể khiến bạn phải chờ thêm hoặc đổi điểm
+        nhiều vali hoặc cần đến thẳng khách sạn tại Huế, xe đi chung có thể khiến bạn phải chờ thêm hoặc đổi điểm
         đón. Xe riêng giúp lịch trình gọn hơn vì cả chuyến chỉ phục vụ nhóm của bạn.
       </p>
       <p>

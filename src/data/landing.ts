@@ -34,6 +34,7 @@ export type Journey = {
   image: string;
   description: string;
   estimate: string;
+  guideHref?: string;
 };
 
 export type RoutePrice = {
@@ -102,6 +103,7 @@ export const journeys: Journey[] = [
     image: "/assets/bao-trang/journey-da-nang.webp",
     description: "Hải Lăng, TX Quảng Trị, Đông Hà và các điểm đón trả theo yêu cầu.",
     estimate: "~3-4 giờ",
+    guideHref: "/bai-viet/dat-xe-rieng-da-nang-quang-tri",
   },
   {
     id: "danang-dongha",
@@ -110,6 +112,7 @@ export const journeys: Journey[] = [
     image: "/assets/bao-trang/journey-quang-tri.webp",
     description: "Xe riêng theo chuyến, phù hợp công tác, gia đình hoặc lịch hẹn.",
     estimate: "~3.5-4 giờ",
+    guideHref: "/bai-viet/xe-da-nang-di-dong-ha",
   },
   {
     id: "danang-laobao",
@@ -118,6 +121,7 @@ export const journeys: Journey[] = [
     image: "/assets/bao-trang/journey-hue.webp",
     description: "Chặng xa hơn, nên gửi trước giờ đi, hành lý và điểm dừng.",
     estimate: "~5-6 giờ",
+    guideHref: "/bai-viet/xe-da-nang-di-lao-bao",
   },
   {
     id: "danang-quangbinh",
@@ -126,6 +130,7 @@ export const journeys: Journey[] = [
     image: "/assets/bao-trang/journey-quang-binh.webp",
     description: "Lệ Thủy, Đồng Hới và các điểm lân cận khi khách cần đi tiếp.",
     estimate: "~4.5-5.5 giờ",
+    guideHref: "/bai-viet/dat-xe-rieng-da-nang-quang-binh",
   },
 ];
 

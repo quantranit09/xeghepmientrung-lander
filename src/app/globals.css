@@ -905,6 +905,56 @@ img {
   padding-top: 22px;
 }
 
+.geo-answer-section {
+  padding: 28px 0;
+  background: #f8fbff;
+  border-bottom: 1px solid var(--bt-line-soft);
+}
+
+.geo-answer {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.geo-answer h2 {
+  margin: 0 0 12px;
+  color: var(--bt-ink);
+  font-size: 28px;
+  line-height: 1.18;
+}
+
+.geo-answer p {
+  max-width: 860px;
+  margin: 0;
+  color: #344054;
+  font-size: 17px;
+}
+
+.geo-facts {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.geo-facts div {
+  padding: 0 0 12px;
+  border-bottom: 1px solid var(--bt-line-soft);
+}
+
+.geo-facts dt {
+  color: var(--bt-muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.geo-facts dd {
+  margin: 4px 0 0;
+  color: var(--bt-ink);
+  font-weight: 900;
+}
+
 .section-heading-row {
   display: flex;
   align-items: flex-end;
@@ -1775,6 +1825,26 @@ img {
   font-weight: 780;
 }
 
+.article-answer-block {
+  margin: 0 0 28px;
+  padding: 18px 20px;
+  border-left: 4px solid var(--bt-blue);
+  background: #f8fbff;
+}
+
+.article-answer-block h2 {
+  margin: 0 0 10px;
+  color: var(--bt-ink);
+  font-size: 22px;
+  line-height: 1.22;
+}
+
+.article-answer-block p {
+  margin: 0;
+  color: #344054;
+  font-weight: 720;
+}
+
 .article-body table {
   width: 100%;
   display: block;
@@ -1899,7 +1969,8 @@ img {
   }
 
   .stepper,
-  .article-layout {
+  .article-layout,
+  .geo-answer {
     grid-template-columns: 1fr;
   }
 

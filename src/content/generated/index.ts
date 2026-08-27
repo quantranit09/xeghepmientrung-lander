@@ -2,6 +2,14 @@ export { HomeContent } from "./HomeContent";
 export { PrivacyContent } from "./PrivacyContent";
 export { BlogIndexContent } from "./BlogIndexContent";
 export { ArticleDatXeRiengDaNangQuangTriContent } from "./ArticleDatXeRiengDaNangQuangTriContent";
+export {
+  ArticleThueXeDaNangDiHaiLangContent,
+  ArticleTimXeGhepDaNangQuangTriContent,
+  ArticleXeDaNangDiDongHaContent,
+  ArticleXeDaNangDiLaVangContent,
+  ArticleXeDaNangDiLaoBaoContent,
+  ArticleXeSanBayDaNangDiQuangTriContent,
+} from "./RouteKeywordArticles";
 export { ArticleDatXeRiengDaNangQuangBinhContent } from "./ArticleDatXeRiengDaNangQuangBinhContent";
 export { ArticleTransferDaNangHueContent } from "./ArticleTransferDaNangHueContent";
 export { ArticleKinhNghiemThueXeRiengMienTrungContent } from "./ArticleKinhNghiemThueXeRiengMienTrungContent";

@@ -34,8 +34,8 @@ export function ArticleSoSanhXeKhachVaXeRiengContent() {
       </p>
       <p>
         Xe riêng phù hợp khi bạn muốn cả chuyến đi xoay quanh lịch của mình. Bạn có thể hẹn giờ đón tại sân bay, khách
-        sạn, nhà riêng hoặc điểm làm việc; sau đó trả khách tại địa chỉ cụ thể. Chuyến đi riêng tư hơn vì không ghép khách
-        lạ và không phụ thuộc lịch tuyến cố định.
+        sạn, nhà riêng hoặc điểm làm việc; sau đó trả khách tại địa chỉ cụ thể. Chuyến đi riêng tư hơn vì chỉ đi cùng
+        nhóm của mình và không phụ thuộc lịch tuyến cố định.
       </p>
       <p>
         Với nhóm từ 3-6 người, chi phí xe riêng chia theo đầu người có thể hợp lý hơn so với cảm giác ban đầu, nhất là
@@ -65,7 +65,7 @@ export function ArticleSoSanhXeKhachVaXeRiengContent() {
           <tr>
             <td>Riêng tư</td>
             <td>Đi chung với nhiều khách</td>
-            <td>Không ghép khách lạ</td>
+            <td>Đi riêng theo nhóm</td>
           </tr>
           <tr>
             <td>Hành lý</td>

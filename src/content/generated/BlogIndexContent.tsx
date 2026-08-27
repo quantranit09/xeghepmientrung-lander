@@ -10,7 +10,7 @@ export function BlogIndexContent() {
               <p className="section-kicker">Cẩm nang</p>
               <h1>Cẩm nang xe Đà Nẵng ⇄ Quảng Trị</h1>
               <p>
-                Hướng dẫn chọn xe 4 chỗ, 5 chỗ, 7 chỗ, chuẩn bị lịch trình và đặt xe hợp đồng theo chuyến một cách rõ ràng.
+                Hướng dẫn đặt xe riêng theo từng chặng: Hải Lăng, Đông Hà, La Vang, Lao Bảo, sân bay Đà Nẵng và các chuyến liên tỉnh bằng xe 4 chỗ, 5 chỗ, 7 chỗ.
               </p>
           </div>
         </section>

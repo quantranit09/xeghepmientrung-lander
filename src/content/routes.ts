@@ -4,6 +4,12 @@ import { canonicalPath, site } from "@/lib/site";
 
 export const articleSlugs = [
   "dat-xe-rieng-da-nang-quang-tri",
+  "thue-xe-da-nang-di-hai-lang",
+  "xe-da-nang-di-dong-ha",
+  "xe-san-bay-da-nang-di-quang-tri",
+  "tim-xe-ghep-da-nang-quang-tri",
+  "xe-da-nang-di-la-vang",
+  "xe-da-nang-di-lao-bao",
   "dat-xe-rieng-da-nang-quang-binh",
   "transfer-da-nang-hue",
   "kinh-nghiem-thue-xe-rieng-mien-trung",
@@ -95,7 +101,7 @@ function serviceJsonLd() {
     email: site.email,
     priceRange: "Báo giá theo chuyến",
     description:
-      "Xe riêng Đà Nẵng - Quảng Trị, xe hợp đồng và transfer 4 chỗ, 5 chỗ, 7 chỗ, đón trả tận nơi theo chuyến. Có xe 16 chỗ cho nhóm đông.",
+      "Xe riêng Đà Nẵng - Quảng Trị, sân bay Đà Nẵng đi Hải Lăng, Đông Hà, La Vang, Lao Bảo bằng xe 4 chỗ, 5 chỗ, 7 chỗ, đón trả tận nơi theo chuyến.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Đà Nẵng",
@@ -290,6 +296,14 @@ function breadcrumbJsonLd(title: string, route: string) {
 }
 
 function articleJsonLd(title: string, route: string, description: string) {
+  const provider = {
+    "@type": "Organization",
+    name: site.operatorName,
+    url: site.url,
+    logo: `${site.url}/assets/bao-trang/logo-mark-192.png`,
+    sameAs: [site.facebookUrl, site.zaloUrl],
+  };
+
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -302,13 +316,10 @@ function articleJsonLd(title: string, route: string, description: string) {
     url: canonicalPath(route),
     image: [`${site.url}/assets/bao-trang/hero-dragon-bridge-transfer.webp`],
     inLanguage: "vi-VN",
+    isAccessibleForFree: true,
     datePublished: contentDates.publishedAt,
     dateModified: contentDates.modifiedAt,
-    author: {
-      "@type": "Organization",
-      name: site.operatorName,
-      url: site.url,
-    },
+    author: provider,
     publisher: {
       "@type": "Organization",
       name: site.operatorName,
@@ -318,6 +329,26 @@ function articleJsonLd(title: string, route: string, description: string) {
         url: `${site.url}/assets/bao-trang/logo-mark-192.png`,
       },
     },
+    about: {
+      "@type": "Service",
+      name: "Xe riêng và xe hợp đồng miền Trung",
+      serviceType: "Private transfer and contracted car service",
+      provider,
+      areaServed: [
+        { "@type": "AdministrativeArea", name: "Đà Nẵng" },
+        { "@type": "AdministrativeArea", name: "Quảng Trị" },
+        { "@type": "AdministrativeArea", name: "Huế" },
+        { "@type": "AdministrativeArea", name: "Quảng Bình" },
+      ],
+    },
+    mentions: [
+      { "@type": "Place", name: "Đà Nẵng" },
+      { "@type": "Place", name: "Hải Lăng" },
+      { "@type": "Place", name: "Đông Hà" },
+      { "@type": "Place", name: "La Vang" },
+      { "@type": "Place", name: "Lao Bảo" },
+      { "@type": "Place", name: "Quảng Trị" },
+    ],
   };
 }
 
@@ -328,6 +359,48 @@ const articles = {
       "Hướng dẫn đặt xe riêng Đà Nẵng - Quảng Trị theo chuyến, chọn xe 4 chỗ, 5 chỗ, 7 chỗ, đón trả tận nơi và xác nhận lịch trình rõ ràng. Có xe 16 chỗ khi cần.",
     route: "/bai-viet/dat-xe-rieng-da-nang-quang-tri",
     priority: 0.8,
+  },
+  "thue-xe-da-nang-di-hai-lang": {
+    title: "Thuê xe Đà Nẵng đi Hải Lăng | Xe riêng 4-7 chỗ",
+    description:
+      "Thuê xe Đà Nẵng đi Hải Lăng theo chuyến, đón tận nơi tại sân bay, khách sạn, nhà riêng. Xe 4 chỗ, 5 chỗ, 7 chỗ, báo giá rõ trước khi đi.",
+    route: "/bai-viet/thue-xe-da-nang-di-hai-lang",
+    priority: 0.75,
+  },
+  "xe-da-nang-di-dong-ha": {
+    title: "Xe Đà Nẵng đi Đông Hà | Đón trả tận nơi",
+    description:
+      "Đặt xe Đà Nẵng đi Đông Hà bằng xe riêng 4 chỗ, 5 chỗ, 7 chỗ. Phù hợp công tác, gia đình, đón sân bay và trả đúng địa chỉ tại Đông Hà.",
+    route: "/bai-viet/xe-da-nang-di-dong-ha",
+    priority: 0.75,
+  },
+  "xe-san-bay-da-nang-di-quang-tri": {
+    title: "Xe sân bay Đà Nẵng đi Quảng Trị | Xe riêng",
+    description:
+      "Đặt xe sân bay Đà Nẵng đi Quảng Trị, Hải Lăng, Đông Hà, La Vang, Lao Bảo. Tài xế theo giờ bay, đón sảnh, xe riêng 4-7 chỗ, báo giá trước.",
+    route: "/bai-viet/xe-san-bay-da-nang-di-quang-tri",
+    priority: 0.75,
+  },
+  "tim-xe-ghep-da-nang-quang-tri": {
+    title: "Tìm xe ghép Đà Nẵng - Quảng Trị? Gợi ý xe riêng",
+    description:
+      "Nếu đang tìm xe ghép Đà Nẵng - Quảng Trị để tiết kiệm, hãy cân nhắc xe riêng hoặc bao xe theo chuyến cho nhóm 2-6 khách, đón trả theo lịch hẹn.",
+    route: "/bai-viet/tim-xe-ghep-da-nang-quang-tri",
+    priority: 0.72,
+  },
+  "xe-da-nang-di-la-vang": {
+    title: "Xe Đà Nẵng đi La Vang | Xe riêng đi lễ",
+    description:
+      "Đặt xe Đà Nẵng đi La Vang bằng xe riêng, phù hợp đi lễ, gia đình, nhóm nhỏ. Có thể ghé Huế, Hải Lăng, Thành cổ Quảng Trị theo lịch trình.",
+    route: "/bai-viet/xe-da-nang-di-la-vang",
+    priority: 0.7,
+  },
+  "xe-da-nang-di-lao-bao": {
+    title: "Xe Đà Nẵng đi Lao Bảo | Xe riêng theo chuyến",
+    description:
+      "Đặt xe Đà Nẵng đi Lao Bảo, Hướng Hóa bằng xe riêng 4 chỗ, 5 chỗ, 7 chỗ. Tư vấn giờ đi, điểm dừng, hành lý và báo giá theo chuyến.",
+    route: "/bai-viet/xe-da-nang-di-lao-bao",
+    priority: 0.7,
   },
   "dat-xe-rieng-da-nang-quang-binh": {
     title: "Đặt xe riêng Đà Nẵng - Quảng Bình | Transfer theo chuyến",
@@ -413,7 +486,7 @@ export const contentRoutes = {
     metadata: buildMetadata({
       title: "Bảo Trang Transport | Xe riêng 4-7 chỗ, đón trả tận nơi",
       description:
-        "Đặt xe riêng Đà Nẵng - Quảng Trị, Đông Hà, Hải Lăng, Gio Linh, Vĩnh Linh, Lao Bảo. Xe 4 chỗ, 5 chỗ, 7 chỗ, giá theo chuyến. Có xe 16 chỗ khi cần.",
+        "Đặt xe riêng Đà Nẵng - Quảng Trị: sân bay Đà Nẵng đi Hải Lăng, Đông Hà, La Vang, Lao Bảo. Xe 4 chỗ, 5 chỗ, 7 chỗ, báo giá theo chuyến.",
       canonical: canonicalPath("/"),
     }),
     jsonLd: [websiteJsonLd(), organizationJsonLd(), serviceJsonLd(), faqJsonLd()],
@@ -443,7 +516,7 @@ export const contentRoutes = {
     metadata: buildMetadata({
       title: `Cẩm nang xe riêng & transfer | ${site.name}`,
       description:
-        "Hướng dẫn đặt xe riêng 4 chỗ, 5 chỗ, 7 chỗ cho các chặng Đà Nẵng - Quảng Trị, Quảng Bình và khu vực lân cận. Có xe 16 chỗ cho nhóm đông.",
+        "Hướng dẫn đặt xe riêng 4 chỗ, 5 chỗ, 7 chỗ cho tuyến Đà Nẵng - Quảng Trị, Hải Lăng, Đông Hà, La Vang, Lao Bảo và Quảng Bình.",
       canonical: canonicalPath("/bai-viet"),
     }),
     jsonLd: [

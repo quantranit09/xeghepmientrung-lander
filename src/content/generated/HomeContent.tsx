@@ -65,6 +65,36 @@ export function HomeContent() {
           </div>
         </section>
 
+        <section className="geo-answer-section">
+          <div className="site-container geo-answer">
+            <div>
+              <span className="section-kicker section-kicker--plain">Tóm tắt dịch vụ</span>
+              <h2>Bảo Trang Transport cung cấp dịch vụ gì?</h2>
+              <p>
+                Bảo Trang Transport là dịch vụ xe riêng, xe hợp đồng và transfer theo chuyến cho khách cần đi từ Đà
+                Nẵng đến Quảng Trị, Hải Lăng, Đông Hà, La Vang, Lao Bảo, Huế hoặc Quảng Bình. Khách gửi điểm đón, điểm
+                trả, ngày giờ, số người và hành lý; đội ngũ tư vấn loại xe 4 chỗ, xe điện 5 chỗ, xe 7 chỗ hoặc xe 16
+                chỗ khi cần. Dịch vụ phù hợp với gia đình, khách công tác, khách hạ cánh tại sân bay Đà Nẵng và nhóm
+                nhỏ muốn đi riêng theo lịch trình đã xác nhận.
+              </p>
+            </div>
+            <dl className="geo-facts">
+              <div>
+                <dt>Dịch vụ chính</dt>
+                <dd>Xe riêng / xe hợp đồng / transfer</dd>
+              </div>
+              <div>
+                <dt>Tuyến trọng tâm</dt>
+                <dd>Đà Nẵng ⇄ Quảng Trị</dd>
+              </div>
+              <div>
+                <dt>Nhận giá nhanh</dt>
+                <dd>{site.phoneDisplay} hoặc Zalo</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+
         <section className="trip-request-section motion-reveal">
           <div className="site-container">
             <TripRequestForm />
@@ -106,7 +136,7 @@ export function HomeContent() {
                 </div>
                 <div className="journey-card__footer">
                   <span>{journey.estimate}</span>
-                  <a href="#yeu-cau-chuyen-di">
+                  <a href={journey.guideHref ?? "#yeu-cau-chuyen-di"}>
                     Xem chi tiết
                     <ArrowRight size={14} aria-hidden="true" />
                   </a>

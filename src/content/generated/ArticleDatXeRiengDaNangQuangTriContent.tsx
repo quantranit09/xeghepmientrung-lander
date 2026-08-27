@@ -8,8 +8,8 @@ export function ArticleDatXeRiengDaNangQuangTriContent() {
     >
       <div className="article-callout">
         <p>
-          Nếu cần đi Đà Nẵng ⇄ Quảng Trị đúng giờ, đón trả tận nơi và không ghép khách, xe riêng là lựa chọn nên ưu
-          tiên. Hãy gửi điểm đón, điểm trả, ngày giờ đi, số khách và hành lý để được tư vấn đúng loại xe ngay từ đầu.
+          Nếu cần đi Đà Nẵng ⇄ Quảng Trị đúng giờ, đón trả tận nơi và đi riêng theo nhóm của mình, xe riêng là lựa chọn
+          nên ưu tiên. Hãy gửi điểm đón, điểm trả, ngày giờ đi, số khách và hành lý để được tư vấn đúng loại xe ngay từ đầu.
         </p>
       </div>
       <h2>Khi nào nên chọn xe riêng?</h2>
@@ -18,8 +18,8 @@ export function ArticleDatXeRiengDaNangQuangTriContent() {
         Đông Hà, Cam Lộ, Gio Linh, Cửa Việt và các khu vực lân cận.
       </p>
       <p>
-        So với xe khách tuyến cố định, xe riêng giúp bạn chủ động giờ xuất phát, không phải di chuyển ra bến, không ghép
-        khách lạ và có thể dừng nghỉ theo nhu cầu thực tế. Lựa chọn này đặc biệt phù hợp nếu chuyến đi có trẻ em,
+        So với xe khách tuyến cố định, xe riêng giúp bạn chủ động giờ xuất phát, không phải di chuyển ra bến, đi cùng
+        đúng nhóm của mình và có thể dừng nghỉ theo nhu cầu thực tế. Lựa chọn này đặc biệt phù hợp nếu chuyến đi có trẻ em,
         người lớn tuổi, nhiều hành lý, lịch bay sớm hoặc cần đến đúng giờ cho công việc, khám bệnh, sự kiện gia đình.
       </p>
       <p>
