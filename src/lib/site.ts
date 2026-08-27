@@ -13,7 +13,7 @@ export const site = {
   phoneE164: "+84826430430",
   zaloUrl: "https://zalo.me/84826430430",
   email: "tranvantrieu.qt@gmail.com",
-  facebookUrl: "https://www.facebook.com/profile.php?id=61552012090157",
+  facebookUrl: "https://www.facebook.com/share/1HVC3SwtAQ",
   googleAdsId: process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "AW-16682976859",
   bookingApiUrl,
 };
