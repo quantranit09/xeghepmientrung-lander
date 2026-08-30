@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import {
+  campaignPageIds,
+  campaignPages,
+  type CampaignPage,
+  type CampaignPageId,
+} from "@/content/campaign-pages";
 import { contentDates } from "@/content/dates";
 import { canonicalPath, site } from "@/lib/site";
 
@@ -295,6 +301,27 @@ function breadcrumbJsonLd(title: string, route: string) {
   };
 }
 
+function pageBreadcrumbJsonLd(title: string, route: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Trang chủ",
+        item: site.url,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: title,
+        item: canonicalPath(route),
+      },
+    ],
+  };
+}
+
 function articleJsonLd(title: string, route: string, description: string) {
   const provider = {
     "@type": "Organization",
@@ -351,6 +378,83 @@ function articleJsonLd(title: string, route: string, description: string) {
     ],
   };
 }
+
+function campaignWebPageJsonLd(page: CampaignPage) {
+  const provider = {
+    "@type": "Organization",
+    name: site.operatorName,
+    url: site.url,
+    logo: `${site.url}/assets/bao-trang/logo-mark-192.png`,
+    telephone: site.phoneE164,
+    sameAs: [site.facebookUrl, site.zaloUrl],
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: page.headline,
+    description: page.description,
+    url: canonicalPath(page.route),
+    inLanguage: "vi-VN",
+    isPartOf: {
+      "@type": "WebSite",
+      name: site.name,
+      url: site.url,
+    },
+    about: {
+      "@type": "Service",
+      name: page.headline,
+      serviceType: page.kicker,
+      provider,
+      areaServed: [
+        { "@type": "AdministrativeArea", name: "Đà Nẵng" },
+        { "@type": "AdministrativeArea", name: "Quảng Trị" },
+        { "@type": "AdministrativeArea", name: "Huế" },
+        { "@type": "AdministrativeArea", name: "Quảng Bình" },
+      ],
+    },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: `${site.url}${page.heroImage}`,
+    },
+  };
+}
+
+const campaignRoutePriority: Record<CampaignPageId, number> = {
+  xeRieng: 0.9,
+  xeGhep: 0.86,
+  pricing: 0.84,
+  serviceArea: 0.82,
+  fleet: 0.78,
+  contact: 0.8,
+};
+
+const campaignContentRoutes = Object.fromEntries(
+  campaignPageIds.map((id) => {
+    const page = campaignPages[id];
+    return [
+      id,
+      {
+        id,
+        route: page.route,
+        canonical: canonicalPath(page.route),
+        changeFrequency: "monthly",
+        priority: campaignRoutePriority[id],
+        includeInSitemap: true,
+        metadata: buildMetadata({
+          title: page.title,
+          description: page.description,
+          canonical: canonicalPath(page.route),
+          ogImage: `${site.url}${page.heroImage}`,
+        }),
+        jsonLd: [
+          pageBreadcrumbJsonLd(page.navLabel, page.route),
+          campaignWebPageJsonLd(page),
+        ],
+      },
+    ];
+  }),
+) as unknown as Record<CampaignPageId, ContentRoute>;
 
 const articles = {
   "dat-xe-rieng-da-nang-quang-tri": {
@@ -491,6 +595,7 @@ export const contentRoutes = {
     }),
     jsonLd: [websiteJsonLd(), organizationJsonLd(), serviceJsonLd(), faqJsonLd()],
   },
+  ...campaignContentRoutes,
   privacy: {
     id: "privacy",
     route: "/privacy",

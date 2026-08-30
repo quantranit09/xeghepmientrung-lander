@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import { PageShell } from "@/components/landing/PageShell";
 import { TripRequestForm } from "@/components/landing/TripRequestForm";
+import { campaignPages } from "@/content/campaign-pages";
 import { contentDates } from "@/content/dates";
 import { journeys } from "@/data/landing";
 import { site } from "@/lib/site";
@@ -133,7 +134,7 @@ export function ArticleShell({
             <aside className="article-aside">
               <h2>Nhận giá chuyến đi</h2>
               <p>Gửi lịch trình để được tư vấn xe điện 5 chỗ, xe 7 chỗ hoặc xe phù hợp.</p>
-              <a className="btn btn-primary" href="/#yeu-cau-chuyen-di">
+              <a className="btn btn-primary" href={campaignPages.contact.route}>
                 Về form nhận giá
               </a>
             </aside>

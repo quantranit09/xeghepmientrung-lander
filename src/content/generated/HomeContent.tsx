@@ -10,6 +10,7 @@ import Image from "next/image";
 import { PageShell } from "@/components/landing/PageShell";
 import { TripRequestForm } from "@/components/landing/TripRequestForm";
 import { VehicleCard } from "@/components/landing/VehicleCard";
+import { campaignPages } from "@/content/campaign-pages";
 import {
   bookingSteps,
   heroBenefits,
@@ -65,6 +66,12 @@ export function HomeContent() {
           </div>
         </section>
 
+        <section className="trip-request-section motion-reveal">
+          <div className="site-container">
+            <TripRequestForm />
+          </div>
+        </section>
+
         <section className="geo-answer-section">
           <div className="site-container geo-answer">
             <div>
@@ -95,12 +102,6 @@ export function HomeContent() {
           </div>
         </section>
 
-        <section className="trip-request-section motion-reveal">
-          <div className="site-container">
-            <TripRequestForm />
-          </div>
-        </section>
-
         <section id="hanh-trinh" className="content-section">
           <div className="site-container section-heading-row motion-reveal">
             <div>
@@ -110,7 +111,7 @@ export function HomeContent() {
               </span>
               <h2>Các điểm đón/trả thường được yêu cầu</h2>
             </div>
-            <a href="/bai-viet" className="section-link">
+            <a href={campaignPages.serviceArea.route} className="section-link">
               Xem tất cả
               <ChevronRight size={16} aria-hidden="true" />
             </a>
@@ -145,7 +146,7 @@ export function HomeContent() {
             ))}
           </div>
           <div className="site-container center-action">
-            <a className="btn btn-outline" href="/bai-viet">
+            <a className="btn btn-outline" href={campaignPages.serviceArea.route}>
               Xem thêm điểm đón/trả
             </a>
           </div>
@@ -160,7 +161,7 @@ export function HomeContent() {
               </span>
               <h2>Cho xe riêng / xe hợp đồng, đón trả tận nơi</h2>
             </div>
-            <a href="#yeu-cau-chuyen-di" className="section-link">
+            <a href={campaignPages.contact.route} className="section-link">
               Nhận báo giá
               <ChevronRight size={16} aria-hidden="true" />
             </a>
@@ -187,7 +188,7 @@ export function HomeContent() {
               </span>
               <h2>Xe đời mới, sạch sẽ, tiện nghi</h2>
             </div>
-            <a href="#yeu-cau-chuyen-di" className="section-link">
+            <a href={campaignPages.fleet.route} className="section-link">
               Xem tất cả
               <ChevronRight size={16} aria-hidden="true" />
             </a>
@@ -198,7 +199,7 @@ export function HomeContent() {
             ))}
           </div>
           <div className="site-container center-action">
-            <a className="btn btn-outline" href="#yeu-cau-chuyen-di">
+            <a className="btn btn-outline" href={campaignPages.fleet.route}>
               Xem tất cả dòng xe
             </a>
           </div>
@@ -261,7 +262,7 @@ export function HomeContent() {
               <h2>Cần xe Đà Nẵng ⇄ Quảng Trị?</h2>
               <p>Gửi điểm đón trả, {site.operatorName} sẽ tư vấn loại xe và báo giá theo chuyến.</p>
             </div>
-            <a className="btn btn-primary" href="#yeu-cau-chuyen-di">
+            <a className="btn btn-primary" href={campaignPages.contact.route}>
               Nhận giá chuyến đi
             </a>
           </div>

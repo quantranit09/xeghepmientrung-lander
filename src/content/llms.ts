@@ -1,4 +1,5 @@
 import { contentDates } from "@/content/dates";
+import { campaignPageIds, campaignPages } from "@/content/campaign-pages";
 import { canonicalPath, site } from "@/lib/site";
 
 type LlmsLink = {
@@ -28,18 +29,27 @@ const mainPages: LlmsLink[] = [
   },
 ];
 
+const campaignLandingPages: LlmsLink[] = campaignPageIds.map((id) => {
+  const page = campaignPages[id];
+  return {
+    title: page.headline,
+    path: page.route,
+    description: page.llmsDescription,
+  };
+});
+
 const routeGuides: LlmsLink[] = [
   {
     title: "Đặt xe riêng Đà Nẵng - Quảng Trị",
     path: "/bai-viet/dat-xe-rieng-da-nang-quang-tri",
     description:
-      "Pillar page cho tuyến Đà Nẵng - Quảng Trị, xe 4-7 chỗ, xe 16 chỗ, điểm đón trả và cách chốt lịch trình.",
+      "Thông tin tuyến Đà Nẵng - Quảng Trị, xe 4-7 chỗ, xe 16 chỗ, điểm đón trả và cách chốt lịch trình.",
   },
   {
     title: "Tìm xe ghép Đà Nẵng - Quảng Trị? Gợi ý xe riêng",
     path: "/bai-viet/tim-xe-ghep-da-nang-quang-tri",
     description:
-      "Trang bridge cho người tìm xe ghép, chuyển hướng sang xe riêng hoặc bao xe theo chuyến cho nhóm 2-6 khách.",
+      "Thông tin cho người tìm xe ghép, kèm gợi ý xe riêng hoặc bao xe theo chuyến cho nhóm 2-6 khách.",
   },
   {
     title: "Thuê xe Đà Nẵng đi Hải Lăng",
@@ -141,6 +151,9 @@ export function buildLlmsTxt() {
     "",
     "## Main pages",
     ...formatLinks(mainPages),
+    "",
+    "## Service pages",
+    ...formatLinks(campaignLandingPages),
     "",
     "## Route guides",
     ...formatLinks(routeGuides),

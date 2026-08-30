@@ -10,6 +10,7 @@ export function BrandLogo() {
         alt=""
         width={768}
         height={305}
+        loading="eager"
         sizes="(max-width: 760px) 138px, 244px"
       />
     </span>

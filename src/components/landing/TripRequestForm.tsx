@@ -68,6 +68,18 @@ type TripRequestPayload = {
   contactPhone: string;
 };
 
+type TripRequestFormProps = {
+  title?: string;
+  description?: string;
+  submitLabel?: string;
+  serviceType?: string;
+  formName?: string;
+  submittingMessage?: string;
+  successMessage?: string;
+  dialogTitle?: string;
+  dialogDescription?: string;
+};
+
 type SelectOption = {
   value: string;
   label: string;
@@ -178,8 +190,9 @@ function getVehicleCapacity(vehiclePreference?: string) {
   return 7;
 }
 
-function buildTripMessage(payload: TripRequestPayload) {
-  return `YÊU CẦU BÁO GIÁ XE RIÊNG / XE HỢP ĐỒNG - ${site.name}
+function buildTripMessage(payload: TripRequestPayload, serviceType: string) {
+  return `YÊU CẦU TƯ VẤN - ${site.name}
+Dịch vụ: ${serviceType}
 Tên: ${payload.customerName || "Chưa cung cấp"}
 SĐT/Zalo: ${payload.contactPhone}
 Điểm đón tận nơi: ${payload.pickup}
@@ -207,6 +220,24 @@ function pushTripFormEvent(eventName: string, eventData: Record<string, unknown>
     ...eventData,
   });
 }
+
+function getCurrentPageSource() {
+  if (typeof window === "undefined") return site.url;
+  return window.location.href || site.url;
+}
+
+const defaultFormCopy = {
+  title: "Yêu cầu báo giá xe riêng",
+  description: "Gửi lịch trình, Bảo Trang tư vấn xe 4, 5, 7 chỗ và báo giá theo chuyến.",
+  submitLabel: "Gửi yêu cầu báo giá",
+  serviceType: "Xe riêng / xe hợp đồng / transfer",
+  formName: "trip_request",
+  submittingMessage: "Đang gửi yêu cầu báo giá, giữ máy một chút nhé.",
+  successMessage: "Đã nhận yêu cầu báo giá. Bảo Trang sẽ gọi lại qua SĐT/Zalo bạn vừa để lại.",
+  dialogTitle: "Đã nhận yêu cầu báo giá",
+  dialogDescription:
+    "Bảo Trang sẽ gọi lại qua SĐT/Zalo để xác nhận lịch trình, tư vấn loại xe và báo giá theo chuyến.",
+};
 
 function LocationTextField({
   label,
@@ -299,7 +330,17 @@ function FormSelect({
   );
 }
 
-export function TripRequestForm() {
+export function TripRequestForm({
+  title = defaultFormCopy.title,
+  description = defaultFormCopy.description,
+  submitLabel = defaultFormCopy.submitLabel,
+  serviceType = defaultFormCopy.serviceType,
+  formName = defaultFormCopy.formName,
+  submittingMessage = defaultFormCopy.submittingMessage,
+  successMessage = defaultFormCopy.successMessage,
+  dialogTitle = defaultFormCopy.dialogTitle,
+  dialogDescription = defaultFormCopy.dialogDescription,
+}: TripRequestFormProps = {}) {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
   const [submitMessage, setSubmitMessage] = useState("");
@@ -383,7 +424,7 @@ export function TripRequestForm() {
     }
 
     setSubmitStatus("submitting");
-    setSubmitMessage("Đang gửi yêu cầu báo giá, giữ máy một chút nhé.");
+    setSubmitMessage(submittingMessage);
     const payload = {
       pickup: values.pickup,
       destination: values.destination,
@@ -394,9 +435,10 @@ export function TripRequestForm() {
       customerName: values.customerName?.trim() || "",
       contactPhone: normalizeContactPhone(values.contactPhone),
     };
-    const tripMessage = buildTripMessage(payload);
+    const tripMessage = buildTripMessage(payload, serviceType);
 
     pushTripFormEvent("trip_form_submit_start", {
+      service_type: serviceType,
       pickup: payload.pickup,
       destination: payload.destination,
       passenger_count: payload.passengerCount,
@@ -413,9 +455,9 @@ export function TripRequestForm() {
         body: JSON.stringify({
           _hp: values._gotcha || "",
           _gotcha: values._gotcha || "",
-          source: site.url,
-          service_type: "Xe riêng / xe hợp đồng / transfer",
-          form_name: "trip_request",
+          source: getCurrentPageSource(),
+          service_type: serviceType,
+          form_name: formName,
           ...payload,
           name: payload.customerName,
           phone: payload.contactPhone,
@@ -437,8 +479,9 @@ export function TripRequestForm() {
       }
 
       setSubmitStatus("success");
-      setSubmitMessage("Đã nhận yêu cầu báo giá. Bảo Trang sẽ gọi lại qua SĐT/Zalo bạn vừa để lại.");
+      setSubmitMessage(successMessage);
       pushTripFormEvent("lead_submit", {
+        service_type: serviceType,
         pickup: payload.pickup,
         destination: payload.destination,
         passenger_count: payload.passengerCount,
@@ -487,8 +530,8 @@ export function TripRequestForm() {
             <Car size={22} aria-hidden="true" />
           </div>
           <div>
-            <h2>Yêu cầu báo giá xe riêng</h2>
-            <p>Gửi lịch trình, Bảo Trang tư vấn xe 4, 5, 7 chỗ và báo giá theo chuyến.</p>
+            <h2>{title}</h2>
+            <p>{description}</p>
           </div>
         </div>
 
@@ -612,7 +655,7 @@ export function TripRequestForm() {
         </div>
 
         <button className="submit-button" type="submit" disabled={submitting} aria-live="polite">
-          {submitting ? "Đang gửi..." : "Gửi yêu cầu báo giá"}
+          {submitting ? "Đang gửi..." : submitLabel}
         </button>
 
         <div className="form-support">
@@ -635,10 +678,8 @@ export function TripRequestForm() {
             <Dialog.Close className="dialog-close" aria-label="Đóng">
               <X size={18} aria-hidden="true" />
             </Dialog.Close>
-            <Dialog.Title>Đã nhận yêu cầu báo giá</Dialog.Title>
-            <Dialog.Description>
-              Bảo Trang sẽ gọi lại qua SĐT/Zalo để xác nhận lịch trình, tư vấn loại xe và báo giá theo chuyến.
-            </Dialog.Description>
+            <Dialog.Title>{dialogTitle}</Dialog.Title>
+            <Dialog.Description>{dialogDescription}</Dialog.Description>
             <div className="dialog-actions">
               <a className="btn btn-primary" href={site.zaloUrl} target="_blank" rel="nofollow noopener">
                 Liên hệ Zalo

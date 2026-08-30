@@ -3,11 +3,15 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navigationItems } from "@/data/landing";
 import { site } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
 export function Header() {
+  const pathname = usePathname();
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname === href);
+
   return (
     <header className="site-header">
       <div className="site-container nav-shell">
@@ -17,7 +21,7 @@ export function Header() {
 
         <nav className="desktop-nav" aria-label="Điều hướng chính">
           {navigationItems.map((item) => (
-            <Link href={item.href} key={item.href}>
+            <Link href={item.href} aria-current={isActive(item.href) ? "page" : undefined} key={item.href}>
               {item.label}
             </Link>
           ))}
@@ -51,7 +55,9 @@ export function Header() {
                 <nav aria-label="Điều hướng di động">
                   {navigationItems.map((item) => (
                     <Dialog.Close asChild key={item.href}>
-                      <Link href={item.href}>{item.label}</Link>
+                      <Link href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+                        {item.label}
+                      </Link>
                     </Dialog.Close>
                   ))}
                 </nav>

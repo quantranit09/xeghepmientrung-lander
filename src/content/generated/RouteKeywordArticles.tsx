@@ -234,7 +234,7 @@ const routeKeywordArticles = {
       "transfer sân bay Đà Nẵng đi Quảng Trị",
     ],
     callout:
-      "Keyword sân bay thường có intent đặt xe rất rõ: khách vừa hạ cánh, cần tài xế đón đúng sảnh và đi thẳng về Quảng Trị. Đây là nhóm nên ưu tiên vì sát nhu cầu thực tế hơn các từ khóa tìm hiểu chung.",
+      "Khách vừa hạ cánh thường cần tài xế đón đúng sảnh và đi thẳng về Quảng Trị. Khi đặt xe sân bay, bạn nên gửi mã chuyến bay, giờ hạ cánh và điểm trả để tài xế căn giờ đón chính xác.",
     quickAnswer:
       "Khi đặt xe sân bay Đà Nẵng đi Quảng Trị, bạn nên gửi mã chuyến bay, giờ hạ cánh, nhà ga, số khách, hành lý và điểm trả cuối cùng. Tài xế có thể căn giờ đón theo chuyến bay để hạn chế chờ sai thời điểm.",
     aiAnswer:
@@ -519,7 +519,7 @@ function RouteKeywordArticle({ data }: { data: RouteKeywordArticleData }) {
         </tbody>
       </table>
 
-      <h2>Nhu cầu tìm kiếm liên quan</h2>
+      <h2>Các cách gọi thường gặp</h2>
       <p>
         Nếu bạn đang tìm <strong>{data.targetKeyword}</strong>, những cách gọi dưới đây cũng thường cùng một nhu cầu:
         cần xe riêng, đón trả tận nơi, báo giá theo chuyến và tư vấn loại xe phù hợp.

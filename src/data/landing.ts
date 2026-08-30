@@ -62,10 +62,12 @@ export type ProcessStep = {
 
 export const navigationItems: NavigationItem[] = [
   { label: "Trang chủ", href: "/" },
-  { label: "Bảng giá", href: "/#gia" },
-  { label: "Khu vực phục vụ", href: "/#hanh-trinh" },
-  { label: "Dòng xe", href: "/#dich-vu" },
-  { label: "Liên hệ", href: "/#yeu-cau-chuyen-di" },
+  { label: "Xe riêng", href: "/xe-rieng-da-nang-quang-tri" },
+  { label: "Xe ghép", href: "/xe-ghep-da-nang-quang-tri" },
+  { label: "Khu vực phục vụ", href: "/khu-vuc-phuc-vu-xe-da-nang-quang-tri" },
+  { label: "Bảng giá", href: "/bang-gia-xe-da-nang-quang-tri" },
+  { label: "Dòng xe", href: "/dong-xe-da-nang-quang-tri" },
+  { label: "Liên hệ", href: "/lien-he-dat-xe-da-nang-quang-tri" },
 ];
 
 export const heroBenefits: Benefit[] = [

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { campaignPages } from "@/content/campaign-pages";
 import { site } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
@@ -20,16 +21,17 @@ export function Footer() {
         </div>
         <div className="footer-links">
           <h3>Dịch vụ</h3>
-          <Link href="/#gia">Bảng giá tham khảo</Link>
-          <Link href="/#yeu-cau-chuyen-di">Xe riêng theo chuyến</Link>
-          <Link href="/#hanh-trinh">Khu vực phục vụ</Link>
-          <Link href="/#dich-vu">Dòng xe phục vụ</Link>
+          <Link href={campaignPages.xeRieng.route}>Xe riêng theo chuyến</Link>
+          <Link href={campaignPages.xeGhep.route}>Xe ghép / tư vấn phương án</Link>
+          <Link href={campaignPages.pricing.route}>Bảng giá tham khảo</Link>
+          <Link href={campaignPages.serviceArea.route}>Khu vực phục vụ</Link>
         </div>
         <div className="footer-links">
           <h3>Hướng dẫn</h3>
           <Link href="/bai-viet">Hướng dẫn đặt xe</Link>
+          <Link href={campaignPages.fleet.route}>Dòng xe phục vụ</Link>
+          <Link href={campaignPages.contact.route}>Liên hệ đặt xe</Link>
           <Link href="/privacy">Chính sách</Link>
-          <Link href="/#vi-sao">Câu hỏi thường gặp</Link>
         </div>
       </div>
       <div className="site-container footer-bottom">
