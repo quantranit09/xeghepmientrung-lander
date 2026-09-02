@@ -75,7 +75,7 @@ function CampaignShowcase({ page }: { page: CampaignPage }) {
               <Car size={22} aria-hidden="true" />
               Xe đang phục vụ
             </span>
-            <h2>Chọn xe theo số khách, hành lý và lịch trình</h2>
+          <h2>Chọn xe theo số khách, hành lý và lịch trình</h2>
           </div>
           <Link className="section-link" href={campaignPages.pricing.route}>
             Xem giá
@@ -123,7 +123,7 @@ function CampaignShowcase({ page }: { page: CampaignPage }) {
             <WalletCards size={22} aria-hidden="true" />
             {page.id === "pricing" ? "Bảng giá tham khảo" : "Giá tuyến phổ biến"}
           </span>
-          <h2>Giá xác nhận lại theo xe, giờ đi và điểm đón/trả cụ thể</h2>
+          <h2>Giá cần chốt lại theo điểm trả cuối và điều kiện chuyến</h2>
         </div>
         {page.id === "pricing" ? (
           <Link className="section-link" href={campaignPages.fleet.route}>
@@ -146,7 +146,8 @@ function CampaignShowcase({ page }: { page: CampaignPage }) {
         ))}
       </div>
       <p className="site-container price-note">
-        Giá chỉ là khung tham khảo. Vui lòng gửi lịch trình để Bảo Trang xác nhận xe, giờ đi và chi phí theo chuyến.
+        Giá chỉ là khung tham khảo cho xe riêng / bao chuyến. Hãy gửi điểm đón, điểm trả, giờ đi, số khách và vali để
+        Bảo Trang kiểm tra chuyến thực tế.
       </p>
     </section>
   );
@@ -157,15 +158,15 @@ export function CampaignLandingContent({ page }: { page: CampaignPage }) {
   const isXeGhepPage = page.id === "xeGhep";
   const xeGhepFormCopy = {
     title: "Kiểm tra xe ghép Đà Nẵng - Quảng Trị",
-    description: "Gửi lịch trình để Bảo Trang kiểm tra chuyến ghép phù hợp, chỗ trống và chi phí dự kiến.",
-    submitLabel: "Kiểm tra xe ghép",
+    description: "Gửi điểm đón/trả, giờ đi, số khách và vali để kiểm tra chuyến ghép hoặc giá bao xe.",
+    submitLabel: "Hỏi chỗ / hỏi giá",
     serviceType: "Xe ghép Đà Nẵng - Quảng Trị",
     formName: "xe_ghep_trip_request",
-    submittingMessage: "Đang gửi yêu cầu kiểm tra xe ghép, giữ máy một chút nhé.",
-    successMessage: "Đã nhận yêu cầu kiểm tra xe ghép. Bảo Trang sẽ gọi lại qua SĐT/Zalo bạn vừa để lại.",
-    dialogTitle: "Đã nhận yêu cầu kiểm tra xe ghép",
+    submittingMessage: "Đang gửi lịch trình, giữ máy một chút nhé.",
+    successMessage: "Đã nhận lịch trình. Bảo Trang sẽ gọi lại qua SĐT/Zalo bạn vừa để lại.",
+    dialogTitle: "Đã nhận lịch trình",
     dialogDescription:
-      "Bảo Trang sẽ gọi lại qua SĐT/Zalo để kiểm tra chuyến ghép phù hợp, giờ đón và chi phí dự kiến.",
+      "Bảo Trang sẽ gọi lại qua SĐT/Zalo để kiểm tra chỗ ghép, giờ đón hoặc phương án bao xe phù hợp hơn.",
   };
 
   return (

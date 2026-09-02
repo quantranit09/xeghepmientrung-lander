@@ -107,8 +107,8 @@ export function ArticleDatXeRiengDaNangQuangBinhContent() {
       </p>
       <p>
         Để nhận giá nhanh, bạn nên gửi một tin nhắn ngắn theo mẫu: “Đón tại Đà Nẵng, trả Đồng Hới, đi ngày..., giờ...,
-        4 khách, 3 vali, muốn xe 7 chỗ”. Với đủ dữ liệu như vậy, đội ngũ tư vấn có thể xác định loại xe phù hợp và phản
-        hồi khung giá sát hơn so với yêu cầu quá ngắn.
+        4 khách, 3 vali, muốn xe 7 chỗ”. Với đủ dữ liệu như vậy, Bảo Trang có thể xác định loại xe và phản hồi khung
+        giá sát hơn so với yêu cầu quá ngắn.
       </p>
       <p>
         Nếu cần đi khứ hồi, chờ nhiều giờ, ghé thêm điểm hoặc đi sâu vào khu vực ngoài trung tâm, hãy báo ngay từ đầu.

@@ -4,12 +4,12 @@ export function ArticleMeoDatXeHopDongTietKiemContent() {
   return (
     <ArticleShell
       title="Mẹo đặt xe hợp đồng tiết kiệm khi đi liên tỉnh"
-      summary="Muốn tối ưu chi phí xe hợp đồng, hãy gom lịch trình rõ ràng, chọn giờ đi hợp lý và báo trước các điểm dừng."
+      summary="Muốn hỏi giá xe hợp đồng đỡ phát sinh, hãy gom lịch trình rõ, chọn giờ đi hợp lý và báo trước các điểm dừng."
     >
       <div className="article-callout">
         <p>
           Muốn đặt xe hợp đồng tiết kiệm, đừng chỉ hỏi “giá bao nhiêu”. Hãy gửi đủ lịch trình, số khách, hành lý, giờ đi
-          và nhu cầu chờ để tư vấn viên chọn đúng xe, báo đúng chuyến và tránh phát sinh không cần thiết.
+          và nhu cầu chờ để Bảo Trang chọn đúng xe, báo đúng chuyến và tránh phát sinh không cần thiết.
         </p>
       </div>
       <h2>Chuẩn bị đủ thông tin</h2>

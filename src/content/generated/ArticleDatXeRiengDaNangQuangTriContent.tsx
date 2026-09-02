@@ -4,23 +4,24 @@ export function ArticleDatXeRiengDaNangQuangTriContent() {
   return (
     <ArticleShell
       title="Đặt xe riêng Đà Nẵng ⇄ Quảng Trị"
-      summary="Chặng Đà Nẵng ⇄ Quảng Trị phù hợp với xe riêng 4 chỗ, 5 chỗ hoặc 7 chỗ khi bạn cần chủ động giờ đi, điểm đón trả và hành lý."
+      summary="Chặng Đà Nẵng ⇄ Quảng Trị nên hỏi xe riêng khi bạn cần đón đúng nơi, trả đúng địa chỉ và không muốn xoay theo lịch xe tuyến."
     >
       <div className="article-callout">
         <p>
-          Nếu cần đi Đà Nẵng ⇄ Quảng Trị đúng giờ, đón trả tận nơi và đi riêng theo nhóm của mình, xe riêng là lựa chọn
-          nên ưu tiên. Hãy gửi điểm đón, điểm trả, ngày giờ đi, số khách và hành lý để được tư vấn đúng loại xe ngay từ đầu.
+          Nếu chỉ cần giá thấp nhất, xe khách hoặc limousine theo tuyến có thể đủ dùng. Nhưng nếu bạn vừa hạ cánh ở Đà
+          Nẵng, đi cùng gia đình, nhiều vali, hoặc cần trả về đúng nhà ở Hải Lăng, Đông Hà, La Vang, xe riêng sẽ đỡ phải
+          chờ, chuyển điểm và gọi thêm xe đoạn cuối.
         </p>
       </div>
       <h2>Khi nào nên chọn xe riêng?</h2>
       <p>
-        Xe riêng phù hợp với khách công tác, gia đình, nhóm nhỏ hoặc khách cần đón trả tận nơi tại sân bay, khách sạn,
-        Đông Hà, Cam Lộ, Gio Linh, Cửa Việt và các khu vực lân cận.
+        Xe riêng hợp với khách công tác, gia đình, nhóm nhỏ hoặc khách cần đón tại sân bay, ga, khách sạn rồi đi thẳng
+        về Quảng Trị. Điểm trả có thể là Hải Lăng, TX Quảng Trị, Đông Hà, Cam Lộ, Gio Linh, Cửa Việt, Vĩnh Linh, Lao
+        Bảo hoặc một địa chỉ nhà riêng cụ thể.
       </p>
       <p>
-        So với xe khách tuyến cố định, xe riêng giúp bạn chủ động giờ xuất phát, không phải di chuyển ra bến, đi cùng
-        đúng nhóm của mình và có thể dừng nghỉ theo nhu cầu thực tế. Lựa chọn này đặc biệt phù hợp nếu chuyến đi có trẻ em,
-        người lớn tuổi, nhiều hành lý, lịch bay sớm hoặc cần đến đúng giờ cho công việc, khám bệnh, sự kiện gia đình.
+        Khác với xe tuyến cố định, xe riêng đi theo giờ đã hẹn và phục vụ đúng nhóm của bạn. Điều này hữu ích khi có trẻ
+        em, người lớn tuổi, nhiều hành lý, lịch bay sớm, lịch khám bệnh hoặc một việc gia đình không tiện trễ giờ.
       </p>
       <p>
         Với chặng Đà Nẵng ⇄ Quảng Trị, khách thường cần xe cho các điểm đón như sân bay Đà Nẵng, ga Đà Nẵng, khách sạn
@@ -30,15 +31,13 @@ export function ArticleDatXeRiengDaNangQuangTriContent() {
 
       <h2>Thời gian di chuyển và lịch trình nên chốt trước</h2>
       <p>
-        Thời gian di chuyển thường phụ thuộc vào điểm đón, điểm trả, khung giờ xuất phát và điều kiện giao thông. Với
-        các điểm phổ biến như Đà Nẵng đi Hải Lăng, TX Quảng Trị hoặc Đông Hà, khách nên gửi trước giờ cần có mặt để tư
-        vấn ngược lại giờ đón phù hợp. Nếu đi sân bay, nên tính thêm thời gian làm thủ tục, lấy hành lý và di chuyển từ
-        sảnh đến điểm đón.
+        Thời gian di chuyển không chỉ phụ thuộc vào quãng đường. Điểm đón trong trung tâm Đà Nẵng, sân bay, khách sạn
+        ven biển hay nhà riêng có thể khác nhau; điểm trả Hải Lăng cũng khác Đông Hà, Vĩnh Linh hoặc Lao Bảo. Nếu bạn
+        có giờ cần có mặt, hãy nói mốc giờ đó trước để Bảo Trang tính ngược giờ đón.
       </p>
       <p>
-        Khi đặt xe, nên ghi rõ chiều đi một chiều hay khứ hồi, có cần chờ hay không, có nhiều điểm dừng trên đường
-        không, và có phát sinh điểm ghé như Lăng Cô, Huế, La Vang, Cửa Việt hay Lao Bảo không. Những thông tin này giúp
-        tài xế chuẩn bị tuyến đường hợp lý và giúp báo giá sát hơn ngay từ đầu.
+        Khi đặt xe, nên ghi rõ một chiều hay khứ hồi, có cần xe chờ không, có ghé Lăng Cô, Huế, La Vang, Cửa Việt hay
+        Lao Bảo không. Những chi tiết tưởng nhỏ này ảnh hưởng trực tiếp đến giờ chạy, thời gian chờ và giá chuyến.
       </p>
 
       <h2>Chọn xe 4 chỗ, 5 chỗ hay 7 chỗ</h2>
@@ -84,10 +83,10 @@ export function ArticleDatXeRiengDaNangQuangTriContent() {
 
       <h2>Giá xe riêng được tính theo yếu tố nào?</h2>
       <p>
-        Giá chặng Đà Nẵng ⇄ Quảng Trị không nên chỉ nhìn theo số km. Một chuyến xe thực tế còn phụ thuộc vào loại xe,
-        điểm đón trả cụ thể, giờ xuất phát, chiều đi, thời gian chờ, số điểm ghé, hành lý và lịch trình có đi sâu vào
-        khu vực xa trung tâm hay không. Vì vậy, website hiển thị giá tham khảo để khách có khung dự kiến, còn giá cuối
-        cùng nên được xác nhận lại qua hotline hoặc Zalo trước chuyến.
+        Trên cùng tuyến Đà Nẵng ⇄ Quảng Trị, giá xe ghép, limousine và xe riêng sẽ khác nhau vì cách phục vụ khác nhau.
+        Xe riêng tính theo chuyến, nên giá phụ thuộc vào loại xe, điểm đón trả cụ thể, giờ xuất phát, chiều đi, thời
+        gian chờ, số điểm ghé, hành lý và việc có đi sâu vào khu vực xa trung tâm hay không. Website chỉ nên xem như
+        khung tham khảo; giá cuối cùng cần xác nhận lại qua hotline hoặc Zalo trước chuyến.
       </p>
       <p>
         Để nhận báo giá nhanh, bạn chỉ cần gửi bốn nhóm thông tin: điểm đón, điểm trả, ngày giờ đi, số khách và hành lý.
@@ -121,10 +120,9 @@ export function ArticleDatXeRiengDaNangQuangTriContent() {
 
       <h2>Quy trình đặt xe Đà Nẵng ⇄ Quảng Trị</h2>
       <p>
-        Quy trình đặt xe nên đơn giản nhưng cần đủ thông tin. Bước đầu tiên là gửi lịch trình qua form, hotline hoặc
-        Zalo. Sau đó, Bảo Trang Transport xác nhận điểm đón trả, loại xe phù hợp và báo giá theo chuyến. Khi khách đồng
-        ý, đội ngũ điều phối sắp xếp xe và tài xế theo giờ đã chốt. Trước giờ đi, khách nên giữ điện thoại liên lạc để
-        tài xế dễ xác nhận vị trí đón.
+        Cách đặt xe gọn nhất là gửi lịch trình qua form, hotline hoặc Zalo. Bảo Trang Transport xác nhận điểm đón trả,
+        gợi ý loại xe và báo giá theo chuyến. Khi khách đồng ý, xe và tài xế được sắp theo giờ đã chốt. Trước giờ đi,
+        khách nên giữ điện thoại mở chuông để tài xế xác nhận vị trí đón.
       </p>
       <p>
         Nếu lịch trình thay đổi, nên báo càng sớm càng tốt. Các thay đổi như đổi giờ đón, thêm điểm ghé, thêm hành lý,
@@ -154,15 +152,15 @@ export function ArticleDatXeRiengDaNangQuangTriContent() {
       </p>
       <p>
         Khi cần tư vấn nhanh, cách hiệu quả nhất là gửi một tin nhắn ngắn theo mẫu: “Đón tại Đà Nẵng, trả Đông Hà, đi
-        ngày 26/08, khoảng 3 khách, 2 vali, muốn xe 7 chỗ”. Với đủ thông tin như vậy, đội ngũ tư vấn có thể phản hồi
-        đúng loại xe và khung giá nhanh hơn.
+        ngày 26/08, khoảng 3 khách, 2 vali, muốn xe 7 chỗ”. Với đủ thông tin như vậy, Bảo Trang có thể phản hồi đúng
+        loại xe và khung giá nhanh hơn.
       </p>
 
       <h2>Đọc thêm trước khi đặt xe</h2>
       <p>
         Nếu đi cùng trẻ em hoặc người lớn tuổi, bài{" "}
         <a href="/bai-viet/thue-xe-rieng-an-toan-cho-gia-dinh">thuê xe riêng an toàn cho gia đình</a> sẽ giúp bạn chuẩn
-        bị kỹ hơn. Nếu muốn tối ưu chi phí, xem thêm{" "}
+        bị kỹ hơn. Nếu muốn hỏi giá rõ và đỡ phát sinh sau, xem thêm{" "}
         <a href="/bai-viet/meo-dat-xe-hop-dong-tiet-kiem">mẹo đặt xe hợp đồng tiết kiệm</a> để biết cách gửi thông tin
         báo giá rõ ràng và hạn chế phát sinh.
       </p>

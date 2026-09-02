@@ -4,23 +4,25 @@ export function ArticleSoSanhXeKhachVaXeRiengContent() {
   return (
     <ArticleShell
       title="So sánh xe khách và xe riêng"
-      summary="Xe khách phù hợp khi ưu tiên chi phí thấp; xe riêng phù hợp khi cần chủ động thời gian, không gian riêng và đón trả theo lịch trình."
+      summary="Xe khách, limousine, xe ghép và xe riêng khác nhau ở giá, điểm đón, giờ chạy, hành lý và mức chủ động của cả chuyến."
     >
       <div className="article-callout">
         <p>
-          Nếu ưu tiên chi phí thấp và lịch trình đơn giản, xe khách có thể phù hợp. Nếu cần đón trả tận nơi, đi đúng giờ,
-          có trẻ em, người lớn tuổi, nhiều hành lý hoặc cần dừng theo nhu cầu riêng, xe riêng thường thuận tiện hơn.
+          Nếu đi một mình, ít đồ và điểm đón/trả gần bến hoặc văn phòng nhà xe, xe khách hoặc limousine thường tiết
+          kiệm hơn. Nếu cần đón tận nơi, trả đúng nhà, đi cùng trẻ em/người lớn tuổi hoặc có nhiều vali, xe riêng thường
+          đỡ mệt hơn dù giá nhìn ban đầu cao hơn.
         </p>
       </div>
-      <h2>Xe khách</h2>
+      <h2>Xe khách, limousine và xe ghép</h2>
       <p>
-        Xe khách thường có giờ chạy cố định và cần ra bến hoặc điểm đón tập trung. Đây là lựa chọn hợp lý
-        nếu lịch trình đơn giản và hành lý gọn.
+        Xe khách và limousine thường có giờ chạy cố định, giá theo vé và đón ở bến, văn phòng hoặc điểm hẹn dọc tuyến.
+        Xe ghép theo ghế thì gần hơn với nhu cầu “xe nhỏ, giá mềm”, nhưng vẫn cần kiểm tra chỗ, giờ gom khách và điểm
+        trả có thuận đường không.
       </p>
       <p>
-        Ưu điểm lớn nhất của xe khách là ngân sách dễ dự đoán cho từng người. Nếu bạn đi một mình, không vội, ít hành lý
-        và điểm đến gần bến hoặc điểm trả khách, xe khách có thể là lựa chọn tiết kiệm. Tuy nhiên, xe khách thường không
-        linh hoạt về giờ, điểm dừng và điểm trả cuối cùng.
+        Ưu điểm lớn nhất của các phương án này là ngân sách dễ tính cho từng người. Nếu bạn đi một mình, không vội, ít
+        hành lý và điểm đến gần nơi xe trả khách, đây có thể là lựa chọn hợp lý. Điểm cần hỏi kỹ là giờ chạy thật, điểm
+        đón/trả cụ thể, quy định hành lý và chi phí đi tiếp về địa chỉ cuối.
       </p>
       <p>
         Với chặng liên tỉnh, bạn cũng cần tính thêm chi phí và thời gian di chuyển từ nhà, khách sạn hoặc sân bay ra điểm
@@ -47,30 +49,30 @@ export function ArticleSoSanhXeKhachVaXeRiengContent() {
         <thead>
           <tr>
             <th>Tiêu chí</th>
-            <th>Xe khách</th>
+            <th>Xe khách / xe ghép</th>
             <th>Xe riêng</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Giờ đi</td>
-            <td>Theo lịch tuyến cố định</td>
-            <td>Chủ động theo lịch đã hẹn</td>
+            <td>Theo lịch tuyến hoặc giờ gom khách</td>
+            <td>Theo giờ đã hẹn với nhóm của bạn</td>
           </tr>
           <tr>
             <td>Điểm đón trả</td>
-            <td>Bến xe hoặc điểm đón tập trung</td>
+            <td>Bến xe, văn phòng, điểm hẹn hoặc điểm thuận đường</td>
             <td>Nhà riêng, sân bay, khách sạn, địa chỉ cụ thể</td>
           </tr>
           <tr>
             <td>Riêng tư</td>
-            <td>Đi chung với nhiều khách</td>
+            <td>Đi chung với khách khác</td>
             <td>Đi riêng theo nhóm</td>
           </tr>
           <tr>
             <td>Hành lý</td>
             <td>Phụ thuộc quy định nhà xe</td>
-            <td>Chủ động chọn xe theo số vali</td>
+            <td>Chọn xe theo số vali, thùng hàng, xe đẩy</td>
           </tr>
           <tr>
             <td>Gia đình/người lớn tuổi</td>
@@ -81,9 +83,9 @@ export function ArticleSoSanhXeKhachVaXeRiengContent() {
       </table>
       <h2>Nên chọn phương án nào?</h2>
       <ul>
-        <li>Chọn xe khách nếu bạn ưu tiên ngân sách và không cần linh hoạt.</li>
-        <li>Chọn xe riêng nếu bạn cần đúng giờ, riêng tư, hỗ trợ hành lý và điểm đón trả cụ thể.</li>
-        <li>Với nhóm gia đình hoặc công tác, xe riêng thường tối ưu hơn về trải nghiệm và thời gian.</li>
+        <li>Chọn xe khách/limousine nếu bạn ưu tiên giá vé thấp và điểm đón/trả thuận tiện.</li>
+        <li>Chọn xe ghép nếu đi ít người, hành lý gọn và chấp nhận giờ gom khách.</li>
+        <li>Chọn xe riêng nếu bạn cần đúng giờ, riêng tư, nhiều hành lý hoặc trả đúng địa chỉ.</li>
       </ul>
       <p>
         Cách chọn thực tế là nhìn vào toàn bộ chuyến đi chứ không chỉ nhìn giá vé. Nếu bạn phải ra bến, chờ xe, chuyển xe
@@ -92,9 +94,9 @@ export function ArticleSoSanhXeKhachVaXeRiengContent() {
       </p>
       <h2>Khi nào xe riêng đáng tiền hơn?</h2>
       <p>
-        Xe riêng đáng cân nhắc khi chuyến đi có ít nhất một yếu tố sau: cần đúng giờ, có nhiều hành lý, cần đón trả tận
-        nơi, đi cùng gia đình, lịch trình có điểm ghé, hoặc điểm đến cách xa bến xe. Với các tuyến như Đà Nẵng đi Đông
-        Hà, Hải Lăng, Gio Linh, Vĩnh Linh, Lao Bảo, Đồng Hới hoặc Huế, điểm trả cụ thể tạo ra khác biệt lớn.
+        Xe riêng đáng cân nhắc khi chuyến đi có ít nhất một yếu tố sau: cần đúng giờ, nhiều hành lý, đón trả tận nơi,
+        đi cùng gia đình, lịch trình có điểm ghé, hoặc điểm đến cách xa bến/văn phòng nhà xe. Với các tuyến như Đà Nẵng
+        đi Đông Hà, Hải Lăng, Gio Linh, Vĩnh Linh, Lao Bảo, Đồng Hới hoặc Huế, điểm trả cụ thể tạo ra khác biệt lớn.
       </p>
       <p>
         Nếu đi công tác, xe riêng giúp bạn giữ được thời gian và không gian trao đổi công việc. Nếu đi du lịch hoặc về
@@ -103,9 +105,9 @@ export function ArticleSoSanhXeKhachVaXeRiengContent() {
       </p>
       <h2>Khi nào xe khách vẫn hợp lý?</h2>
       <p>
-        Xe khách vẫn là lựa chọn tốt nếu bạn đi một mình, hành lý gọn, không có yêu cầu đặc biệt, điểm đón/trả gần nơi
-        bạn ở và thời gian không quá gấp. Đây cũng là phương án phù hợp nếu ngân sách là tiêu chí số một và bạn đã quen
-        tuyến.
+        Xe khách, limousine hoặc xe ghép vẫn hợp lý nếu bạn đi một mình, hành lý gọn, không có yêu cầu đặc biệt, điểm
+        đón/trả gần nơi bạn ở và thời gian không quá gấp. Đây cũng là phương án phù hợp nếu ngân sách là tiêu chí số một
+        và bạn đã quen tuyến.
       </p>
       <p>
         Tuy nhiên, nên kiểm tra kỹ điểm đón, điểm trả, giờ chạy, quy định hành lý và phương án đi tiếp sau khi xuống xe.

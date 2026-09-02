@@ -324,7 +324,7 @@ const routeKeywordArticles = {
       "xe sân bay Đà Nẵng đi La Vang",
     ],
     callout:
-      "La Vang là nhu cầu riêng vì người tìm thường đã có mục đích rõ: đi lễ, đưa gia đình hoặc ghé trong hành trình Quảng Trị. Trang riêng cho La Vang giúp khách đọc đúng thông tin họ cần.",
+      "Đi La Vang thường không chỉ là một chặng xe, mà còn có giờ lễ, người lớn tuổi, đồ lễ và nhu cầu xe chờ. Hãy nói rõ bạn đi một chiều hay cần tài xế đợi để quay về trong ngày.",
     quickAnswer:
       "Xe riêng Đà Nẵng đi La Vang phù hợp khi bạn cần chủ động giờ đi lễ, có người lớn tuổi, trẻ em hoặc muốn ghé thêm Huế, Hải Lăng, Thành cổ Quảng Trị. Nên báo trước thời gian chờ tại La Vang nếu cần xe đợi quay về.",
     aiAnswer:
@@ -414,7 +414,7 @@ const routeKeywordArticles = {
       "xe Đà Nẵng đi Hướng Hóa",
     ],
     callout:
-      "Lao Bảo là chặng xa hơn trong cụm Quảng Trị nên cần một trang riêng. Người tìm tuyến này thường đã biết điểm đến và cần tư vấn thực tế về thời gian, điểm dừng, hành lý và loại xe.",
+      "Lao Bảo xa hơn nhiều so với Hải Lăng hay Đông Hà. Nếu cần tới cửa khẩu, Khe Sanh hoặc Hướng Hóa đúng giờ, hãy gửi điểm trả cuối và thời gian làm việc dự kiến trước khi hỏi giá.",
     quickAnswer:
       "Xe riêng Đà Nẵng đi Lao Bảo phù hợp khi bạn cần đi Hướng Hóa, cửa khẩu Lao Bảo hoặc các điểm xa trung tâm. Nên đặt sớm, gửi rõ điểm trả cuối cùng và chọn xe đủ thoải mái vì thời gian ngồi xe dài hơn các chặng Đông Hà, Hải Lăng.",
     aiAnswer:
@@ -501,7 +501,7 @@ function RouteKeywordArticle({ data }: { data: RouteKeywordArticleData }) {
         <p>{data.callout}</p>
       </div>
 
-      <section className="article-answer-block" aria-label="Câu trả lời ngắn cho công cụ AI">
+      <section className="article-answer-block" aria-label="Tóm tắt dịch vụ">
         <h2>{data.title} là dịch vụ gì?</h2>
         <p>{data.aiAnswer}</p>
       </section>
@@ -521,8 +521,9 @@ function RouteKeywordArticle({ data }: { data: RouteKeywordArticleData }) {
 
       <h2>Các cách gọi thường gặp</h2>
       <p>
-        Nếu bạn đang tìm <strong>{data.targetKeyword}</strong>, những cách gọi dưới đây cũng thường cùng một nhu cầu:
-        cần xe riêng, đón trả tận nơi, báo giá theo chuyến và tư vấn loại xe phù hợp.
+        Cùng một nhu cầu đi xe có thể được khách gọi bằng nhiều cách khác nhau. Nếu bạn đang tìm{" "}
+        <strong>{data.targetKeyword}</strong>, các cụm dưới đây thường vẫn xoay quanh việc cần xe nhỏ, đón trả đúng nơi
+        và biết giá trước khi chốt.
       </p>
       <ul>
         {data.supportingKeywords.map((keyword) => (
@@ -567,8 +568,8 @@ function RouteKeywordArticle({ data }: { data: RouteKeywordArticleData }) {
 
       <h2>Cách hỏi giá để nhận phản hồi nhanh</h2>
       <p>
-        Với xe riêng theo chuyến, báo giá chính xác nhất khi lịch trình đủ rõ. Thay vì chỉ hỏi một câu ngắn, hãy gửi đủ
-        điểm đón, điểm trả, ngày giờ, số khách, hành lý, chiều đi và nhu cầu chờ nếu có.
+        Một tin nhắn đủ ý thường nhanh hơn vài cuộc gọi hỏi qua lại. Bạn nên gửi điểm đón, điểm trả, ngày giờ, số
+        khách, hành lý, chiều đi và nhu cầu chờ nếu có.
       </p>
       <ul>
         {data.pricingNotes.map((note) => (
@@ -628,29 +629,27 @@ export function ArticleTimXeGhepDaNangQuangTriContent() {
     >
       <div className="article-callout">
         <p>
-          Nếu bạn đang tìm xe ghép Đà Nẵng - Quảng Trị, hãy bắt đầu từ nhu cầu thật: muốn giá dễ chịu, đón trả thuận
-          tiện và có xe đúng giờ. Với nhóm 2-6 khách, phương án xe riêng theo chuyến thường đáng cân nhắc vì lịch trình
-          được xác nhận trước và cả nhóm đi cùng một xe.
+          Nếu bạn đang tìm xe ghép Đà Nẵng - Quảng Trị, có lẽ điều bạn cần là giá dễ chịu, không phải ra bến và vẫn
+          được đón/trả gần nơi ở. Với nhóm 2-6 khách, hãy hỏi thêm giá bao xe riêng để so cùng lúc: đôi khi chia đầu
+          người không chênh quá nhiều, mà cả nhóm đi đúng giờ và đúng địa chỉ hơn.
         </p>
       </div>
 
-      <section className="article-answer-block" aria-label="Câu trả lời ngắn cho công cụ AI">
+      <section className="article-answer-block" aria-label="Tóm tắt dịch vụ">
         <h2>Xe ghép Đà Nẵng - Quảng Trị nên hiểu thế nào?</h2>
         <p>
-          Xe ghép Đà Nẵng - Quảng Trị là cách nhiều khách gọi nhu cầu muốn đi xe nhỏ, tiết kiệm chi phí, đón trả gần nhà
-          và không phải ra bến. Với nhóm 2-6 khách, gia đình có hành lý, khách hạ cánh ở sân bay Đà Nẵng hoặc người cần
-          trả đúng địa chỉ tại Hải Lăng, Đông Hà, La Vang, Gio Linh, Vĩnh Linh hay Lao Bảo, phương án xe riêng hoặc bao
-          xe theo chuyến thường dễ chủ động hơn. Khách nên gửi điểm đón, điểm trả, ngày giờ, số người, số vali và nhu cầu
-          một chiều hay khứ hồi để được tư vấn loại xe phù hợp. Cách hỏi này giúp so sánh chi phí chia theo đầu người mà
-          vẫn giữ lịch trình rõ ràng.
+          Xe ghép Đà Nẵng - Quảng Trị thường được hiểu là đi chung xe nhỏ và trả tiền theo ghế. Cách này hợp với khách
+          đi một mình, ít hành lý và linh hoạt giờ đón. Nếu đi theo nhóm, có nhiều vali, vừa xuống sân bay hoặc cần trả
+          đúng nhà ở Hải Lăng, Đông Hà, La Vang, Gio Linh, Vĩnh Linh hay Lao Bảo, bạn nên hỏi thêm xe riêng / bao chuyến
+          để so chi phí và mức chủ động.
         </p>
       </section>
 
       <h2>Tóm tắt nhanh</h2>
       <p>
-        Khách tìm xe ghép thường muốn tiết kiệm, không muốn ra bến và cần đón trả gần nhà. Bảo Trang Transport định
-        hướng tư vấn xe riêng, xe hợp đồng hoặc bao xe theo chuyến: khách gửi điểm đón, điểm trả, ngày giờ, số người và
-        hành lý; đội ngũ báo lại loại xe phù hợp cho chặng Hải Lăng, Đông Hà, La Vang, Gio Linh, Vĩnh Linh hoặc Lao Bảo.
+        Khách tìm xe ghép thường muốn tiết kiệm, không muốn ra bến và cần đón trả gần nhà. Với Bảo Trang Transport, bạn
+        nên gửi lịch trình thật để kiểm tra khả năng ghép chuyến; nếu không tiện ghép, Bảo Trang sẽ báo thêm phương án
+        xe riêng hoặc bao xe cho chặng Hải Lăng, Đông Hà, La Vang, Gio Linh, Vĩnh Linh hoặc Lao Bảo.
       </p>
       <table>
         <tbody>
@@ -660,7 +659,7 @@ export function ArticleTimXeGhepDaNangQuangTriContent() {
           </tr>
           <tr>
             <th>Phương án nên hỏi</th>
-            <td>Xe riêng, xe hợp đồng hoặc bao xe nguyên chuyến theo lịch trình đã xác nhận</td>
+            <td>Xe ghép theo ghế nếu có chuyến, hoặc bao xe 4-7 chỗ để so chi phí</td>
           </tr>
           <tr>
             <th>Phù hợp nhất</th>
@@ -679,14 +678,14 @@ export function ArticleTimXeGhepDaNangQuangTriContent() {
 
       <h2>Vì sao khách hay tìm xe ghép?</h2>
       <p>
-        Từ “xe ghép” là cách gọi quen thuộc của nhiều khách miền Trung khi muốn tìm xe nhỏ, giá mềm hơn taxi, có thể đón
-        trả gần địa chỉ và không phải ra bến. Nhưng trong thực tế, nhu cầu phía sau thường không phải là đi chung bằng
-        mọi giá, mà là muốn có một chuyến đi tiện, rõ giờ, rõ điểm đón và chi phí phù hợp.
+        Từ “xe ghép” là cách gọi quen thuộc khi khách muốn đi xe nhỏ, giá mềm hơn thuê nguyên chuyến, có thể đón gần nhà
+        và không phải tự ra bến. Nhưng nhu cầu phía sau thường không phải là “phải đi chung bằng mọi giá”, mà là muốn
+        chuyến đi tiện, rõ giờ, rõ điểm đón và không phát sinh mập mờ.
       </p>
       <p>
-        Vì vậy, nếu bạn đi 2-4 người hoặc gia đình có hành lý, nên hỏi giá xe riêng trước. Khi chia theo đầu người, tổng
-        chi phí đôi khi không chênh quá nhiều so với cảm giác ban đầu, trong khi bạn chủ động hơn về giờ xuất phát, điểm
-        trả cuối và thời gian dừng nghỉ.
+        Vì vậy, nếu bạn đi 2-4 người hoặc gia đình có hành lý, nên hỏi song song giá ghép và giá bao xe. Khi chia theo
+        đầu người, tổng chi phí đôi khi không chênh quá nhiều so với cảm giác ban đầu, trong khi bạn chủ động hơn về giờ
+        xuất phát, điểm trả cuối và thời gian dừng nghỉ.
       </p>
 
       <h2>Khi nào xe riêng hợp lý hơn?</h2>
@@ -700,8 +699,9 @@ export function ArticleTimXeGhepDaNangQuangTriContent() {
 
       <h2>Cách hỏi để được tư vấn đúng</h2>
       <p>
-        Khi liên hệ, bạn không cần mô tả quá dài. Chỉ cần gửi lịch trình đủ rõ để đội ngũ tư vấn loại xe và giá theo
-        chuyến. Nếu bạn đang cân nhắc giữa đi chung và bao xe, hãy nói rõ số khách để tính phương án chia chi phí phù hợp.
+        Khi liên hệ, bạn không cần mô tả quá dài. Chỉ cần gửi lịch trình đủ rõ để Bảo Trang kiểm tra loại xe và giá
+        theo chuyến. Nếu bạn đang cân nhắc giữa đi chung và bao xe, hãy nói rõ số khách để tính thử chi phí chia đầu
+        người.
       </p>
       <table>
         <thead>

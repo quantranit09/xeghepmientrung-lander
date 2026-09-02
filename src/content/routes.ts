@@ -107,7 +107,7 @@ function serviceJsonLd() {
     email: site.email,
     priceRange: "Báo giá theo chuyến",
     description:
-      "Xe riêng Đà Nẵng - Quảng Trị, sân bay Đà Nẵng đi Hải Lăng, Đông Hà, La Vang, Lao Bảo bằng xe 4 chỗ, 5 chỗ, 7 chỗ, đón trả tận nơi theo chuyến.",
+      "Xe riêng / bao chuyến từ Đà Nẵng về Hải Lăng, Đông Hà, La Vang, Lao Bảo; đón sân bay, khách sạn, nhà riêng bằng xe 4 chỗ, xe điện 5 chỗ, 7 chỗ hoặc 16 chỗ khi đặt sớm.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Đà Nẵng",
@@ -248,10 +248,10 @@ function faqJsonLd() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "Dịch vụ tính giá như thế nào?",
+        name: "Giá xe riêng tính theo những gì?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Dịch vụ báo giá theo chuyến xe riêng hoặc xe hợp đồng, dựa trên điểm đón trả, loại xe, giờ đi và lịch trình thực tế.",
+          text: "Giá được tính theo chuyến, dựa trên điểm đón, điểm trả cuối, loại xe, giờ đi, chiều đi, thời gian chờ, số điểm ghé và hành lý.",
         },
       },
       {
@@ -259,7 +259,7 @@ function faqJsonLd() {
         name: "Có xe 4 chỗ, 5 chỗ và 7 chỗ không?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Có. Xe con 4 chỗ, 5 chỗ và 7 chỗ là lựa chọn chính; xe 16 chỗ có thể sắp xếp thêm cho nhóm đông khi cần.",
+          text: "Có. Xe 4 chỗ, xe điện 5 chỗ và xe 7 chỗ là các lựa chọn chính; xe 16 chỗ cần hỏi trước để kiểm tra lịch.",
         },
       },
       {
@@ -267,7 +267,7 @@ function faqJsonLd() {
         name: "Có đón sân bay và khách sạn không?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Có. Dịch vụ hỗ trợ đưa đón sân bay, khách sạn, nhà riêng và các điểm du lịch theo lịch trình đã xác nhận.",
+          text: "Có. Khách có thể hẹn đón ở sân bay Đà Nẵng, ga, khách sạn, nhà riêng hoặc điểm hẹn dễ nhận diện; nếu đi sân bay nên gửi thêm giờ hạ cánh.",
         },
       },
     ],
@@ -460,91 +460,91 @@ const articles = {
   "dat-xe-rieng-da-nang-quang-tri": {
     title: "Đặt xe riêng Đà Nẵng - Quảng Trị | Xe 4-7 chỗ",
     description:
-      "Hướng dẫn đặt xe riêng Đà Nẵng - Quảng Trị theo chuyến, chọn xe 4 chỗ, 5 chỗ, 7 chỗ, đón trả tận nơi và xác nhận lịch trình rõ ràng. Có xe 16 chỗ khi cần.",
+      "Cách đặt xe riêng Đà Nẵng - Quảng Trị cho chuyến đón sân bay, về Hải Lăng, Đông Hà, La Vang, Lao Bảo; chọn xe theo khách, vali và giờ cần có mặt.",
     route: "/bai-viet/dat-xe-rieng-da-nang-quang-tri",
     priority: 0.8,
   },
   "thue-xe-da-nang-di-hai-lang": {
     title: "Thuê xe Đà Nẵng đi Hải Lăng | Xe riêng 4-7 chỗ",
     description:
-      "Thuê xe Đà Nẵng đi Hải Lăng theo chuyến, đón tận nơi tại sân bay, khách sạn, nhà riêng. Xe 4 chỗ, 5 chỗ, 7 chỗ, báo giá rõ trước khi đi.",
+      "Thuê xe Đà Nẵng đi Hải Lăng, Diên Sanh, Mỹ Chánh, La Vang; đón sân bay, khách sạn, nhà riêng và chốt giá theo điểm trả thật.",
     route: "/bai-viet/thue-xe-da-nang-di-hai-lang",
     priority: 0.75,
   },
   "xe-da-nang-di-dong-ha": {
     title: "Xe Đà Nẵng đi Đông Hà | Đón trả tận nơi",
     description:
-      "Đặt xe Đà Nẵng đi Đông Hà bằng xe riêng 4 chỗ, 5 chỗ, 7 chỗ. Phù hợp công tác, gia đình, đón sân bay và trả đúng địa chỉ tại Đông Hà.",
+      "Xe riêng Đà Nẵng đi Đông Hà cho chuyến công tác, khám bệnh, về quê hoặc đón sân bay; gửi giờ cần đến, địa chỉ trả và số vali.",
     route: "/bai-viet/xe-da-nang-di-dong-ha",
     priority: 0.75,
   },
   "xe-san-bay-da-nang-di-quang-tri": {
     title: "Xe sân bay Đà Nẵng đi Quảng Trị | Xe riêng",
     description:
-      "Đặt xe sân bay Đà Nẵng đi Quảng Trị, Hải Lăng, Đông Hà, La Vang, Lao Bảo. Tài xế theo giờ bay, đón sảnh, xe riêng 4-7 chỗ, báo giá trước.",
+      "Đặt xe sân bay Đà Nẵng về Hải Lăng, Đông Hà, La Vang, Lao Bảo; gửi mã chuyến bay, giờ hạ cánh, số khách và vali để căn xe.",
     route: "/bai-viet/xe-san-bay-da-nang-di-quang-tri",
     priority: 0.75,
   },
   "tim-xe-ghep-da-nang-quang-tri": {
     title: "Tìm xe ghép Đà Nẵng - Quảng Trị? Gợi ý xe riêng",
     description:
-      "Nếu đang tìm xe ghép Đà Nẵng - Quảng Trị để tiết kiệm, hãy cân nhắc xe riêng hoặc bao xe theo chuyến cho nhóm 2-6 khách, đón trả theo lịch hẹn.",
+      "Đang tìm xe ghép Đà Nẵng - Quảng Trị? Cách hỏi chỗ, so giá ghép theo ghế với bao xe 4-7 chỗ khi đi nhóm hoặc có nhiều hành lý.",
     route: "/bai-viet/tim-xe-ghep-da-nang-quang-tri",
     priority: 0.72,
   },
   "xe-da-nang-di-la-vang": {
     title: "Xe Đà Nẵng đi La Vang | Xe riêng đi lễ",
     description:
-      "Đặt xe Đà Nẵng đi La Vang bằng xe riêng, phù hợp đi lễ, gia đình, nhóm nhỏ. Có thể ghé Huế, Hải Lăng, Thành cổ Quảng Trị theo lịch trình.",
+      "Xe riêng Đà Nẵng đi La Vang cho chuyến đi lễ cùng gia đình; hỏi trước nếu cần xe chờ, ghé Huế, Hải Lăng hoặc Thành cổ.",
     route: "/bai-viet/xe-da-nang-di-la-vang",
     priority: 0.7,
   },
   "xe-da-nang-di-lao-bao": {
     title: "Xe Đà Nẵng đi Lao Bảo | Xe riêng theo chuyến",
     description:
-      "Đặt xe Đà Nẵng đi Lao Bảo, Hướng Hóa bằng xe riêng 4 chỗ, 5 chỗ, 7 chỗ. Tư vấn giờ đi, điểm dừng, hành lý và báo giá theo chuyến.",
+      "Xe riêng Đà Nẵng đi Lao Bảo, Hướng Hóa, Khe Sanh; chặng xa nên gửi giờ cần đến, điểm dừng, hành lý và nhu cầu xe chờ.",
     route: "/bai-viet/xe-da-nang-di-lao-bao",
     priority: 0.7,
   },
   "dat-xe-rieng-da-nang-quang-binh": {
     title: "Đặt xe riêng Đà Nẵng - Quảng Bình | Transfer theo chuyến",
     description:
-      "Tư vấn đặt xe riêng Đà Nẵng - Quảng Bình, lựa chọn xe 4 chỗ, 5 chỗ, 7 chỗ cho chặng dài, hành lý và điểm dừng. Có xe 16 chỗ cho nhóm đông.",
+      "Đặt xe riêng Đà Nẵng - Quảng Bình, Lệ Thủy, Đồng Hới; chọn xe theo số khách, vali, điểm nghỉ và chặng ghé Huế/Quảng Trị.",
     route: "/bai-viet/dat-xe-rieng-da-nang-quang-binh",
     priority: 0.8,
   },
   "transfer-da-nang-hue": {
     title: "Transfer Đà Nẵng - Huế | Xe riêng sân bay, khách sạn",
     description:
-      "Dịch vụ transfer Đà Nẵng - Huế bằng xe riêng 4 chỗ, 5 chỗ, 7 chỗ, hỗ trợ sân bay, khách sạn và lịch trình trong ngày. Có xe 16 chỗ khi cần.",
+      "Transfer Đà Nẵng - Huế bằng xe riêng 4-7 chỗ: đón sân bay, khách sạn, ghé điểm trong ngày và báo giá theo lịch thật.",
     route: "/bai-viet/transfer-da-nang-hue",
     priority: 0.7,
   },
   "kinh-nghiem-thue-xe-rieng-mien-trung": {
     title: "Kinh nghiệm thuê xe riêng Đà Nẵng - Quảng Trị",
     description:
-      "Những điều cần chốt trước khi thuê xe riêng Đà Nẵng - Quảng Trị: loại xe, hành trình, phụ phí, thông tin tài xế và lịch trình.",
+      "Những điều nên chốt trước khi thuê xe riêng miền Trung: điểm trả cuối, giờ cần có mặt, xe chờ, phụ phí, số vali và thông tin tài xế.",
     route: "/bai-viet/kinh-nghiem-thue-xe-rieng-mien-trung",
     priority: 0.6,
   },
   "meo-dat-xe-hop-dong-tiet-kiem": {
     title: "Mẹo đặt xe hợp đồng tiết kiệm khi đi liên tỉnh",
     description:
-      "Cách chuẩn bị lịch trình, chọn loại xe, chốt giờ đi, điểm dừng và hành lý để nhận báo giá xe hợp đồng rõ ràng hơn.",
+      "Cách hỏi giá xe hợp đồng liên tỉnh đỡ phát sinh: gom lịch trình, nói rõ điểm ghé, giờ chờ, số khách, hành lý và nhu cầu hóa đơn.",
     route: "/bai-viet/meo-dat-xe-hop-dong-tiet-kiem",
     priority: 0.6,
   },
   "so-sanh-xe-khach-va-xe-rieng": {
     title: "So sánh xe khách và xe riêng | Chọn phương án phù hợp",
     description:
-      "So sánh xe khách và xe riêng 4 chỗ, 5 chỗ, 7 chỗ theo sự linh hoạt, riêng tư, hành lý, điểm đón trả và chi phí theo chuyến.",
+      "So sánh xe khách, limousine, xe ghép và xe riêng theo giá, điểm đón/trả, giờ chạy, hành lý và mức chủ động của chuyến đi.",
     route: "/bai-viet/so-sanh-xe-khach-va-xe-rieng",
     priority: 0.6,
   },
   "thue-xe-rieng-an-toan-cho-gia-dinh": {
     title: "Thuê xe riêng an toàn cho gia đình",
     description:
-      "Lưu ý khi thuê xe riêng cho gia đình có trẻ em, người lớn tuổi hoặc nhiều hành lý: chọn xe, chốt điểm nghỉ và chuẩn bị trước chuyến.",
+      "Lưu ý thuê xe riêng cho gia đình có trẻ em, người lớn tuổi hoặc nhiều vali: chọn xe rộng, chốt điểm nghỉ và chuẩn bị thuốc/nước trước chuyến.",
     route: "/bai-viet/thue-xe-rieng-an-toan-cho-gia-dinh",
     priority: 0.6,
   },
@@ -590,7 +590,7 @@ export const contentRoutes = {
     metadata: buildMetadata({
       title: "Bảo Trang Transport | Xe riêng 4-7 chỗ, đón trả tận nơi",
       description:
-        "Đặt xe riêng Đà Nẵng - Quảng Trị: sân bay Đà Nẵng đi Hải Lăng, Đông Hà, La Vang, Lao Bảo. Xe 4 chỗ, 5 chỗ, 7 chỗ, báo giá theo chuyến.",
+        "Đặt xe riêng Đà Nẵng - Quảng Trị: đón sân bay, khách sạn, nhà riêng về Hải Lăng, Đông Hà, La Vang, Lao Bảo. Báo giá theo chuyến.",
       canonical: canonicalPath("/"),
     }),
     jsonLd: [websiteJsonLd(), organizationJsonLd(), serviceJsonLd(), faqJsonLd()],

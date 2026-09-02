@@ -40,10 +40,12 @@ export function HomeContent() {
             <div className="hero-copy">
               <h1>
                 <span>Xe Đà Nẵng ⇄ Quảng Trị</span>
-                <strong>Đi riêng theo chuyến</strong>
+                <strong>Đón tận nơi, đi theo lịch của bạn</strong>
               </h1>
-              <p className="hero-copy__desktop">Đón trả tận nơi · Xe 4, 5, 7 chỗ · Có xe 16 chỗ khi cần</p>
-              <p className="hero-copy__mobile">Xe riêng 4, 5, 7 chỗ · Báo giá theo chuyến</p>
+              <p className="hero-copy__desktop">
+                Sân bay, khách sạn, nhà riêng · Về Hải Lăng, Đông Hà, La Vang, Lao Bảo
+              </p>
+              <p className="hero-copy__mobile">Xe riêng 4, 5, 7 chỗ · Đón sân bay, trả tận nơi</p>
             </div>
           </div>
 
@@ -78,24 +80,23 @@ export function HomeContent() {
               <span className="section-kicker section-kicker--plain">Tóm tắt dịch vụ</span>
               <h2>Bảo Trang Transport cung cấp dịch vụ gì?</h2>
               <p>
-                Bảo Trang Transport là dịch vụ xe riêng, xe hợp đồng và transfer theo chuyến cho khách cần đi từ Đà
-                Nẵng đến Quảng Trị, Hải Lăng, Đông Hà, La Vang, Lao Bảo, Huế hoặc Quảng Bình. Khách gửi điểm đón, điểm
-                trả, ngày giờ, số người và hành lý; đội ngũ tư vấn loại xe 4 chỗ, xe điện 5 chỗ, xe 7 chỗ hoặc xe 16
-                chỗ khi cần. Dịch vụ phù hợp với gia đình, khách công tác, khách hạ cánh tại sân bay Đà Nẵng và nhóm
-                nhỏ muốn đi riêng theo lịch trình đã xác nhận.
+                Bảo Trang Transport nhận xe riêng, xe hợp đồng và transfer theo chuyến từ Đà Nẵng về Quảng Trị. Khách
+                thường hỏi các điểm như Hải Lăng, Đông Hà, La Vang, Lao Bảo, hoặc ghé thêm Huế, Quảng Bình. Bạn chỉ cần
+                gửi nơi đón, nơi trả, giờ cần đi hoặc giờ cần có mặt, số khách và vali; Bảo Trang sẽ nhắc loại xe nên
+                đi và báo giá trước khi giữ chuyến.
               </p>
             </div>
             <dl className="geo-facts">
               <div>
-                <dt>Dịch vụ chính</dt>
-                <dd>Xe riêng / xe hợp đồng / transfer</dd>
+                <dt>Nhận chuyến</dt>
+                <dd>Xe riêng / bao xe / transfer</dd>
               </div>
               <div>
-                <dt>Tuyến trọng tâm</dt>
+                <dt>Tuyến thường hỏi</dt>
                 <dd>Đà Nẵng ⇄ Quảng Trị</dd>
               </div>
               <div>
-                <dt>Nhận giá nhanh</dt>
+                <dt>Hỏi giá nhanh</dt>
                 <dd>{site.phoneDisplay} hoặc Zalo</dd>
               </div>
             </dl>
@@ -159,7 +160,7 @@ export function HomeContent() {
                 <WalletCards size={22} aria-hidden="true" />
                 Giá tham khảo
               </span>
-              <h2>Cho xe riêng / xe hợp đồng, đón trả tận nơi</h2>
+              <h2>Khung giá để bạn áng trước khi gọi</h2>
             </div>
             <a href={campaignPages.contact.route} className="section-link">
               Nhận báo giá
@@ -175,7 +176,8 @@ export function HomeContent() {
             ))}
           </div>
           <p className="site-container price-note">
-            Giá áp dụng theo chuyến xe riêng / xe hợp đồng, xác nhận lại theo loại xe, giờ đi và điểm đón trả cụ thể.
+            Giá áp dụng cho xe riêng / xe hợp đồng. Điểm trả xa, đi sáng sớm, chờ lâu hoặc ghé thêm điểm sẽ cần xác
+            nhận lại trước chuyến.
           </p>
         </section>
 
@@ -186,7 +188,7 @@ export function HomeContent() {
                 <Car size={22} aria-hidden="true" />
                 Dòng xe phục vụ
               </span>
-              <h2>Xe đời mới, sạch sẽ, tiện nghi</h2>
+              <h2>Chọn xe theo số khách và số vali</h2>
             </div>
             <a href={campaignPages.fleet.route} className="section-link">
               Xem tất cả
@@ -209,7 +211,7 @@ export function HomeContent() {
           <div className="site-container section-heading-row motion-reveal">
             <div>
               <span className="section-kicker section-kicker--plain">Vì sao chọn chúng tôi?</span>
-              <h2>Vì sao chọn {site.name}?</h2>
+              <h2>Vì sao khách chọn {site.shortName}?</h2>
             </div>
           </div>
           <div className="site-container why-grid">
@@ -232,7 +234,7 @@ export function HomeContent() {
           <div className="site-container section-heading-row motion-reveal">
             <div>
               <span className="section-kicker">Quy trình</span>
-              <h2>Đặt xe chỉ với 4 bước đơn giản</h2>
+              <h2>Đặt xe không cần vòng vo</h2>
             </div>
           </div>
           <div className="site-container stepper">
@@ -260,7 +262,7 @@ export function HomeContent() {
             <div>
               <ShieldCheck size={28} aria-hidden="true" />
               <h2>Cần xe Đà Nẵng ⇄ Quảng Trị?</h2>
-              <p>Gửi điểm đón trả, {site.operatorName} sẽ tư vấn loại xe và báo giá theo chuyến.</p>
+              <p>Gửi điểm đón, điểm trả, giờ đi và số vali; {site.shortName} sẽ kiểm tra xe còn lịch và báo giá.</p>
             </div>
             <a className="btn btn-primary" href={campaignPages.contact.route}>
               Nhận giá chuyến đi

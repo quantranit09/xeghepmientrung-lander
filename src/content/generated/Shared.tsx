@@ -12,25 +12,25 @@ export const articleLinks = [
     href: "/bai-viet/dat-xe-rieng-da-nang-quang-tri",
     title: "Đặt xe riêng Đà Nẵng ⇄ Quảng Trị",
     description:
-      "Kinh nghiệm chọn xe 4 chỗ, 5 chỗ, 7 chỗ theo chuyến, điểm đón trả và thời gian di chuyển.",
+      "Cách hỏi xe theo điểm đón, điểm trả, giờ cần có mặt và số vali để chốt chuyến gọn hơn.",
   },
   {
     href: "/bai-viet/tim-xe-ghep-da-nang-quang-tri",
     title: "Đang tìm xe ghép Đà Nẵng ⇄ Quảng Trị?",
     description:
-      "Gợi ý phương án xe riêng hoặc bao xe theo chuyến cho khách muốn tiết kiệm nhưng vẫn cần chủ động điểm đón trả.",
+      "Khi nào nên đi ghép theo ghế, khi nào nên hỏi bao xe nếu đi nhóm hoặc cần trả đúng nhà.",
   },
   {
     href: "/bai-viet/thue-xe-da-nang-di-hai-lang",
     title: "Thuê xe Đà Nẵng đi Hải Lăng",
     description:
-      "Tư vấn chặng Hải Lăng, Diên Sanh, Mỹ Chánh: loại xe, thời gian đi và thông tin cần gửi để nhận báo giá.",
+      "Lưu ý khi trả ở Diên Sanh, Mỹ Chánh, La Vang hoặc nhà riêng sâu hơn trung tâm.",
   },
   {
     href: "/bai-viet/xe-da-nang-di-dong-ha",
     title: "Xe Đà Nẵng đi Đông Hà",
     description:
-      "Gợi ý đặt xe riêng đi Đông Hà cho công tác, gia đình, đón sân bay và lịch trình cần đúng giờ.",
+      "Gợi ý cho chuyến công tác, khám bệnh, về quê hoặc đón sân bay rồi đi thẳng Đông Hà.",
   },
   {
     href: "/bai-viet/xe-san-bay-da-nang-di-quang-tri",
@@ -54,13 +54,13 @@ export const articleLinks = [
     href: "/bai-viet/dat-xe-rieng-da-nang-quang-binh",
     title: "Đặt xe riêng Đà Nẵng ⇄ Quảng Bình",
     description:
-      "Gợi ý lịch trình transfer chặng dài, chuẩn bị hành lý và báo giá theo xe.",
+      "Chặng dài hơn, nên tính điểm nghỉ, số vali và giờ cần đến Đồng Hới/Lệ Thủy.",
   },
   {
     href: "/bai-viet/transfer-da-nang-hue",
     title: "Transfer Đà Nẵng ⇄ Huế",
     description:
-      "Các lựa chọn đưa đón sân bay, khách sạn và lịch trình tham quan trong ngày.",
+      "Đón sân bay, khách sạn, đi trong ngày hoặc ghé điểm trước khi ra Quảng Trị.",
   },
   {
     href: "/bai-viet/kinh-nghiem-thue-xe-rieng-mien-trung",
@@ -72,7 +72,7 @@ export const articleLinks = [
     href: "/bai-viet/meo-dat-xe-hop-dong-tiet-kiem",
     title: "Mẹo đặt xe hợp đồng tiết kiệm khi đi liên tỉnh",
     description:
-      "Cách gom lịch trình, chọn giờ đi và chuẩn bị thông tin để nhận báo giá tốt hơn.",
+      "Cách gom điểm đón, điểm ghé, giờ chờ và hành lý để báo giá ít bị đổi sau.",
   },
   {
     href: "/bai-viet/so-sanh-xe-khach-va-xe-rieng",
@@ -133,7 +133,7 @@ export function ArticleShell({
             </article>
             <aside className="article-aside">
               <h2>Nhận giá chuyến đi</h2>
-              <p>Gửi lịch trình để được tư vấn xe điện 5 chỗ, xe 7 chỗ hoặc xe phù hợp.</p>
+              <p>Gửi điểm đón, điểm trả, giờ đi và số vali để Bảo Trang kiểm tra xe còn lịch.</p>
               <a className="btn btn-primary" href={campaignPages.contact.route}>
                 Về form nhận giá
               </a>
