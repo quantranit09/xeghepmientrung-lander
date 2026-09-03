@@ -1,8 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { ClientBehaviors } from "@/components/ClientBehaviors";
 import { site } from "@/lib/site";
 import "./globals.css";
+
+const googleTagSnippet = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', '${site.googleAdsId}');
+`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -26,27 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
+      <head>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAdsId}`} />
+        <script dangerouslySetInnerHTML={{ __html: googleTagSnippet }} />
+      </head>
       <body>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAdsId}`}
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', '${site.googleAdsId}', {
-              page_title: document.title,
-              page_location: window.location.href,
-              custom_map: {
-                dimension1: 'service_type',
-                dimension2: 'location'
-              }
-            });
-          `}
-        </Script>
         {children}
         <ClientBehaviors />
       </body>
