@@ -1514,6 +1514,13 @@ img {
   transition: opacity 180ms var(--bt-ease-standard), transform 180ms var(--bt-ease-standard);
 }
 
+body.trip-form-in-view .floating-contact {
+  opacity: 0 !important;
+  pointer-events: none;
+  transform: translate3d(0, 14px, 0);
+  animation: none;
+}
+
 .floating-contact a {
   position: relative;
   width: 54px;

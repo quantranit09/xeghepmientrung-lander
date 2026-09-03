@@ -123,7 +123,7 @@ function CampaignShowcase({ page }: { page: CampaignPage }) {
             <WalletCards size={22} aria-hidden="true" />
             {page.id === "pricing" ? "Bảng giá tham khảo" : "Giá tuyến phổ biến"}
           </span>
-          <h2>Giá cần chốt lại theo điểm trả cuối và điều kiện chuyến</h2>
+          <h2>Xem nhanh giá bao xe để so trước khi đặt</h2>
         </div>
         {page.id === "pricing" ? (
           <Link className="section-link" href={campaignPages.fleet.route}>
@@ -146,8 +146,8 @@ function CampaignShowcase({ page }: { page: CampaignPage }) {
         ))}
       </div>
       <p className="site-container price-note">
-        Giá chỉ là khung tham khảo cho xe riêng / bao chuyến. Hãy gửi điểm đón, điểm trả, giờ đi, số khách và vali để
-        Bảo Trang kiểm tra chuyến thực tế.
+        Đây là khung giá xe riêng / bao chuyến để anh/chị tham khảo trước. Giá cuối sẽ được báo lại theo điểm đón, điểm
+        trả, giờ đi, số khách và hành lý thực tế.
       </p>
     </section>
   );
@@ -157,16 +157,16 @@ export function CampaignLandingContent({ page }: { page: CampaignPage }) {
   const relatedPages = Object.values(campaignPages).filter((item) => item.id !== page.id);
   const isXeGhepPage = page.id === "xeGhep";
   const xeGhepFormCopy = {
-    title: "Kiểm tra xe ghép Đà Nẵng - Quảng Trị",
-    description: "Gửi điểm đón/trả, giờ đi, số khách và vali để kiểm tra chuyến ghép hoặc giá bao xe.",
-    submitLabel: "Hỏi chỗ / hỏi giá",
+    title: "Hỏi chỗ xe ghép Đà Nẵng - Quảng Trị",
+    description: "Điền điểm đón, điểm trả, giờ đi và số khách; Bảo Trang báo lại chuyến phù hợp qua SĐT/Zalo.",
+    submitLabel: "Gửi để hỏi chỗ",
     serviceType: "Xe ghép Đà Nẵng - Quảng Trị",
     formName: "xe_ghep_trip_request",
-    submittingMessage: "Đang gửi lịch trình, giữ máy một chút nhé.",
-    successMessage: "Đã nhận lịch trình. Bảo Trang sẽ gọi lại qua SĐT/Zalo bạn vừa để lại.",
-    dialogTitle: "Đã nhận lịch trình",
+    submittingMessage: "Đang gửi thông tin chuyến đi, chờ một chút nhé.",
+    successMessage: "Bảo Trang đã nhận thông tin. Bên em sẽ gọi hoặc nhắn Zalo lại sớm.",
+    dialogTitle: "Đã nhận thông tin",
     dialogDescription:
-      "Bảo Trang sẽ gọi lại qua SĐT/Zalo để kiểm tra chỗ ghép, giờ đón hoặc phương án bao xe phù hợp hơn.",
+      "Bảo Trang sẽ liên hệ qua SĐT/Zalo để báo chỗ xe ghép, giờ đón dự kiến hoặc giá bao xe nếu chuyến ghép chưa phù hợp.",
   };
 
   return (
@@ -185,7 +185,7 @@ export function CampaignLandingContent({ page }: { page: CampaignPage }) {
               <p>{page.summary}</p>
               <div className="campaign-actions">
                 <a className="btn btn-primary" href="#yeu-cau-chuyen-di">
-                  {isXeGhepPage ? "Kiểm tra xe ghép" : "Nhận báo giá"}
+                  {isXeGhepPage ? "Hỏi chỗ xe ghép" : "Nhận báo giá"}
                 </a>
                 <a className="btn btn-outline" href={site.phoneHref}>
                   <Phone size={17} aria-hidden="true" />

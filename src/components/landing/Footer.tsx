@@ -22,7 +22,7 @@ export function Footer() {
         <div className="footer-links">
           <h3>Dịch vụ</h3>
           <Link href={campaignPages.xeRieng.route}>Xe riêng theo chuyến</Link>
-          <Link href={campaignPages.xeGhep.route}>Xe ghép / tư vấn phương án</Link>
+          <Link href={campaignPages.xeGhep.route}>Xe ghép / hỏi chỗ</Link>
           <Link href={campaignPages.pricing.route}>Bảng giá tham khảo</Link>
           <Link href={campaignPages.serviceArea.route}>Khu vực phục vụ</Link>
         </div>

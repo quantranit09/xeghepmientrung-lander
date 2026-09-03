@@ -624,14 +624,13 @@ export function ArticleXeSanBayDaNangDiQuangTriContent() {
 export function ArticleTimXeGhepDaNangQuangTriContent() {
   return (
     <ArticleShell
-      title="Đang tìm xe ghép Đà Nẵng ⇄ Quảng Trị?"
-      summary="Nhiều khách tìm xe ghép vì muốn tiết kiệm chi phí, nhưng nếu đi theo nhóm nhỏ, xe riêng hoặc bao xe theo chuyến có thể chủ động hơn mà chi phí chia đầu người vẫn hợp lý."
+      title="Đang tìm xe ghép Đà Nẵng đi Quảng Trị?"
+      summary="Nếu đi 1-2 khách, ít hành lý và linh hoạt giờ, xe ghép là lựa chọn đáng hỏi. Đi nhóm nhỏ hoặc cần đúng giờ thì nên so thêm giá bao xe."
     >
       <div className="article-callout">
         <p>
-          Nếu bạn đang tìm xe ghép Đà Nẵng - Quảng Trị, có lẽ điều bạn cần là giá dễ chịu, không phải ra bến và vẫn
-          được đón/trả gần nơi ở. Với nhóm 2-6 khách, hãy hỏi thêm giá bao xe riêng để so cùng lúc: đôi khi chia đầu
-          người không chênh quá nhiều, mà cả nhóm đi đúng giờ và đúng địa chỉ hơn.
+          Nếu anh/chị đang tìm xe ghép Đà Nẵng - Quảng Trị, điều cần hỏi trước là còn chỗ không, đón ở đâu, mấy giờ và
+          hành lý có vừa xe không. Với nhóm từ 2 khách trở lên, cứ hỏi thêm giá bao xe 4-7 chỗ để so cùng lúc.
         </p>
       </div>
 
@@ -647,9 +646,9 @@ export function ArticleTimXeGhepDaNangQuangTriContent() {
 
       <h2>Tóm tắt nhanh</h2>
       <p>
-        Khách tìm xe ghép thường muốn tiết kiệm, không muốn ra bến và cần đón trả gần nhà. Với Bảo Trang Transport, bạn
-        nên gửi lịch trình thật để kiểm tra khả năng ghép chuyến; nếu không tiện ghép, Bảo Trang sẽ báo thêm phương án
-        xe riêng hoặc bao xe cho chặng Hải Lăng, Đông Hà, La Vang, Gio Linh, Vĩnh Linh hoặc Lao Bảo.
+        Khách tìm xe ghép thường muốn tiết kiệm, đỡ phải ra bến và được đón/trả gần nơi ở. Anh/chị chỉ cần gửi điểm
+        đón, điểm trả, ngày giờ đi, số khách và số vali; Bảo Trang sẽ báo chuyến ghép đang có hoặc giá bao xe cho chặng
+        Hải Lăng, Đông Hà, La Vang, Gio Linh, Vĩnh Linh, Lao Bảo.
       </p>
       <table>
         <tbody>

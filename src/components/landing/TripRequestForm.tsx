@@ -93,7 +93,7 @@ const passengerOptions: SelectOption[] = Array.from({ length: 16 }, (_, index) =
 });
 
 const vehicleOptions: SelectOption[] = [
-  { value: "Bảo Trang tư vấn xe phù hợp", label: "Bảo Trang tư vấn xe phù hợp", capacity: 16 },
+  { value: "Nhờ Bảo Trang chọn xe giúp", label: "Nhờ Bảo Trang chọn xe giúp", capacity: 16 },
   { value: "Xe điện 5 chỗ", label: "Xe điện 5 chỗ", group: "Ưu tiên", capacity: 5 },
   { value: "Xe 4 chỗ", label: "Xe 4 chỗ", group: "Xe con 4-7 chỗ", capacity: 4 },
   { value: "Xe 5 chỗ", label: "Xe 5 chỗ", group: "Xe con 4-7 chỗ", capacity: 5 },
@@ -142,7 +142,7 @@ const defaultTripRequestValues: TripRequestFormValues = {
   travelDate: "",
   travelTime: "",
   passengerCount: 1,
-  vehiclePreference: "Bảo Trang tư vấn xe phù hợp",
+  vehiclePreference: "Nhờ Bảo Trang chọn xe giúp",
   customerName: "",
   contactPhone: "",
   _gotcha: "",
@@ -200,7 +200,7 @@ SĐT/Zalo: ${payload.contactPhone}
 Ngày sử dụng xe: ${payload.travelDate}
 Giờ đón dự kiến: ${payload.travelTime || "Chưa xác định"}
 Số khách: ${payload.passengerCount}
-Dòng xe mong muốn: ${payload.vehiclePreference || "Bảo Trang tư vấn xe phù hợp"}`;
+Dòng xe mong muốn: ${payload.vehiclePreference || "Nhờ Bảo Trang chọn xe giúp"}`;
 }
 
 function getBookingApiErrorMessage(result: BookingApiResponse | null) {
@@ -228,15 +228,15 @@ function getCurrentPageSource() {
 
 const defaultFormCopy = {
   title: "Yêu cầu báo giá xe riêng",
-  description: "Gửi lịch trình, Bảo Trang tư vấn xe 4, 5, 7 chỗ và báo giá theo chuyến.",
-  submitLabel: "Gửi yêu cầu báo giá",
+  description: "Gửi điểm đón, điểm trả và giờ đi; Bảo Trang báo lại xe phù hợp và giá theo chuyến.",
+  submitLabel: "Gửi để nhận giá",
   serviceType: "Xe riêng / xe hợp đồng / transfer",
   formName: "trip_request",
-  submittingMessage: "Đang gửi yêu cầu báo giá, giữ máy một chút nhé.",
-  successMessage: "Đã nhận yêu cầu báo giá. Bảo Trang sẽ gọi lại qua SĐT/Zalo bạn vừa để lại.",
-  dialogTitle: "Đã nhận yêu cầu báo giá",
+  submittingMessage: "Đang gửi thông tin chuyến đi, chờ một chút nhé.",
+  successMessage: "Bảo Trang đã nhận thông tin. Bên em sẽ gọi hoặc nhắn Zalo lại sớm.",
+  dialogTitle: "Đã nhận thông tin",
   dialogDescription:
-    "Bảo Trang sẽ gọi lại qua SĐT/Zalo để xác nhận lịch trình, tư vấn loại xe và báo giá theo chuyến.",
+    "Bảo Trang sẽ liên hệ qua SĐT/Zalo để xác nhận lịch trình, chọn xe phù hợp và báo giá theo chuyến.",
 };
 
 function LocationTextField({
@@ -569,7 +569,7 @@ export function TripRequestForm({
           <div>
             <LocationTextField
               label="Điểm trả tận nơi"
-              placeholder="Đông Hà, Đồng Hới, địa chỉ..."
+              placeholder="Hải Lăng, Đông Hà, địa chỉ..."
               inputProps={register("destination")}
               icon={<MapPin size={17} aria-hidden="true" className="input-icon--red" />}
               suggestions={locationOptions}
@@ -621,7 +621,7 @@ export function TripRequestForm({
               <FormSelect
                 label="Dòng xe mong muốn"
                 value={field.value}
-                placeholder="Bảo Trang tư vấn xe phù hợp"
+                placeholder="Nhờ Bảo Trang chọn xe giúp"
                 onValueChange={field.onChange}
                 icon={<Car size={17} aria-hidden="true" />}
                 options={vehicleOptions}
